@@ -15,7 +15,8 @@ const FlashMessage = () => {
         className={`alert alert-${category} alert-dismissible fade show`}
         role="alert"
       >
-        <strong>{title}</strong> {content}
+        <strong>{title}</strong>
+        {content}
         <button
           type="button"
           className="close"

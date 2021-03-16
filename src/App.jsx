@@ -29,7 +29,6 @@ const App = () => {
 
   useEffect(() => {
     autoLogin();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser]);
 
   return (
@@ -47,14 +46,14 @@ const App = () => {
               exact
             />
             <PublicRoute
-              restricted={true}
+              restricted
               currentUser={currentUser}
               component={Login}
               path="/login"
               exact
             />
             <PublicRoute
-              restricted={true}
+              restricted
               currentUser={currentUser}
               component={Register}
               path="/register"

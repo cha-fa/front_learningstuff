@@ -1,4 +1,5 @@
 @import "./variables";
+@import "bootstrap/dist/css/bootstrap.min.css";
 
 * {
   margin: 0;
@@ -8,6 +9,7 @@
 html {
   position: relative;
   min-height: 100%;
+  font-family: $font-family!important;
 }
 
 #root {
@@ -15,9 +17,16 @@ html {
   min-height: 100%;
 }
 
-.footer {
+.Navbar{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+footer {
   position: absolute;
   bottom: 0;
   width: 100%;
   height: $footer-size; /* #root margin-bottom */
+  background-color: $footer-color!important;
 }

@@ -19,7 +19,7 @@
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
-    "import/no-unresolved": "off",
+    "import/no-unresolved": "warn",
     "arrow-body-style": "off",
     "no-confusing-arrow": "off",
     "implicit-arrow-linebreak": "off",
@@ -31,5 +31,12 @@
     "react/jsx-indent": "off",
     "consistent-return": "off",
     "object-curly-newline": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
   }
 }

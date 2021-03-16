@@ -1,0 +1,23 @@
+@import "./variables";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+#root {
+  margin-bottom: $footer-size; /* .footer height */
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-size; /* #root margin-bottom */
+}

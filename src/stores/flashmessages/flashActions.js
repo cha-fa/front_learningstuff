@@ -1,10 +1,10 @@
-import * as actionTypes from "../actionTypes";
 import {
   AiOutlineWarning,
   AiOutlineCheckCircle,
   AiOutlineInfoCircle,
   AiOutlineStop,
 } from "react-icons/ai";
+import * as actionTypes from "../actionTypes";
 
 export const flashSuccess = (message) => {
   return {

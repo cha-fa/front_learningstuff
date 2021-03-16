@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-
 import { fetchToLogout } from "stores/authentication/authMiddleware";
 
 const Navbar = () => {
@@ -29,7 +28,9 @@ const Navbar = () => {
         {currentUser && (
           <>
             <Link to="/profile">Profile</Link>
-            <button onClick={logout}>Se déconnecter</button>
+            <button onClick={logout} type="button">
+              Se déconnecter
+            </button>
           </>
         )}
       </nav>

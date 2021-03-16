@@ -1,5 +1,5 @@
 {
-  "name": "thpgram_front",
+  "name": "learningstuff_front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -8,9 +8,11 @@
     "@testing-library/user-event": "^12.1.10",
     "i18next": "^19.9.2",
     "i18next-http-backend": "^1.1.1",
+    "bootstrap": "^4.6.0",
     "js-cookie": "^2.2.1",
-    "node-sass": "^5.0.0",
+    "node-sass": "4.14.1",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.5.2",
     "react-dom": "^17.0.1",
     "react-i18next": "^11.8.10",
     "react-icons": "^4.2.0",
@@ -44,5 +46,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^7.22.0",
+    "eslint-plugin-react": "^7.22.0"
   }
 }

@@ -1,13 +1,13 @@
 import React from "react";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
 
-  const { t, i18n } = useTranslation(); 
+  const { t } = useTranslation(); 
 
   return (
     <div className="Home">
-      <h1>{t('title')}</h1>
+      <h1>{t("title")}</h1>
     </div>
   );
 };

@@ -1,0 +1,23 @@
+@import "style/variables.scss";
+
+.ButtonSecondary{
+  background-color: $secondary; 
+  border: none;
+  border-radius: 100px;
+  color: $primary;
+  color: $primary-alt;
+  color: $primary-old;
+  font-family: $font-family;
+}
+.large{
+  width: 423px;
+  height: 60px;
+}
+.medium{
+  width: 160px;
+  height: 56px;
+}
+.small{
+  width: 66px;
+  height: 26px;
+}

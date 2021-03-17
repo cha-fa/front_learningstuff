@@ -1,0 +1,22 @@
+@import "style/variables.scss";
+
+.ButtonPrimary{
+  background-image: $primary-alt; 
+  background-image: $primary;
+  border: none;
+  border-radius: 100px;
+  color: white;
+  font-family: $font-family;
+}
+.large{
+  width: 423px;
+  height: 60px;
+}
+.medium{
+  width: 160px;
+  height: 56px;
+}
+.small{
+  width: 66px;
+  height: 26px;
+}

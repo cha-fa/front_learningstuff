@@ -7,9 +7,8 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <Jumbotron/>
-      <h1>{t("title")}</h1>
-      <h1>{t("lesson:content")}</h1>
+      <Jumbotron />
+      <h1>{t("title", { name: "Monsieur" })}</h1>
     </div>
   );
 };

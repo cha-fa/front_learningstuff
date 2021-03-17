@@ -19,6 +19,12 @@ const Profile = () => {
     get("/profile");
   };
 
+  const updateAvatar = (newAvatar) => {
+    put("/profile_avatars", newAvatar);
+    get("/profile");
+  };
+
+
   useEffect(() => {
     if (updatedInfo) {
       setProfile(updatedInfo);
@@ -26,12 +32,16 @@ const Profile = () => {
   }, [updatedInfo]);
 
   return (
-    <div className="Profile container my-5">
+    <div className="Profile container my-3">
       <div className="text-center">
-        <Avatar />
-        <EditAvatar />
-        <ProfileDisplay data={profile} />
-        <EditProfile onSubmit={updateProfile} />
+        <div className="my-4">
+          <Avatar data={profile} />
+          <EditAvatar onSubmit={updateAvatar} />
+        </div>
+        <div className="my-4">
+          <ProfileDisplay data={profile} />
+          <EditProfile onSubmit={updateProfile} />
+        </div>
       </div>
     </div>
   );

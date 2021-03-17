@@ -1,4 +1,5 @@
 header: 'Edit profile'
+avatarheader: 'Edit avatar'
 firstname: 'First name'
 lastname: 'Last name'
 description: 'Bio'

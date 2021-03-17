@@ -16,7 +16,7 @@ const EditProfile = ( { onSubmit } ) => {
   const [linkedIn, setLinkedIn] = useState(currentUser.linkedin_address);
   const [job, setJob] = useState(currentUser.job);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const handleSubmit = (event) => {
     event.preventDefault();

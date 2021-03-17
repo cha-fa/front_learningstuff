@@ -1,34 +1,30 @@
-.register{
-  margin-top: 10vh;
-  display: flex;
-  flex-direction: column;
-  max-width: 500px;
-  min-width: 100px;
-  margin-left: auto;
-  margin-right: auto;
-  border: grey solid 1px;
-  padding: 20px 20px 20px 20px;
-  h1{
-    justify-content: right;
-  }
-  form{
+@import "style/variables";
+
+.row{
+  .register{
+    margin-top: 10vh;
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
-    input{
-      margin-bottom: 5px;
+    max-width: 500px;
+    min-width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border: grey solid 1px;
+    padding: 20px 20px 20px 20px;
+
+    form{
+      display: flex;
+      flex-direction: column;
+      margin-top: 20px;
+      
+      .form-group{
+        display:flex;
+        flex-direction: column;
+
+        .ButtonPrimary {
+          margin-top: 5px;
+        }
+      }
     }
-    #submit-button{
-      margin-top: 5px;
-    }
-  }
-  hr{
-    margin-top: 10px;
-    margin-bottom: 5px;
-  }
-  .already-register{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
   }
 }

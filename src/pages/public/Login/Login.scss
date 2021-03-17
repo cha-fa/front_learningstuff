@@ -1,10 +1,10 @@
-@import "../../style/variables";
+@import "style/variables";
 
 .row{
   display: flex;
   flex-direction: row;
 
-  .login {
+  .login{
     font-family: $font-family;
     margin-top: 0.5vh;
     display: flex;
@@ -15,12 +15,12 @@
     margin-right: auto;
     padding: 20px 20px 20px 20px;
 
-    form {
+    form{
       display: flex;
       flex-direction: column;
       margin-top: 20px;
 
-      input {
+      input{
         margin-bottom: 5px;
         max-width: 423px;
         border-radius: 10px;

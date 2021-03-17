@@ -1,4 +1,4 @@
-import Jumbotron from "components/Jumbotron/Jumbotron";
+import JumbotronDisplay from "components/JumbotronDisplay/JumbotronDisplay";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
@@ -7,7 +7,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <Jumbotron />
+      <JumbotronDisplay />
       <h1>{t("title", { name: "Monsieur" })}</h1>
     </div>
   );

@@ -33,6 +33,7 @@ const Navbar = () => {
             </button>
           </>
         )}
+        {currentUser && <Link to="/lessons/2">Random lesson</Link>}
       </nav>
     </div>
   );

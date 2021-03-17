@@ -4,7 +4,7 @@ import Sidebar from "./components/Sidebar";
 import AdminRoute from "components/AdminRoute";
 import { Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
-import ManageApproval from "./components/ManageApproval";
+import ManageApproval from "./components/ManageApproval/ManageApproval";
 import ManageUsers from "./components/ManageUsers";
 
 const Admin = () => {

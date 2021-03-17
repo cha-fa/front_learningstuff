@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCurrentUser } from "stores/authentication/authMiddleware";
+import "./i18n";
 import Cookies from "js-cookie";
 import Home from "pages/public/Home";
 import Login from "pages/public/Login";
@@ -70,7 +71,7 @@ const App = () => {
             <PrivateRoute
               currentUser={currentUser}
               component={Lesson}
-              path="/lessons/:lessonId"
+              path="/courses/:courseId/chapters/:chapterId/lessons/:lessonId"
             />
             <PublicRoute restricted={false} component={PageNotFound} />
           </Switch>

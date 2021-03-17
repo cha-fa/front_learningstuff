@@ -47,7 +47,7 @@ const Nav = () => {
             Cart
           </Link>
           {currentUser && (
-            <Link to="/lessons/2" className="nav-link">
+            <Link to="/courses/1/chapters/1/lessons/2" className="nav-link">
               Random lesson
             </Link>
           )}

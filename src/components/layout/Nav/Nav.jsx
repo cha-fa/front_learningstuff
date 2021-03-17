@@ -5,6 +5,7 @@ import { fetchToLogout } from "stores/authentication/authMiddleware";
 import { Navbar } from "react-bootstrap";
 import "./Nav.scss";
 import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
+import { AiOutlineShoppingCart, AiFillBell } from "react-icons/ai";
 
 const Nav = () => {
   const token = useSelector((state) => state.auth.token);
@@ -31,7 +32,21 @@ const Nav = () => {
         <Link className="nav-link" to="/">About Us</Link>
         <Link className="nav-link" to="/">Contact Us</Link>
         <Link className="nav-link" to="/">Learning Path</Link>
-        <Link className="nav-link" to="/">Cart</Link>
+        <Link className="nav-link" to="/">
+          <AiOutlineShoppingCart 
+            size={25}
+            style={{ color: "orange" }}
+          />
+          </Link>
+          
+        {currentUser && (
+          <Link className="nav-link" to="/"> 
+            <AiFillBell 
+              size={25}
+              style={{ color: "orange" }}
+            />
+          </Link>
+        )}
         
         <div className="d-flex">
         {!currentUser && (

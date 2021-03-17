@@ -46,6 +46,11 @@ const Nav = () => {
           <Link className="nav-link" to="/">
             Cart
           </Link>
+          {currentUser && (
+            <Link to="/courses/1/chapters/1/lessons/2" className="nav-link">
+              Random lesson
+            </Link>
+          )}
           {currentUser && currentUser.role === "admin" && (
             <>
               <Link className="nav-link" to="/admin">

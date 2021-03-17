@@ -1,5 +1,4 @@
 import Jumbotron from "components/Jumbotron/Jumbotron";
-import React from "react";
 import { useTranslation } from "react-i18next";
 
 const Home = () => {
@@ -9,7 +8,7 @@ const Home = () => {
   return (
     <div className="Home">
       <Jumbotron/>
-      <h1>{t("title", {name:"Monsieur"})}</h1>
+      <h1>{t("title", {name:"Jeremy"})}</h1>
     </div>
   );
 };

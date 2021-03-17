@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCurrentUser } from "stores/Authentication/authMiddleware.js";
-import Cookies from "js-cookie";
-import Home from "pages/Home";
-import Login from "pages/Login";
-import Register from "pages/Register";
-import Profile from "pages/Profile/Profile";
+import { fetchCurrentUser } from "stores/Authentication/authMiddleware";
+import "./i18n";
+import Home from "pages/public/Home";
+import Login from "pages/public/Login";
+import Register from "pages/public/Register";
+import Profile from "pages/private/Profile";
+import Lesson from "pages/private/Lesson/Lesson";
 import Nav from "components/Layouts/Nav/Nav";
 import Footer from "components/Layouts/Footer";
 import FlashMessage from "components/Layouts/FlashMessage";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
+import PageNotFound from "components/PageNotFound";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -65,6 +67,12 @@ const App = () => {
               path="/profile"
               exact
             />
+            <PrivateRoute
+              currentUser={currentUser}
+              component={Lesson}
+              path="/courses/:courseId/chapters/:chapterId/lessons/:lessonId"
+            />
+            <PublicRoute restricted={false} component={PageNotFound} />
           </Switch>
         )}
         <Footer />

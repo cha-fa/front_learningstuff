@@ -12,6 +12,8 @@ import Footer from "components/layout/Footer";
 import FlashMessage from "components/layout/FlashMessage";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
+import AdminRoute from "components/AdminRoute";
+import Admin from "pages/Admin/Admin";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -64,6 +66,11 @@ const App = () => {
               component={Profile}
               path="/profile"
               exact
+            />
+            <AdminRoute
+              currentUser={currentUser}
+              component={Admin}
+              path="/admin"
             />
           </Switch>
         )}

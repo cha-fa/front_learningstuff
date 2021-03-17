@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchToLogout } from "stores/authentication/authMiddleware";
 import { Navbar } from "react-bootstrap";
 import "./Nav.scss";
+import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
 
 const Nav = () => {
   const token = useSelector((state) => state.auth.token);
@@ -20,22 +21,29 @@ const Nav = () => {
     <Navbar>
       <div className=" d-flex mr-auto p-2">
         <h1>Learning</h1> 
-        <h1>Stuff</h1>
+        <h1 className="title-bold">Stuff</h1>
       </div>
       <nav>
-        <div className="row align-items-center">
+        <div className="row align-items-center navbar">
         <Link className="nav-link" to="/">Home</Link>
         <Link className="nav-link" to="/">Courses</Link>
         <Link className="nav-link" to="/">Blog</Link>
         <Link className="nav-link" to="/">About Us</Link>
         <Link className="nav-link" to="/">Contact Us</Link>
+        <Link className="nav-link" to="/">Learning Path</Link>
         <Link className="nav-link" to="/">Cart</Link>
         
         <div className="d-flex">
         {!currentUser && (
           <>
-            <Link className="nav-link" to="/login"> Login  </Link>
-            <Link  className="nav-link" to="/register">Register</Link>
+          
+            <Link className="m-2" to="/">
+              <ButtonPrimary sizeClass="medium" label="Be a contributor"/> 
+            </Link>
+
+            <Link className="m-2" to="/login">
+              <ButtonPrimary sizeClass="medium" label="Login"/>
+            </Link>
           </>
         )}
         {currentUser && (

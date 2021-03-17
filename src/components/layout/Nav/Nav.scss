@@ -3,14 +3,23 @@
 .navbar {
   background-color: $secondary;
   min-height: 114px;
+  font-family: $font-family;
+    h1{
+      color: $footer-color;
+    }
+    .title-bold{
+      font-weight: bold;
+    }
 }
 
 .nav-link{
-  background: $primary;
+  background-image: $primary;
+  background-color: $primary-old;
+  background-size: 100%;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  -moz-text-fill-color: transparent;
+  background-size: 0, 100%;
 }
 
-.button {
-  background-image: $primary;
-}

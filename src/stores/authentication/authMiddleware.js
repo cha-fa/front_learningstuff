@@ -68,7 +68,7 @@ export const fetchCurrentUser = (token) => {
   return async (dispatch) => {
     const API_URL = process.env.REACT_APP_API_URL;
     try {
-      const response = await fetch(`${API_URL}/api/profile`, {
+      const response = await fetch(`${API_URL}/profile`, {
         method: "get",
         headers: {
           "Content-Type": "application/json",

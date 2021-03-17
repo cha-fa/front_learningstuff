@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import PrivateRoute from "components/PrivateRoute";
-import { Switch, useParams, NavLink } from "react-router-dom";
+import { Switch, useParams, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { Col, Row } from "react-bootstrap";
+import { Col, Row, Nav, Container } from "react-bootstrap";
 import LessonContent from "./LessonContent/LessonContent";
 import LessonForum from "./LessonForum/LessonForum";
 import { useTranslation } from "react-i18next";
@@ -13,49 +13,54 @@ import LessonQuizz from "./LessonQuizz/LessonQuizz";
 const Lesson = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { courseId, chapterId, lessonId } = useParams();
-  const { t } = useTranslation(["translation", "lesson"]);
-  const { data, error, isLoading, get } = useFetch();
+  const { t } = useTranslation("lesson");
+  const { data, get } = useFetch();
 
   useEffect(() => {
     get(`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`);
   }, [lessonId]);
 
   return (
-    <Row className="Lesson">
+    <Container fluid className="Lesson">
       {data && (
-        <>
+        <Row>
           <Col md={5}>
-            <Row className="justify-content-center align-items-center navbar">
-              <NavLink
-                className="nav-link"
-                to={`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}/content`}
-              >
-                {t("lesson:content")}
-              </NavLink>
-              <NavLink
-                className="nav-link"
-                to={`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}/forum`}
-              >
-                {t("lesson:forum")}
-              </NavLink>
-            </Row>
+            <Nav variant="tabs">
+              <Nav.Item>
+                <Link
+                  className="nav-link"
+                  to={`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}/content`}
+                >
+                  {t("content")}
+                </Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Link
+                  className="nav-link"
+                  to={`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}/forum`}
+                >
+                  {t("forum")}
+                </Link>
+              </Nav.Item>
+            </Nav>
+
             <p>
               {" "}
-              {t("lesson:title")}:{data.lesson.title}
+              {t("title")}:{data.title}
             </p>
             <Switch>
               <PrivateRoute
                 currentUser={currentUser}
                 path="/courses/:courseId/chapters/:chapterId/lessons/:lessonId/content"
               >
-                <LessonContent content={data.content} />
+                <LessonContent content={data.lesson_content} />
               </PrivateRoute>
               <PrivateRoute
                 currentUser={currentUser}
                 path="/courses/:courseId/chapters/:chapterId/lessons/:lessonId"
                 exact
               >
-                <LessonContent content={data.content} />
+                <LessonContent content={data.lesson_content} />
               </PrivateRoute>
               <PrivateRoute
                 currentUser={currentUser}
@@ -68,14 +73,14 @@ const Lesson = () => {
           </Col>
           <Col md={5}>
             {" "}
-            <LessonVideo video={data.video} />
+            <LessonVideo video={data.lesson_video} />
           </Col>
-          <Col md={2}>
+          <Col md={1}>
             <LessonQuizz questions={data.questions} />
           </Col>
-        </>
+        </Row>
       )}
-    </Row>
+    </Container>
   );
 };
 

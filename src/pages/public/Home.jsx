@@ -2,13 +2,12 @@ import Jumbotron from "components/Jumbotron/Jumbotron";
 import { useTranslation } from "react-i18next";
 
 const Home = () => {
-
-  const { t } = useTranslation(); 
+  const { t } = useTranslation(["translation", "lesson"]);
 
   return (
     <div className="Home">
-      <Jumbotron/>
-      <h1>{t("title", {name:"Jeremy"})}</h1>
+      <Jumbotron />
+      <h1>{t("title", { name: "Monsieur" })}</h1>
     </div>
   );
 };

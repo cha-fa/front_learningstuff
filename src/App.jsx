@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchCurrentUser } from "stores/authentication/authMiddleware";
+import { fetchCurrentUser } from "stores/Authentication/authMiddleware.js";
 import Cookies from "js-cookie";
 import Home from "pages/Home";
 import Login from "pages/Login";
 import Register from "pages/Register";
-import Profile from "pages/Profile";
-import Nav from "components/layout/Nav/Nav";
-import Footer from "components/layout/Footer";
-import FlashMessage from "components/layout/FlashMessage";
+import Profile from "pages/Profile/Profile";
+import Nav from "components/Layouts/Nav/Nav";
+import Footer from "components/Layouts/Footer";
+import FlashMessage from "components/Layouts/FlashMessage";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
 

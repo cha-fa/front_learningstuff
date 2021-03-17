@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import {
   displaySuccess,
   displayError,
-} from "stores/Flashmessages/flashMiddleware";
+} from "stores/flashmessages/flashMiddleware";
 import { useDispatch } from "react-redux";
 
 const useFetch = () => {

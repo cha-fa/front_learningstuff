@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-
-import { fetchToLogin } from "stores/Authentication/authMiddleware";
+import { fetchToLogin } from "stores/authentication/authMiddleware";
 
 const Login = () => {
   const [email, setEmail] = useState("");

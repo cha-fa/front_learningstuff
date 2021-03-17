@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose, combineReducers } from "redux";
 import thunkMiddleware from "redux-thunk";
-import authReducer from "./Authentication/authReducer";
-import flashReducer from "./Flashmessages/flashReducer";
+import authReducer from "./authentication/authReducer";
+import flashReducer from "./flashmessages/flashReducer";
 
 const rootReducer = combineReducers({
   auth: authReducer,

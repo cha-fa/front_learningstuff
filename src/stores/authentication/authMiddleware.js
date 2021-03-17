@@ -1,6 +1,6 @@
 import Cookies from "js-cookie";
 import * as authActions from "./authActions";
-import { displaySuccess, displayError } from "../Flashmessages/flashMiddleware";
+import { displaySuccess, displayError } from "../flashmessages/flashMiddleware";
 
 export const fetchToRegister = (data) => {
   return async (dispatch) => {

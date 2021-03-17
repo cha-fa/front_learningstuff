@@ -7,6 +7,8 @@ import { fetchToRegister } from "../stores/authentication/authMiddleware";
 const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -14,6 +16,8 @@ const Register = () => {
   const register = async (e) => {
     const data = {
       user: {
+        first_name: firstName,
+        last_name: lastName,
         email: email,
         password: password,
       },
@@ -29,6 +33,20 @@ const Register = () => {
     <div className="Register">
       <h1>This is register</h1>
       <form onSubmit={register}>
+      <input
+          type="text"
+          placeholder="First name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required
+        />
+        <input
+          type="text"
+          placeholder="Last name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          required
+        />
         <input
           type="text"
           placeholder="email"

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { Modal } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 const EditProfile = ( { onSubmit } ) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -14,6 +15,8 @@ const EditProfile = ( { onSubmit } ) => {
   const [description, setDescription] = useState(currentUser.description);
   const [linkedIn, setLinkedIn] = useState(currentUser.linkedin_address);
   const [job, setJob] = useState(currentUser.job);
+
+  const { t, i18n } = useTranslation();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,17 +33,17 @@ const EditProfile = ( { onSubmit } ) => {
   return (
     <div className="EditProfile">
 
-      <button className="my-2 btn btn-primary" onClick={handleShow}>Edit profile</button>
+      <button className="my-2 btn btn-primary" onClick={handleShow}>{t("editprofile:header")}</button>
 
       <Modal show={show} onHide={handleClose} role="dialog" aria-labelledby="Form to add a new post" >
         <Modal.Header closeButton>
-          <Modal.Title>Edit profile</Modal.Title>
+          <Modal.Title>{t("editprofile:header")}</Modal.Title>
         </Modal.Header>
         
         <Modal.Body>
           <form show={show} onSubmit={handleSubmit}>
             <div className="form-group">
-              <label>First name</label>
+              <label>{t("editprofile:firstname")}</label>
               <input
                 required
                 value={firstName}
@@ -49,7 +52,7 @@ const EditProfile = ( { onSubmit } ) => {
               />
             </div>
             <div className="form-group">
-              <label>Last name</label>
+              <label>{t("editprofile:lastname")}</label>
               <input
                 required
                 value={lastName}
@@ -58,7 +61,7 @@ const EditProfile = ( { onSubmit } ) => {
               />
             </div>
             <div className="form-group">
-              <label>Description</label>
+              <label>{t("editprofile:description")}</label>
               <textarea
                 required
                 value={description}
@@ -67,7 +70,7 @@ const EditProfile = ( { onSubmit } ) => {
               />
             </div>
             <div className="form-group">
-              <label>LinkedIn</label>
+              <label>{t("editprofile:linkedin")}</label>
               <input
                 value={linkedIn}
                 className="form-control"
@@ -75,14 +78,14 @@ const EditProfile = ( { onSubmit } ) => {
               />
             </div>
             <div className="form-group">
-              <label>Job</label>
+              <label>{t("editprofile:job")}</label>
               <input
                 value={job}
                 className="form-control"
                 onChange={(e) => setJob(e.target.value)}
               />
             </div>
-            <button className="btn btn-primary float-right">Update</button>
+            <button className="btn btn-primary float-right">{t("editprofile:cta")}</button>
           </form>
         </Modal.Body>
       </Modal>

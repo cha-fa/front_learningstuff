@@ -7,7 +7,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <h1>{t("title")}</h1>
+      <h1>{t("title", {name:"Monsieur"})}</h1>
     </div>
   );
 };

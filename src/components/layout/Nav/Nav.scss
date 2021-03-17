@@ -1,0 +1,16 @@
+@import "style/variables.scss";
+
+.navbar {
+  background-color: $secondary;
+  min-height: 114px;
+}
+
+.nav-link{
+  background: $primary;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.button {
+  background-image: $primary;
+}

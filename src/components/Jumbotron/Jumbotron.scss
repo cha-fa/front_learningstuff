@@ -1,0 +1,18 @@
+@import "style/variables.scss";
+
+.image-jumbotron{
+    background-image: $primary-alt; 
+    background-image: $primary;
+    background-size:cover;
+    min-height: 400px;
+}
+
+.jumbotron{
+    h2, h3{ 
+        color: white;
+    }
+}
+
+.lead{
+    margin-top: 3rem;
+}

@@ -1,5 +1,4 @@
 import Jumbotron from "components/Jumbotron/Jumbotron";
-import React from "react";
 import { useTranslation } from "react-i18next";
 
 const Home = () => {

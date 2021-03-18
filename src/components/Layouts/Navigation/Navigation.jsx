@@ -1,4 +1,3 @@
-import React from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchToLogout } from "stores/authentication/authMiddleware";
@@ -87,7 +86,7 @@ const Navigation = () => {
           {currentUser && (
             <>
         
-              <Link to="/profil">
+              <Link to="/profile">
                 <Image className="user-profil"  src={hello} roundedCircle/>
               </Link>
        

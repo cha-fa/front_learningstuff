@@ -7,7 +7,7 @@ import Home from "pages/Home";
 import Login from "pages/Login";
 import Register from "pages/Register";
 import Profile from "pages/Profile";
-import Nav from "components/layout/Nav/Nav";
+import Navigation from "components/layout/Navigation/Navigation";
 import Footer from "components/layout/Footer";
 import FlashMessage from "components/layout/FlashMessage";
 import PrivateRoute from "components/PrivateRoute";
@@ -34,7 +34,7 @@ const App = () => {
   return (
     <section className="App">
       <Router>
-        <Nav />
+        <Navigation />
         {displayFlash && <FlashMessage />}
         {loadReady && (
           <Switch>

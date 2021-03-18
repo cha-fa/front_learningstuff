@@ -17,7 +17,7 @@ return (
     <h2>LearningPaths</h2>
     <div className='learningPaths'> 
       {!error && learningPath && learningPath.length > 0 &&
-        data.map(path => <LearningPathCard key={path.id} learningPath={path} /> )
+        learningPath.map(path => <LearningPathCard key={path.id} learningPath={path} /> )
       }
     </div>
   </div>

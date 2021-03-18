@@ -4,7 +4,7 @@ import React from "react";
 const LessonContent = ({ content }) => {
   return (
     <div className="LessonContent">
-      <MarkdownConverter text={content.text} />
+      <MarkdownConverter text={content} />
     </div>
   );
 };

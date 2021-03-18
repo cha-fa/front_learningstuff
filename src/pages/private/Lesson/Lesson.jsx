@@ -17,14 +17,15 @@ const Lesson = () => {
   const { data, get } = useFetch();
 
   useEffect(() => {
+    console.log("FETCHING");
     get(`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`);
-  }, [lessonId]);
+  }, []);
 
   return (
     <Container fluid className="Lesson">
       {data && (
         <Row>
-          <Col md={5}>
+          <Col md={6}>
             <Nav variant="tabs">
               <Nav.Item>
                 <Link
@@ -43,40 +44,44 @@ const Lesson = () => {
                 </Link>
               </Nav.Item>
             </Nav>
-
-            <p>
-              {" "}
-              {t("title")}:{data.title}
-            </p>
             <Switch>
               <PrivateRoute
                 currentUser={currentUser}
                 path="/courses/:courseId/chapters/:chapterId/lessons/:lessonId/content"
               >
-                <LessonContent content={data.lesson_content} />
+                <LessonContent content={data.content} />
               </PrivateRoute>
               <PrivateRoute
                 currentUser={currentUser}
                 path="/courses/:courseId/chapters/:chapterId/lessons/:lessonId"
                 exact
               >
-                <LessonContent content={data.lesson_content} />
+                <LessonContent content={data.content} />
               </PrivateRoute>
               <PrivateRoute
                 currentUser={currentUser}
                 component={LessonForum}
                 path="/courses/:courseId/chapters/:chapterId/lessons/:lessonId/forum"
               >
-                <LessonForum comments={data.comments} />
+                <LessonForum
+                  ids={{
+                    course: courseId,
+                    chapter: chapterId,
+                    lesson: lessonId,
+                  }}
+                />
               </PrivateRoute>
             </Switch>
           </Col>
-          <Col md={5}>
+          <Col md={6}>
             {" "}
-            <LessonVideo video={data.lesson_video} />
-          </Col>
-          <Col md={1}>
-            <LessonQuizz questions={data.questions} />
+            <Row>
+              <LessonVideo url={data.video_url} />
+            </Row>
+            <Row>
+              <Col>ETAPES VIDEO</Col>
+              <Col>BOUTON QUIZZ</Col>
+            </Row>
           </Col>
         </Row>
       )}

@@ -17,6 +17,7 @@ const Nav = () => {
     dispatch(fetchToLogout(token));
     history.push("/");
   };
+
   return (
     <Navbar>
       <div className=" d-flex mr-auto p-2">
@@ -47,7 +48,7 @@ const Nav = () => {
             Cart
           </Link>
           {currentUser && (
-            <Link to="/courses/1/chapters/1/lessons/2" className="nav-link">
+            <Link to="courses/1/chapters/2/lessons/3" className="nav-link">
               Random lesson
             </Link>
           )}

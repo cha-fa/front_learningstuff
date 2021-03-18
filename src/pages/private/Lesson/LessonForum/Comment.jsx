@@ -1,14 +1,22 @@
-import React from "react";
-import { Row } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import { FaChalkboardTeacher } from "react-icons/fa";
 
 const Comment = ({ comment }) => {
   return (
-    <Row className="Comment">
-      <p>{comment.content}</p>
-      <p className="text-muted">
-        {comment.user.first_name} {comment.user.last_name}
-      </p>
-    </Row>
+    <Card className="mb-1 p-0">
+      <Card.Body className="p-1">
+        <blockquote className="blockquote">
+          <p>{comment.content}</p>
+          <div className="blockquote-footer">
+            {comment.user.first_name} {comment.user.last_name}{" "}
+            {comment.user.role === "teacher" && (
+              <FaChalkboardTeacher size={25} />
+            )}
+            <p> {new Date(comment.created_at).toLocaleString()}</p>
+          </div>
+        </blockquote>
+      </Card.Body>
+    </Card>
   );
 };
 

@@ -1,0 +1,12 @@
+title: Register your new account
+placeholderfirstname: First Name
+placeholderlastname: Last Name
+placeholderemail: Email
+placeholderpassword: Password
+role: role
+optionstudent: Student
+optionteacher: Teacher
+optionadmin: Administrator
+accountquestion: Already have an account yet?
+loginnow: Log in now!
+labelbutton: Register

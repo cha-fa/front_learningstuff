@@ -1,13 +1,14 @@
 import ButtonSecondary from "components/ButtonSecondary/ButtonSecondary";
 import { Link } from "react-router-dom";
-import "./Jumbotron.scss";
+import { Jumbotron } from "react-bootstrap";
+import "./JumbotronDisplay.scss";
 
-const Jumbotron = () => {
+const JumbotronDisplay = () => {
     
     return (
       <>
-        <section className="mb-5">
-          <div className="jumbotron image-jumbotron text-center">
+        <Jumbotron className="image-jumbotron mb-5">
+          <div className="text-center">
             <h2 className="display-4">Learning a lot of stuffs</h2>
             <h3>you are in charge of your future</h3>
             <p className="lead">
@@ -16,9 +17,9 @@ const Jumbotron = () => {
               </Link>
             </p>
           </div>
-        </section>
+        </Jumbotron>
       </>
     );
 };
     
-export default Jumbotron;
+export default JumbotronDisplay;

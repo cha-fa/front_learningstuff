@@ -4,17 +4,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchCurrentUser } from "stores/authentication/authMiddleware";
 import "./i18n";
 import Cookies from "js-cookie";
-import Home from "pages/public/Home/Home";
-import Login from "pages/public/Login";
-import Register from "pages/public/Register";
-import Profile from "pages/private/Profile";
-import Nav from "components/layout/Nav/Nav";
-import Footer from "components/layout/Footer";
-import FlashMessage from "components/layout/FlashMessage";
+import Home from "pages/public/Home";
+import Login from "pages/public/Login/Login";
+import Register from "pages/public/Register/Register";
+import Profile from "pages/private/Profile/Profile";
+import Lesson from "pages/private/Lesson/Lesson";
+import Navigation from "components/layouts/Navigation/Navigation";
+import Footer from "components/layouts/Footer";
+import FlashMessage from "components/layouts/FlashMessage";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
-import Lesson from "pages/private/Lesson/Lesson";
+import AdminRoute from "components/AdminRoute";
+import Admin from "pages/Admin/Admin";
 import PageNotFound from "components/PageNotFound";
+import LearningPaths from "pages/public/LearningPaths/LearningPaths";
+import Courses from "pages/public/Courses/Courses";
+import ShowLearningPath from "pages/public/LearningPaths/ShowLearningPath/ShowLearningPath";
+import ShowCourse from "pages/public/Courses/ShowCourse/ShowCourse";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -37,7 +43,7 @@ const App = () => {
   return (
     <section className="App">
       <Router>
-        <Nav />
+        <Navigation />
         {displayFlash && <FlashMessage />}
         {loadReady && (
           <Switch>
@@ -62,11 +68,40 @@ const App = () => {
               path="/register"
               exact
             />
+            <PublicRoute
+              currentUser={currentUser}
+              component={LearningPaths}
+              path="/learning_paths"
+              exact
+            />
+            <PublicRoute
+              currentUser={currentUser}
+              component={ShowLearningPath}
+              path="/learning_paths/:id"
+              exact
+            />
+            <PublicRoute
+              currentUser={currentUser}
+              component={Courses}
+              path="/courses"
+              exact
+            />
+            <PublicRoute
+              currentUser={currentUser}
+              component={ShowCourse}
+              path="/courses/:id"
+              exact
+            />
             <PrivateRoute
               currentUser={currentUser}
               component={Profile}
               path="/profile"
               exact
+            />
+            <AdminRoute
+              currentUser={currentUser}
+              component={Admin}
+              path="/admin"
             />
             <PrivateRoute
               currentUser={currentUser}

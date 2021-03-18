@@ -41,63 +41,6 @@ const useFetch = () => {
       });
   };
 
-  const patch = (query, userData) => {
-    setIsLoading(true);
-    setError(null);
-
-    fetch(API_URL + query, {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${Cookies.get("token")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => {
-        if (response.ok) {
-          dispatch(displaySuccess("All good!"));
-          return response.json();
-        } else {
-          dispatch(displayError("Oops, something bad happened! "));
-          setError("An unexpected error occurred.");
-        }
-      })
-      .then((response) => {
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const destroy = (query) => {
-    setIsLoading(true);
-    setError(null);
-
-    fetch(API_URL + query, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${Cookies.get("token")}`,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          dispatch(displaySuccess("All good!"));
-          return response.json();
-        } else {
-          dispatch(displayError("Oops, something bad happened! "));
-          setError("Une erreur est survenue");
-        }
-      })
-      .then((response) => {
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const post = (query, userData) => {
     setIsLoading(true);
     setError(null);
@@ -128,14 +71,101 @@ const useFetch = () => {
       });
   };
 
+  const put = (query, userData) => {
+    setIsLoading(true);
+    setError(null);
+
+    fetch(API_URL + query, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          dispatch(displaySuccess("All good!"));
+          return response.json();
+        } else {
+          dispatch(displayError("Oops, something bad happened!"));
+          setError("An unexpected error occurred.");
+        }
+      })
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const patch = (query, userData) => {
+    setIsLoading(true);
+    setError(null);
+
+    fetch(API_URL + query, {
+      method: "PATCH",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    })
+      .then((response) => {
+        if (response.ok) {
+          dispatch(displaySuccess("All good!"));
+          return response.json();
+        } else {
+          dispatch(displayError("Oops, something bad happened! "));
+          setError("An unexpected error occurred.");
+        }
+      })
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const destroy = (query) => {
+    setIsLoading(true);
+    setError(null);
+
+    fetch(API_URL + query, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        if (response.ok) {
+          dispatch(displaySuccess("All good!"));
+          return response.json();
+        } else {
+          dispatch(displayError("Oops, something bad happened! "));
+          setError("Une erreur est survenue");
+        }
+      })
+      .then(() => {
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return {
     data,
     error,
     isLoading,
     get,
+    post,
+    put,
     patch,
     destroy,
-    post,
   };
 };
 export default useFetch;

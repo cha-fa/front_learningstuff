@@ -10,17 +10,14 @@ html {
   position: relative;
   min-height: 100%;
   font-family: $font-family!important;
+  @media screen {
+    width: 100%;
+  }
 }
 
 #root {
   margin-bottom: $footer-size; /* .footer height */
   min-height: 100%;
-}
-
-.Navbar{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 footer {
@@ -29,4 +26,10 @@ footer {
   width: 100%;
   height: $footer-size; /* #root margin-bottom */
   background-color: $footer-color!important;
+}
+
+a {
+    &:focus, &:hover, &:visited, &:link, &:active {
+      text-decoration: none;
+    }
 }

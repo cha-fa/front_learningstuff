@@ -14,7 +14,7 @@ const Lesson = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { courseId, chapterId, lessonId } = useParams();
   const { t } = useTranslation(["translation", "lesson"]);
-  const { data, error, isLoading, get } = useFetch();
+  const { data, get } = useFetch();
 
   useEffect(() => {
     get(`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`);

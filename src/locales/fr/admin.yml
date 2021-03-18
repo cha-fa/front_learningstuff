@@ -1,0 +1,12 @@
+title: Gérer les demandes d'approbation
+pending_for_review: Utilisateurs en attente d'approbation
+manage_approvals: Gérer les approbations
+manage_users: Gérer les utilisateurs
+first_name: Prénom
+last_name: Nom
+email: Email
+approval?: Approuver?
+role: Rôle
+student: Étudiant
+teacher: Professeur
+loading: Chargement en cours

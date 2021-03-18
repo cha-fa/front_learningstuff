@@ -6,11 +6,9 @@ const ShowCourse = ( { match } ) => {
   const { data, get } = useFetch();
 
   useEffect(() => {
-    get(`/courses/${parseInt(match.params.id)}`);
+    get(`/learning_paths/${parseInt(match.params.id)}`);
   }, []);
 
-  // console.log("Show Course", data);
-  
 return ( data &&
   <div className='ShowCourse'>
      <h1>{data.title}</h1>

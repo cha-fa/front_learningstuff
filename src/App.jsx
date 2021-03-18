@@ -69,28 +69,24 @@ const App = () => {
               exact
             />
             <PublicRoute
-              restricted
               currentUser={currentUser}
               component={LearningPaths}
               path="/learning_paths"
               exact
             />
             <PublicRoute
-              restricted
               currentUser={currentUser}
               component={ShowLearningPath}
               path="/learning_paths/:id"
               exact
             />
             <PublicRoute
-              restricted
               currentUser={currentUser}
               component={Courses}
               path="/courses"
               exact
             />
             <PublicRoute
-              restricted
               currentUser={currentUser}
               component={ShowCourse}
               path="/courses/:id"

@@ -7,19 +7,18 @@ const Courses = () => {
 
   const { data, error, get } = useFetch();
 
+  const singleCourse = (data ? data.filter(course => course.is_single_course) : "");
+
   useEffect(() => {
-    get("/courses");
+    get("/learning_paths");
   }, []);
 
-  console.log("Courses", data);
-  console.log("Error", error);
-  
 return (
 <div className='Courses'>
 <h2>Courses</h2>
   <div className='coursesList'>
-    {!error && data && data.length > 0 &&
-      data.map(course => <CourseCard key={course.id} course={course} /> )
+    {!error && singleCourse && singleCourse.length > 0 &&
+      singleCourse.map(course => <CourseCard key={course.id} course={course} /> )
     }
   </div>
 </div>

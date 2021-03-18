@@ -6,20 +6,18 @@ import "./LearningPaths.scss";
 const LearningPaths = () => {
 
   const { data, error, get } = useFetch();
+  const learningPath = (data ? data.filter(course => !course.is_single_course) : "");
 
   useEffect(() => {
     get("/learning_paths");
   }, []);
 
-  console.log("LearningPaths", data);
-  console.log("Error", error);
-  
 return (
   <div className='LearningPaths'>
     <h2>LearningPaths</h2>
     <div className='learningPaths'> 
-      {!error && data && data.length > 0 &&
-        data.map(learningPath => <LearningPathCard key={learningPath.id} learningPath={learningPath} /> )
+      {!error && learningPath && learningPath.length > 0 &&
+        data.map(path => <LearningPathCard key={path.id} learningPath={path} /> )
       }
     </div>
   </div>

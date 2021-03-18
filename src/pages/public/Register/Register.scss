@@ -2,29 +2,7 @@
 
 .row{
   .register{
-    margin-top: 10vh;
-    display: flex;
-    flex-direction: column;
-    max-width: 500px;
-    min-width: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    border: grey solid 1px;
-    padding: 20px 20px 20px 20px;
-
-    form{
-      display: flex;
-      flex-direction: column;
-      margin-top: 20px;
-      
-      .form-group{
-        display:flex;
-        flex-direction: column;
-
-        .ButtonPrimary {
-          margin-top: 5px;
-        }
-      }
-    }
+    font-family: $font-family;
+    margin: auto!important;
   }
 }

@@ -5,7 +5,7 @@ import AdminRoute from "components/AdminRoute";
 import { Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ManageApproval from "./components/ManageApproval/ManageApproval";
-import ManageUsers from "./components/ManageUsers";
+import ManageUsers from "./components/ManageUsers/ManageUsers";
 
 const Admin = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);

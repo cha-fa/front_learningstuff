@@ -5,7 +5,7 @@ import { Navbar, NavDropdown, Nav, Image} from "react-bootstrap";
 import "./Navigation.scss";
 import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
 import { AiOutlineShoppingCart, AiFillBell } from "react-icons/ai";
-import hello from "assets/macron.jpeg";
+import avatar from "assets/noavatar.jpg";
 import { useTranslation} from "react-i18next";
 
 const Navigation = () => {
@@ -83,11 +83,18 @@ const Navigation = () => {
              
             </>
           )}
+          {currentUser && currentUser.role === "admin" && (
+          <>
+            <Link to="/admin">
+              admin
+            </Link>
+          </>
+          )}
           {currentUser && (
             <>
         
               <Link to="/profile">
-                <Image className="user-profil"  src={hello} roundedCircle/>
+                <Image className="user-profil"  src={avatar} roundedCircle/>
               </Link>
        
             <NavDropdown title="Menu" id="collasible-nav-dropdown"> 

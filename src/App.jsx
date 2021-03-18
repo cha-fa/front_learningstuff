@@ -16,7 +16,6 @@ import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
 import AdminRoute from "components/AdminRoute";
 import Admin from "pages/Admin/Admin";
-import Lesson from "pages/private/Lesson/Lesson";
 import PageNotFound from "components/PageNotFound";
 
 const App = () => {

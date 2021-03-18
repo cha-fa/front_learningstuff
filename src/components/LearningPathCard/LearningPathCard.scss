@@ -1,0 +1,35 @@
+@import "style/variables.scss";
+
+.LearningPathsCard{
+  border-radius: 10px;
+  min-width: 400px;
+  height: 279px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px;
+  color: $secondary;
+  font-family: $font-family;
+  font-size: 18px;
+  .header{
+    align-self: flex-end;
+    background-image: $primary-alt; 
+    background-image: $primary;
+    border-radius: 0px 10px 0px 10px;
+    width: 25%;
+    text-align: center;
+  }
+  .bottomCard{  
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 0px 0px 10px 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    height: 25%;
+    background-image: $primary-alt; 
+    background-image: $primary;
+  }
+}

@@ -7,10 +7,13 @@ import "./Navigation.scss";
 import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
 import { AiOutlineShoppingCart, AiFillBell } from "react-icons/ai";
 import hello from "assets/macron.jpeg";
+import { useTranslation} from "react-i18next";
 
 const Navigation = () => {
   const token = useSelector((state) => state.auth.token);
   const currentUser = useSelector((state) => state.auth.currentUser);
+
+  const {t}=useTranslation();
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -22,28 +25,28 @@ const Navigation = () => {
   return (
     <Navbar expand='lg'>
       <Navbar.Brand>
-        LearningStuff
+        {t("navigation:navBrand")}
       </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse  id="responsive-navbar-nav">
           <Nav inline className="ml-auto">
           <Nav.Link>
-            <Link className="nav-link" to="/">Home</Link>
+            <Link className="nav-link" to="/">{t("navigation:linkHome")}</Link>
           </Nav.Link>
           <Nav.Link>
-            <Link className="nav-link" to="/">Courses</Link>
+            <Link className="nav-link" to="/">{t("navigation:linkCourse")}</Link>
           </Nav.Link>
           <Nav.Link>
-            <Link className="nav-link" to="/">Blog</Link>
+            <Link className="nav-link" to="/">{t("navigation:linkBlog")}</Link>
           </Nav.Link>
           <Nav.Link>
-            <Link className="nav-link" to="/">About Us</Link>
+            <Link className="nav-link" to="/">{t("navigation:linkAbout")}</Link>
           </Nav.Link>
           <Nav.Link>
-            <Link className="nav-link" to="/">Contact Us</Link>
+            <Link className="nav-link" to="/">{t("navigation:linkContact")}</Link>
           </Nav.Link>
           <Nav.Link>
-            <Link className="nav-link" to="/">Learning Path</Link>
+            <Link className="nav-link" to="/">{t("navigation:linkLearningPath")}</Link>
           </Nav.Link>
           <Nav.Link> 
             <Link className="nav-link" to="/">
@@ -69,13 +72,13 @@ const Navigation = () => {
             <>
              
               <Link className="m-2" to="/">
-                <ButtonPrimary  sizeClass="medium" label="Be a contributor"/>
+                <ButtonPrimary  sizeClass="medium" label={t("navigation:linkContributor")}/>
               </Link> 
 
 
           
               <Link className="m-2" to="/login">
-                <ButtonPrimary type="button"sizeClass="medium" label="Login"/>
+                <ButtonPrimary type="button"sizeClass="medium" label={t("navigation:linkLogin")}/>
               </Link>
 
              
@@ -89,15 +92,15 @@ const Navigation = () => {
               </Link>
        
             <NavDropdown title="Menu" id="collasible-nav-dropdown"> 
-                <NavDropdown.Item>Courses</NavDropdown.Item>
-                <NavDropdown.Item>Orders</NavDropdown.Item>
-                <NavDropdown.Item>Settings</NavDropdown.Item>
-                <NavDropdown.Item onClick={logout}>Log Out</NavDropdown.Item>
+                <NavDropdown.Item>{t("navigation:linkCourse")}</NavDropdown.Item>
+                <NavDropdown.Item>{t("navigation:linkOrders")}</NavDropdown.Item>
+                <NavDropdown.Item>{t("navigation:linkSettings")}</NavDropdown.Item>
+                <NavDropdown.Item onClick={logout}>{t("navigation:linkLogout")}</NavDropdown.Item>
             </NavDropdown>
 
           
                 <Link className="m-2" to="/"> 
-                <ButtonPrimary sizeClass="medium" label="Be a contributor"/>
+                <ButtonPrimary sizeClass="medium" label={t("navigation:linkContributor")}/>
                 </Link>
             </>
           )}

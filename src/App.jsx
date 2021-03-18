@@ -5,18 +5,17 @@ import { fetchCurrentUser } from "stores/authentication/authMiddleware";
 import "./i18n";
 import Cookies from "js-cookie";
 import Home from "pages/public/Home";
-import Login from "pages/public/Login";
-import Register from "pages/public/Register";
+import Login from "pages/public/Login/Login";
+import Register from "pages/public/Register/Register";
 import Profile from "pages/private/Profile/Profile";
 import Lesson from "pages/private/Lesson/Lesson";
-import Nav from "components/layouts/Nav/Nav";
+import Navigation from "components/layouts/Navigation/Navigation";
 import Footer from "components/layouts/Footer";
 import FlashMessage from "components/layouts/FlashMessage";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
 import AdminRoute from "components/AdminRoute";
 import Admin from "pages/Admin/Admin";
-import Lesson from "pages/private/Lesson/Lesson";
 import PageNotFound from "components/PageNotFound";
 
 const App = () => {
@@ -40,7 +39,7 @@ const App = () => {
   return (
     <section className="App">
       <Router>
-        <Nav />
+        <Navigation />
         {displayFlash && <FlashMessage />}
         {loadReady && (
           <Switch>

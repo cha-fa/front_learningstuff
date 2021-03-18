@@ -61,8 +61,6 @@ const useFetch = () => {
           dispatch(displayError("Oops, something bad happened! "));
           setError("An unexpected error occurred.");
         }
-      })
-      .then((response) => {
         setIsLoading(false);
       })
       .catch((error) => {
@@ -89,10 +87,9 @@ const useFetch = () => {
           dispatch(displayError("Oops, something bad happened! "));
           setError("Une erreur est survenue");
         }
-      })
-      .then((response) => {
         setIsLoading(false);
       })
+
       .catch((error) => {
         console.log(error);
       });

@@ -54,19 +54,21 @@ const useFetch = () => {
       body: JSON.stringify(userData),
     })
       .then((response) => {
+        if (response.statusCode >= 500) {
+          throw new Error("Error");
+        }
         return response.json();
       })
-      .then((response) => {
-        if (response.errors) {
-          dispatch(
-            displayError("Oops, something bad happened! " + response.errors)
-          );
-          return;
+      .then((responseData) => {
+        if (responseData.errors) {
+          setError(responseData.errors);
+          throw new Error(responseData.errors);
         }
         dispatch(displaySuccess("All good!"));
         setIsLoading(false);
       })
       .catch((error) => {
+        dispatch(displayError(error));
         console.log(error);
       });
   };

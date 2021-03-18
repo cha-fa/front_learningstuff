@@ -74,12 +74,19 @@ const Lesson = () => {
           </Col>
           <Col md={6}>
             {" "}
-            <Row>
-              <LessonVideo url={data.video_url} />
-            </Row>
+            <Row>{/* <LessonVideo url={data.video_url} /> */}</Row>
             <Row>
               <Col>ETAPES VIDEO</Col>
-              <Col>BOUTON QUIZZ</Col>
+              <Col>
+                BOUTON QUIZZ
+                <LessonQuizz
+                  ids={{
+                    course: courseId,
+                    chapter: chapterId,
+                    lesson: lessonId,
+                  }}
+                />
+              </Col>
             </Row>
           </Col>
         </Row>

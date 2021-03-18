@@ -51,7 +51,13 @@ const Nav = () => {
               Random lesson
             </Link>
           )}
-
+          {currentUser && currentUser.role === "admin" && (
+            <>
+              <Link className="nav-link" to="/admin">
+                Dashboard Admin
+              </Link>
+            </>
+          )}
           <div className="d-flex">
             {!currentUser && (
               <>

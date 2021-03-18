@@ -83,6 +83,13 @@ const Navigation = () => {
              
             </>
           )}
+          {currentUser && currentUser.role === "admin" && (
+          <>
+            <Link to="/admin">
+              admin
+            </Link>
+          </>
+          )}
           {currentUser && (
             <>
         

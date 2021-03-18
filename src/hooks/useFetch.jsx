@@ -7,6 +7,7 @@ import {
 import { useDispatch } from "react-redux";
 
 const useFetch = () => {
+  // eslint-disable-next-line no-undef
   const API_URL = process.env.REACT_APP_API_URL;
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -129,7 +130,7 @@ const useFetch = () => {
       });
   };
 
-  const destroy = (query) => {
+  const destroy = (query, callback) => {
     setIsLoading(true);
     setError(null);
 
@@ -141,19 +142,16 @@ const useFetch = () => {
       },
     })
       .then((response) => {
+        setIsLoading(false);
         if (response.ok) {
           dispatch(displaySuccess("All good!"));
-          return response.json();
+          if (callback){
+            callback();
+          }
         } else {
           dispatch(displayError("Oops, something bad happened! "));
           setError("Une erreur est survenue");
         }
-      })
-      .then(() => {
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
       });
   };
 

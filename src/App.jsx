@@ -17,7 +17,10 @@ import PublicRoute from "components/PublicRoute";
 import AdminRoute from "components/AdminRoute";
 import Admin from "pages/Admin/Admin";
 import PageNotFound from "components/PageNotFound";
-import LearningPaths from "./pages/public/LearningPaths/LearningPaths";
+import LearningPaths from "pages/public/LearningPaths/LearningPaths";
+import Courses from "pages/public/Courses/Courses";
+import ShowLearningPath from "pages/public/LearningPaths/ShowLearningPath/ShowLearningPath";
+import ShowCourse from "pages/public/Courses/ShowCourse/ShowCourse";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -70,6 +73,27 @@ const App = () => {
               currentUser={currentUser}
               component={LearningPaths}
               path="/learning_paths"
+              exact
+            />
+            <PublicRoute
+              restricted
+              currentUser={currentUser}
+              component={ShowLearningPath}
+              path="/learning_paths/:id"
+              exact
+            />
+            <PublicRoute
+              restricted
+              currentUser={currentUser}
+              component={Courses}
+              path="/courses"
+              exact
+            />
+            <PublicRoute
+              restricted
+              currentUser={currentUser}
+              component={ShowCourse}
+              path="/courses/:id"
               exact
             />
             <PrivateRoute

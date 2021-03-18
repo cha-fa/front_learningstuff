@@ -1,15 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
 
 $footer-size: 15vh;
-$font-family: 'Nunito Sans', sans-serif;
+$font-family: "Nunito Sans", sans-serif;
 
-$primary:     -webkit-linear-gradient(to left, #FFC000, #FF8A00);  /* Chrome 10-25, Safari 5.1-6 */ 
-$primary-alt: linear-gradient(to left, #FFC000, #FF8A00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-$primary-old: #FF8A00;  /* fallback for old browsers */ 
+$primary: -webkit-linear-gradient(
+  to left,
+  #ffc000,
+  #ff8a00
+); /* Chrome 10-25, Safari 5.1-6 */
+$primary-alt: linear-gradient(
+  to left,
+  #ffc000,
+  #ff8a00
+); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+$primary-old: #ff8a00; /* fallback for old browsers */
 
-$secondary: #FFFFFF;
-$orange-background: #FF8A00; 
-$footer-color: #5C5C5C;
+$secondary: #ffffff;
+$orange-background: #ff8a00;
+$light-orange: #fff7df;
+$footer-color: #5c5c5c;
 
 // Typo : Nunito
 //    -  Hero : 44px
@@ -17,6 +26,3 @@ $footer-color: #5C5C5C;
 //    -  Heading: 40px
 //    -  Sub Heading : 18px
 //    -  Heading body : 14px
-
-
-

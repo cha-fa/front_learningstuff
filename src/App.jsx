@@ -17,6 +17,7 @@ import AdminRoute from "components/AdminRoute";
 import Admin from "pages/Admin/Admin";
 import Lesson from "pages/private/Lesson/Lesson";
 import PageNotFound from "components/PageNotFound";
+import LearningPaths from "./pages/public/LearningPaths/LearningPaths";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -62,6 +63,13 @@ const App = () => {
               currentUser={currentUser}
               component={Register}
               path="/register"
+              exact
+            />
+            <PublicRoute
+              restricted
+              currentUser={currentUser}
+              component={LearningPaths}
+              path="/learning_paths"
               exact
             />
             <PrivateRoute

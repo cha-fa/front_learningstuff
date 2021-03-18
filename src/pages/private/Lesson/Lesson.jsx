@@ -17,7 +17,6 @@ const Lesson = () => {
   const { data, get } = useFetch();
 
   useEffect(() => {
-    console.log("FETCHING");
     get(`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`);
   }, []);
 

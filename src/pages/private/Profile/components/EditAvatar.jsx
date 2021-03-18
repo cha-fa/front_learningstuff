@@ -16,7 +16,6 @@ const EditAvatar = ( { onSubmit } ) => {
   };
 
   const onFileChange = (event) => { 
-    // Update the state 
     setAvatar({ avatar: event.target.files[0] }); 
   };
 

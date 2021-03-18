@@ -11,7 +11,7 @@ const Profile = () => {
   const [profile, setProfile] = useState(currentUser);
   const [editing, setEditing] = useState(false);
 
-  const { get, put, data: updatedInfo } = useFetch();
+  const { get, put, post, data: updatedInfo } = useFetch();
 
   const updateProfile = (newDetails) => {
     put("/profile", newDetails);
@@ -20,7 +20,7 @@ const Profile = () => {
   };
 
   const updateAvatar = (newAvatar) => {
-    put("/profile_avatars", newAvatar);
+    post("/profile/avatar", newAvatar);
     get("/profile");
   };
 

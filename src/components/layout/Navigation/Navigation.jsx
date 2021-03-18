@@ -46,7 +46,7 @@ const Navigation = () => {
             <Link className="nav-link" to="/">{t("navigation:linkContact")}</Link>
           </Nav.Link>
           <Nav.Link>
-            <Link className="nav-link" to="/">{t("navigation:linkLearningPath")}</Link>
+            <Link className="nav-link" to="/learning_paths">{t("navigation:linkLearningPath")}</Link>
           </Nav.Link>
           <Nav.Link> 
             <Link className="nav-link" to="/">

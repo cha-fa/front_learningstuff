@@ -33,7 +33,7 @@ const Navigation = () => {
             <Link className="nav-link" to="/">{t("navigation:linkHome")}</Link>
           </Nav.Link>
           <Nav.Link>
-            <Link className="nav-link" to="/">{t("navigation:linkCourse")}</Link>
+            <Link className="nav-link" to="/courses">{t("navigation:linkCourse")}</Link>
           </Nav.Link>
           <Nav.Link>
             <Link className="nav-link" to="/">{t("navigation:linkBlog")}</Link>
@@ -45,7 +45,7 @@ const Navigation = () => {
             <Link className="nav-link" to="/">{t("navigation:linkContact")}</Link>
           </Nav.Link>
           <Nav.Link>
-            <Link className="nav-link" to="/">{t("navigation:linkLearningPath")}</Link>
+            <Link className="nav-link" to="/learning_paths">{t("navigation:linkLearningPath")}</Link>
           </Nav.Link>
           <Nav.Link> 
             <Link className="nav-link" to="/">

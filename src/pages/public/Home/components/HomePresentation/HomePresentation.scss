@@ -1,0 +1,22 @@
+@import "style/variables.scss";
+
+.HomePresentation {
+  text-align: center;
+  background: $light-orange;
+  &__icon {
+    size: 100;
+    color: $primary-old;
+    color: $primary-alt;
+    color: $primary;
+  }
+  &__bold {
+    font-weight: bold;
+  }
+  h2 {
+    color: $primary;
+    color: $primary-alt;
+    color: $primary-old;
+    font-size: 40px;
+    font-weight: 200;
+  }
+}

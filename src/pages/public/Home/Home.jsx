@@ -1,4 +1,4 @@
-import Jumbotron from "components/Jumbotron/Jumbotron";
+import JumbotronDisplay from "components/JumbotronDisplay/JumbotronDisplay";
 import { useTranslation } from "react-i18next";
 import HomeAchivement from "./components/Achivements/HomeAchivement";
 import HomePresentation from "./components/HomePresentation/HomePresentation";
@@ -9,7 +9,7 @@ const Home = () => {
 
   return (
     <div className="Home">
-      <Jumbotron />
+      <JumbotronDisplay />
       <HomePresentation />
       <HomeAchivement />
       <Pricing />

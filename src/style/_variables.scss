@@ -3,7 +3,10 @@
 $footer-size: 15vh;
 $font-family: 'Nunito Sans', sans-serif;
 
-$primary:     -webkit-linear-gradient(to left, #FFC000, #FF8A00);  /* Chrome 10-25, Safari 5.1-6 */ 
+$primary:     
+    -webkit-linear-gradient(to left, #FFC000, #FF8A00)  /* Chrome 10-25, Safari 5.1-6 */ 
+    linear-gradient(to left, #FFC000, #FF8A00)
+    #FF8A00;
 $primary-alt: linear-gradient(to left, #FFC000, #FF8A00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 $primary-old: #FF8A00;  /* fallback for old browsers */ 
 

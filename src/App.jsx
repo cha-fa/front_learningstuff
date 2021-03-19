@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchCurrentUser } from "stores/authentication/authMiddleware";
 import "./i18n";
 import Cookies from "js-cookie";
-import Home from "pages/public/Home";
+import Home from "pages/public/Home/Home";
 import Login from "pages/public/Login/Login";
 import Register from "pages/public/Register/Register";
 import Profile from "pages/private/Profile/Profile";
@@ -21,6 +21,7 @@ import LearningPaths from "pages/public/LearningPaths/LearningPaths";
 import Courses from "pages/public/Courses/Courses";
 import ShowLearningPath from "pages/public/LearningPaths/ShowLearningPath/ShowLearningPath";
 import ShowCourse from "pages/public/Courses/ShowCourse/ShowCourse";
+import Subscription from "pages/private/Subscription/Subscription";
 
 const App = () => {
   const [loadReady, setLoadReady] = useState(false);
@@ -96,6 +97,12 @@ const App = () => {
               currentUser={currentUser}
               component={Profile}
               path="/profile"
+              exact
+            />
+            <PrivateRoute
+              currentUser={currentUser}
+              component={Subscription}
+              path="/subscription"
               exact
             />
             <AdminRoute

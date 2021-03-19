@@ -57,16 +57,10 @@ const Navigation = () => {
               {t("navigation:linkLearningPath")}
             </Link>
           </Nav.Link>
-          {currentUser && (
-            <Link to="/courses/1/chapters/2/lessons/3" className="nav-link">
-              Random lesson
-            </Link>
-          )}
-          <Nav.Link>
-            <Link className="nav-link" to="/">
-              <AiOutlineShoppingCart size={25} style={{ color: "orange" }} />
-            </Link>
-          </Nav.Link>
+
+          <Link className="nav-link" to="/subscription">
+            <AiOutlineShoppingCart size={25} style={{ color: "orange" }} />
+          </Link>
 
           {currentUser && (
             <Nav.Link>

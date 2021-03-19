@@ -71,6 +71,35 @@ const useFetch = () => {
       });
   };
 
+  const postAvatar = (query, userData) => {
+    setIsLoading(true);
+    setError(null);
+    fetch(API_URL + query, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${Cookies.get("token")}`,
+        "Accept": "application/json"
+      },
+      body: userData,
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        if (response.errors) {
+          dispatch(
+            displayError("Oops, something bad happened! " + response.errors)
+          );
+          return;
+        }
+        dispatch(displaySuccess("All good!"));
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const put = (query, userData) => {
     setIsLoading(true);
     setError(null);
@@ -163,6 +192,7 @@ const useFetch = () => {
     isLoading,
     get,
     post,
+    postAvatar,
     put,
     patch,
     destroy,

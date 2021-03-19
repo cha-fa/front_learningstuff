@@ -8,10 +8,11 @@ import EditAvatar from "pages/private/Profile/components/EditAvatar";
 
 const Profile = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
-  const [profile, setProfile] = useState(currentUser);
+  const [profile, setProfile] = useState(currentUser.profile);
+  const [avatar, setAvatar] = useState(currentUser.avatar);
   const [editing, setEditing] = useState(false);
 
-  const { get, put, post, data: updatedInfo } = useFetch();
+  const { get, put, postAvatar, data: updatedInfo } = useFetch();
 
   const updateProfile = (newDetails) => {
     put("/profile", newDetails);
@@ -20,14 +21,14 @@ const Profile = () => {
   };
 
   const updateAvatar = (newAvatar) => {
-    post("/profile/avatar", newAvatar);
+    postAvatar(`/users/${currentUser.profile.id}/avatars`, newAvatar);
     get("/profile");
   };
 
-
   useEffect(() => {
     if (updatedInfo) {
-      setProfile(updatedInfo);
+      setProfile(updatedInfo.profile);
+      setAvatar(currentUser.avatar);
     }
   }, [updatedInfo]);
 
@@ -35,7 +36,7 @@ const Profile = () => {
     <div className="Profile container my-3">
       <div className="text-center">
         <div className="my-4">
-          <Avatar data={profile} />
+          <Avatar data={avatar} />
           <EditAvatar onSubmit={updateAvatar} />
         </div>
         <div className="my-4">

@@ -1,31 +1,35 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 const EditAvatar = ( { onSubmit } ) => {
-
-  const currentUser = useSelector((state) => state.auth.currentUser);
-  const [avatar, setAvatar] = useState(currentUser.avatar);
   const { t } = useTranslation();
+  const [avatar, setAvatar] = useState(null);
+
+  const onAvatarChange = (event) => { 
+    setAvatar(event.target.files[0]);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    onSubmit({
-      avatar: avatar,
-    });
-  };
-
-  const onFileChange = (event) => { 
-    setAvatar({ avatar: event.target.files[0] }); 
+    const formData = new FormData();  
+    formData.append( 
+      "avatar", 
+      avatar,
+    );
+    onSubmit(formData);
   };
 
   return (
     <div className="EditAvatar">
-      <form> 
-        <input type="file" onChange={onFileChange} /> 
-        <button 
-          className="btn btn-sm btn-success"
-          onClick={handleSubmit}> 
+      <form onSubmit={handleSubmit}>
+        <input
+          type="file"
+          onChange={onAvatarChange}
+          accept="image/*"
+        />
+        <button
+          type="submit" 
+          className="btn btn-sm btn-success">
           {t("editprofile:avatarheader")} 
         </button> 
       </form>

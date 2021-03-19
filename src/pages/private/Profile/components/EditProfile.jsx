@@ -10,11 +10,11 @@ const EditProfile = ( { onSubmit } ) => {
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
-  const [firstName, setFirstName] = useState(currentUser.first_name);
-  const [lastName, setLastName] = useState(currentUser.last_name);
-  const [description, setDescription] = useState(currentUser.description);
-  const [linkedIn, setLinkedIn] = useState(currentUser.linkedin_address);
-  const [job, setJob] = useState(currentUser.job);
+  const [firstName, setFirstName] = useState(currentUser.profile.first_name);
+  const [lastName, setLastName] = useState(currentUser.profile.last_name);
+  const [description, setDescription] = useState(currentUser.profile.description);
+  const [linkedIn, setLinkedIn] = useState(currentUser.profile.linkedin_address);
+  const [job, setJob] = useState(currentUser.profile.job);
 
   const { t } = useTranslation();
 

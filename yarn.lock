@@ -2244,6 +2244,13 @@ acorn@^8.0.5:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-8.1.0.tgz#52311fd7037ae119cbb134309e901aa46295b3fe"
   integrity sha512-LWCF/Wn0nfHOmJ9rzQApGnxnvgfROzGilS8936rqN/lfcYkY9MYZzdMqN+2NJ4SlTc+m5HiSa+kNfDtI64dwUA==
 
+activestorage@^5.2.4-5:
+  version "5.2.4-5"
+  resolved "https://registry.yarnpkg.com/activestorage/-/activestorage-5.2.4-5.tgz#3ea0363f1e37ad5e415f0948bb619ec10c707c1d"
+  integrity sha512-eQg0flKkANT8FjJzSgNFBx21t+yXXQL5bJREf6yenq18tOOdBvBhLnnSTG1ek4V3HXVqzAxVkuWpGEwGmDBr7g==
+  dependencies:
+    spark-md5 "^3.0.0"
+
 address@1.1.2, address@^1.0.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/address/-/address-1.1.2.tgz#bf1116c9c758c51b7a933d296b72c221ed9428b6"
@@ -10869,6 +10876,11 @@ sourcemap-codec@^1.4.4:
   version "1.4.8"
   resolved "https://registry.yarnpkg.com/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
   integrity sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==
+
+spark-md5@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/spark-md5/-/spark-md5-3.0.1.tgz#83a0e255734f2ab4e5c466e5a2cfc9ba2aa2124d"
+  integrity sha512-0tF3AGSD1ppQeuffsLDIOWlKUd3lS92tFxcsrh5Pe3ZphhnoK+oXIBTzOAThZCiuINZLvpiLH/1VS1/ANEJVig==
 
 spdx-correct@^3.0.0:
   version "3.1.1"

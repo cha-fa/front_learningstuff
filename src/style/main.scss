@@ -28,3 +28,8 @@ footer {
   background-color: $footer-color!important;
 }
 
+a {
+    &:focus, &:hover, &:visited, &:link, &:active {
+      text-decoration: none;
+    }
+}

@@ -33,7 +33,7 @@ const Navigation = () => {
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="/courses">
               {t("navigation:linkCourse")}
             </Link>
           </Nav.Link>
@@ -53,7 +53,7 @@ const Navigation = () => {
             </Link>
           </Nav.Link>
           <Nav.Link>
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="/learning_paths">
               {t("navigation:linkLearningPath")}
             </Link>
           </Nav.Link>
@@ -92,6 +92,15 @@ const Navigation = () => {
                   label={t("navigation:linkLogin")}
                 />
               </Link>
+            </>
+          )}
+          {currentUser && currentUser.role === "admin" && (
+            <>
+              <Nav.Link>
+                <Link className="nav-link" to="/admin">
+                  {t("navigation:linkAdmin")}
+                </Link>
+              </Nav.Link>
             </>
           )}
           {currentUser && (

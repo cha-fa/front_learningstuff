@@ -85,9 +85,11 @@ const Navigation = () => {
           )}
           {currentUser && currentUser.role === "admin" && (
           <>
-            <Link to="/admin">
-              admin
+          <Nav.Link>
+            <Link className="nav-link" to="/admin">
+            {t("navigation:linkAdmin")}
             </Link>
+          </Nav.Link>
           </>
           )}
           {currentUser && (

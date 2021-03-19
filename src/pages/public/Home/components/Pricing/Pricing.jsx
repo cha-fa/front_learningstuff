@@ -10,7 +10,7 @@ const Pricing = () => {
 
   return (
     <article className="Pricing container text-center pt-5">
-      <h2>Pricing</h2>
+      <h2>{t("PricingTitle")}</h2>
       <Table striped>
         <thead>
           <tr>
@@ -31,14 +31,14 @@ const Pricing = () => {
         </thead>
         <tbody>
           <tr>
-            <td>Tarif</td>
+            <td>{t("Price")}</td>
             <td>0</td>
             <td>100</td>
             <td>30</td>
             <td>500</td>
           </tr>
           <tr>
-            <td>Duree</td>
+            <td>{t("Duration")}</td>
             <td>
               <IoIosInfinite />
             </td>
@@ -53,7 +53,7 @@ const Pricing = () => {
             </td>
           </tr>
           <tr>
-            <td>Mentor</td>
+            <td>{t("Mentor")}</td>
             <td>
               <AiOutlineCloseCircle />
             </td>

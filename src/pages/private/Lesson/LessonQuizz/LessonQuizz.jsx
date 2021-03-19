@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 import Question from "./Question";
+import { useTranslation } from "react-i18next";
+import ButtonSecondary from "components/ButtonSecondary/ButtonSecondary";
 
 const LessonQuizz = ({ ids }) => {
   const { data, get, post } = useFetch();
+  const { t } = useTranslation("lesson");
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questionsAnsweredCorrectly, setQuestionsAnsweredCorrectly] = useState(
     []
@@ -25,12 +29,11 @@ const LessonQuizz = ({ ids }) => {
   };
 
   const sendResult = () => {
-    console.log("supposed to be fetching");
+    const score = `${questionsAnsweredCorrectly.length}/${data.length}`;
     post(
       `/courses/${ids.course}/chapters/${ids.chapter}/lessons/${ids.lesson}/results`,
-      { quizz_result: "30/30" }
+      { quizz_result: score }
     );
-    console.log("quizz terminé");
   };
 
   useEffect(() => {
@@ -39,10 +42,8 @@ const LessonQuizz = ({ ids }) => {
     );
   }, []);
 
-  console.log("questions bien répondues", questionsAnsweredCorrectly);
-
   return (
-    <div className="LessonQuizz">
+    <div className="LessonQuizz p-5">
       {data && (
         <>
           <Question
@@ -52,9 +53,7 @@ const LessonQuizz = ({ ids }) => {
             sendResult={sendResult}
           />
           {currentQuestion < data.length - 1 && (
-            <button type="button" onClick={handleNext}>
-              NEXT
-            </button>
+            <ButtonSecondary label={t("next")} handleClick={handleNext} />
           )}
         </>
       )}

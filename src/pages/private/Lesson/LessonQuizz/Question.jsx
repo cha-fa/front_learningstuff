@@ -1,5 +1,7 @@
+import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
 import { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 const Question = ({
   question,
@@ -12,6 +14,7 @@ const Question = ({
 
   const type = question.is_multiple ? "checkbox" : "radio";
   const correctAnswers = question.answers.filter((answer) => answer.is_correct);
+  const { t } = useTranslation("lesson");
 
   const handleChangeCheckbox = (event) => {
     if (event.target.checked) {
@@ -53,11 +56,9 @@ const Question = ({
     setAnswered();
   }, [question]);
 
-  console.log("CORRECT ANSWERS", correctAnswers, "quetsion", question);
-
   return (
     <div className="Question">
-      <h2>{question.content}</h2>
+      <h2>{question.content} ?</h2>
 
       <Form>
         <div key={`default-${type}`} className="mb-3">
@@ -71,27 +72,37 @@ const Question = ({
                 type === "radio" ? handleChangeRadio : handleChangeCheckbox
               }
               value={answer.id}
+              required
             />
           ))}
         </div>
         {!answered && (
-          <button type="submit" onClick={handleValidation}>
-            Valider réponse
-          </button>
+          <ButtonPrimary
+            handleClick={handleValidation}
+            is_disabled={selectedAnswers.length < 1}
+            label={t("validate_response")}
+            className="ButtonPrimary medium"
+          />
         )}
-        {(answered === "right" && <p>BRAVO ! {question.explanation}</p>) ||
+        {(answered === "right" && (
+          <p>
+            {t("congratulations")} ! {question.explanation}
+          </p>
+        )) ||
           (answered === "wrong" && (
             <>
-              <p>Dommage ! {question.explanation}</p>
+              <p>
+                {t("too_bad")} ! {question.explanation}
+              </p>
               <p>
                 {(question.is_multiple &&
-                  "Les bonnes réponses étaient:" + correctAnswers &&
-                  correctAnswers.map((answer) => ` ${answer.content}`)) ||
-                  "La bonne réponse était:" + correctAnswers[0].content}
+                  t("correct_answers_were") +
+                    correctAnswers.map((answer) => ` ${answer.content}`)) ||
+                  t("correct_answer_was") + correctAnswers[0].content}
               </p>
             </>
           ))}
-        {answered && lastQuestion && "Le quizz est terminé"}
+        {answered && lastQuestion && t("quizz_over")}
       </Form>
     </div>
   );

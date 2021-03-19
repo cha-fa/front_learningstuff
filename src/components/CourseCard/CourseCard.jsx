@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 import "./CourseCard.scss";
 import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import useFetch from "hooks/useFetch";
-
 
 const CourseCard = ( { course } ) => {
 

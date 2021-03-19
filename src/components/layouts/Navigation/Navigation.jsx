@@ -32,9 +32,14 @@ const Navigation = () => {
           <Nav.Link>
             <Link className="nav-link" to="/">{t("navigation:linkHome")}</Link>
           </Nav.Link>
-          <Nav.Link>
-            <Link className="nav-link" to="/courses">{t("navigation:linkCourse")}</Link>
-          </Nav.Link>
+          <NavDropdown title="Learn" className="m-2">
+            <NavDropdown.Item>
+              <Link className="nav-link" to="/learning_paths">{t("navigation:linkLearningPath")}</Link>
+            </NavDropdown.Item>
+            <NavDropdown.Item>
+              <Link className="nav-link" to="/courses">{t("navigation:linkCourse")}</Link>
+            </NavDropdown.Item>
+          </NavDropdown>
           <Nav.Link>
             <Link className="nav-link" to="/">{t("navigation:linkBlog")}</Link>
           </Nav.Link>
@@ -43,9 +48,6 @@ const Navigation = () => {
           </Nav.Link>
           <Nav.Link>
             <Link className="nav-link" to="/">{t("navigation:linkContact")}</Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link className="nav-link" to="/learning_paths">{t("navigation:linkLearningPath")}</Link>
           </Nav.Link>
           <Nav.Link> 
             <Link className="nav-link" to="/subscription">

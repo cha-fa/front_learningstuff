@@ -32,11 +32,14 @@ const Navigation = () => {
               {t("navigation:linkHome")}
             </Link>
           </Nav.Link>
-          <Nav.Link>
-            <Link className="nav-link" to="/courses">
-              {t("navigation:linkCourse")}
-            </Link>
-          </Nav.Link>
+          <NavDropdown title="Learn" className="m-2">
+            <NavDropdown.Item>
+              <Link className="nav-link" to="/learning_paths">{t("navigation:linkLearningPath")}</Link>
+            </NavDropdown.Item>
+            <NavDropdown.Item>
+              <Link className="nav-link" to="/courses">{t("navigation:linkCourse")}</Link>
+            </NavDropdown.Item>
+          </NavDropdown>
           <Nav.Link>
             <Link className="nav-link" to="/">
               {t("navigation:linkBlog")}
@@ -52,15 +55,14 @@ const Navigation = () => {
               {t("navigation:linkContact")}
             </Link>
           </Nav.Link>
-          <Nav.Link>
-            <Link className="nav-link" to="/learning_paths">
-              {t("navigation:linkLearningPath")}
+          <Nav.Link> 
+            <Link className="nav-link" to="/subscription">
+                <AiOutlineShoppingCart 
+                  size={25}
+                  style={{ color: "orange" }}
+                />
             </Link>
           </Nav.Link>
-
-          <Link className="nav-link" to="/subscription">
-            <AiOutlineShoppingCart size={25} style={{ color: "orange" }} />
-          </Link>
 
           {currentUser && (
             <Nav.Link>

@@ -13,7 +13,6 @@ const Home = () => {
       <HomePresentation />
       <HomeAchivement />
       <Pricing />
-      <h1>{t("title", { name: "Monsieur" })}</h1>
     </div>
   );
 };

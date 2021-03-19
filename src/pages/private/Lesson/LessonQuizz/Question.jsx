@@ -1,9 +1,15 @@
 import { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 
-const Question = ({ question, handleCorrectQuestion, lastQuestion }) => {
+const Question = ({
+  question,
+  handleCorrectQuestion,
+  lastQuestion,
+  sendResult,
+}) => {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [answered, setAnswered] = useState();
+
   const type = question.is_multiple ? "checkbox" : "radio";
   const correctAnswers = question.answers.filter((answer) => answer.is_correct);
 
@@ -36,12 +42,18 @@ const Question = ({ question, handleCorrectQuestion, lastQuestion }) => {
     } else {
       setAnswered("wrong");
     }
+
+    if (lastQuestion) {
+      sendResult();
+    }
   };
 
   useEffect(() => {
     setSelectedAnswers([]);
     setAnswered();
   }, [question]);
+
+  console.log("CORRECT ANSWERS", correctAnswers, "quetsion", question);
 
   return (
     <div className="Question">
@@ -73,8 +85,8 @@ const Question = ({ question, handleCorrectQuestion, lastQuestion }) => {
               <p>Dommage ! {question.explanation}</p>
               <p>
                 {(question.is_multiple &&
-                  "Les bonnes réponses étaient:" +
-                    correctAnswers.map((answer) => ` ${answer.content}`)) ||
+                  "Les bonnes réponses étaient:" + correctAnswers &&
+                  correctAnswers.map((answer) => ` ${answer.content}`)) ||
                   "La bonne réponse était:" + correctAnswers[0].content}
               </p>
             </>

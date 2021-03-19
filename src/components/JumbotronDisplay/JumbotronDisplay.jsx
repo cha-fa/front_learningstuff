@@ -6,7 +6,7 @@ import "./JumbotronDisplay.scss";
 const JumbotronDisplay = () => {
   return (
     <>
-      <Jumbotron className="image-jumbotron mb-5">
+      <Jumbotron className="image-jumbotron">
         <div className="text-center">
           <h2 className="display-4">Learning a lot of stuffs</h2>
           <h3>you are in charge of your future</h3>

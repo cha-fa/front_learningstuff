@@ -11,23 +11,23 @@ const HomeAchivement = () => {
       <Row className="p-5 text-center">
         <Col>
           <FaUserGraduate size={100} className="HomeAchivement__icon" />
-          <h3>{t("UnlimitedTitle")}</h3>
-          <p>{t("UnlimitedText")}</p>
+          <h3>5 679</h3>
+          <p>{t("NumberStudent")}</p>
         </Col>
         <Col>
           <GiDiploma size={100} className="HomeAchivement__icon" />
-          <h3>{t("ExpertTeacherTitle")}</h3>
-          <p>{t("ExpertTeacherText")}</p>
+          <h3>2 679</h3>
+          <p>{t("StudentGratuated")}</p>
         </Col>
         <Col>
           <FaHandsHelping size={100} className="HomeAchivement__icon" />
-          <h3>{t("AnywhereTitle")}</h3>
-          <p>{t("AnywhereText")}</p>
+          <h3>10 000</h3>
+          <p>{t("NumberVisit")}</p>
         </Col>
         <Col>
           <BsAward size={100} className="HomeAchivement__icon" />
-          <h3>{t("AnywhereTitle")}</h3>
-          <p>{t("AnywhereText")}</p>
+          <h3>#10</h3>
+          <p>{t("Rank")}</p>
         </Col>
       </Row>
     </section>

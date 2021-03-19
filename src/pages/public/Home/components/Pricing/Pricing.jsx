@@ -3,7 +3,11 @@ import { Table } from "react-bootstrap";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
 import { BsCalendar } from "react-icons/bs";
 import { IoIosInfinite } from "react-icons/io";
+import { useTranslation } from "react-i18next";
+
 const Pricing = () => {
+  const { t } = useTranslation(["home"]);
+
   return (
     <article className="Pricing container text-center pt-5">
       <h2>Pricing</h2>
@@ -12,16 +16,16 @@ const Pricing = () => {
           <tr>
             <th></th>
             <th>
-              <h3>Free Course</h3>
+              <h3>{t("FreeCourse")}</h3>
             </th>
             <th>
-              <h3>Solo Course</h3>
+              <h3>{t("PaidCourse")}</h3>
             </th>
             <th>
-              <h3>Premium</h3>
+              <h3>{t("Premium")}</h3>
             </th>
             <th>
-              <h3>Bootcamp</h3>
+              <h3>{t("Bootcamp")}</h3>
             </th>
           </tr>
         </thead>

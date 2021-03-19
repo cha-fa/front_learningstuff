@@ -1,6 +1,6 @@
 import JumbotronDisplay from "components/JumbotronDisplay/JumbotronDisplay";
 import { useTranslation } from "react-i18next";
-import HomeAchivement from "./components/Achivements/HomeAchivement";
+import HomeAchivement from "./components/HomeAchivement/HomeAchivement";
 import HomePresentation from "./components/HomePresentation/HomePresentation";
 import Pricing from "./components/Pricing/Pricing";
 

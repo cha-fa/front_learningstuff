@@ -48,7 +48,7 @@ const Navigation = () => {
             <Link className="nav-link" to="/learning_paths">{t("navigation:linkLearningPath")}</Link>
           </Nav.Link>
           <Nav.Link> 
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="/subscription">
                 <AiOutlineShoppingCart 
                   size={25}
                   style={{ color: "orange" }}

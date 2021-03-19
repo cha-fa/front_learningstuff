@@ -1,0 +1,12 @@
+title: Créer votre compte
+placeholderfirstname: Prénom
+placeholderlastname: Nom
+placeholderemail: Courriel
+placeholderpassword: Mot de Passe
+role: rôle
+optionstudent: Apprenant
+optionteacher: Formateur
+optionadmin: Administrateur
+accountquestion: Vous avez déjà un compte ?
+loginnow: Connectez vous !
+labelbutton: Créer votre compte

@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { fetchCurrentUser } from "stores/authentication/authMiddleware";
 import "./i18n";
 import Cookies from "js-cookie";
-import Home from "pages/public/Home";
+import Home from "pages/public/Home/Home";
 import Login from "pages/public/Login/Login";
 import Register from "pages/public/Register/Register";
 import Profile from "pages/private/Profile/Profile";

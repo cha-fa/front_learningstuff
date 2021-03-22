@@ -1,20 +1,24 @@
+import { useSelector } from "react-redux";
 import { FaLinkedin } from "react-icons/fa";
 
-const ProfileDisplay = ( {profile} ) => {
+const ProfileDisplay = () => {
+
+  const currentUser = useSelector((state) => state.auth.currentUser);
+  
   return (
     <div className="ProfileDisplay">
-      <p className="lead mt-2 mb-2">{profile.first_name} {profile.last_name}</p>
+      <p className="lead mt-2 mb-2">{currentUser.first_name} {currentUser.last_name}</p>
 
-      {profile.linkedin_address && (
-        <a href={profile.linkedin_address}><FaLinkedin /></a>
+      {currentUser.linkedin_address && (
+        <a href={currentUser.linkedin_address}><FaLinkedin /></a>
       )}
 
-      {profile.description && (
-        <p className="text-muted font-italic">{profile.description}</p>
+      {currentUser.description && (
+        <p className="text-muted font-italic">{currentUser.description}</p>
       )}
 
-      {profile.job && (
-        <p>{profile.job}</p>
+      {currentUser.job && (
+        <p>{currentUser.job}</p>
       )}
     </div>
   );

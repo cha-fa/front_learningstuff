@@ -58,7 +58,7 @@ const App = () => {
           />
           <PublicRoute component={Courses} path="/courses" exact />
           <PublicRoute component={ShowCourse} path="/courses/:id" exact />
-          <PrivateRoute component={Profile} path="/profile" exact />
+          <PrivateRoute component={Profile} path="/profile" />
           <PrivateRoute component={Subscription} path="/subscription" exact />
           <AdminRoute component={Admin} path="/admin" />
           <PrivateRoute

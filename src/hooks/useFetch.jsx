@@ -69,82 +69,91 @@ const useFetch = () => {
     }
   };
 
-  const postAvatar = (query, userData) => {
+  const postAvatar = async (query, userData) => {
     setIsLoading(true);
     setError(null);
-    fetch(API_URL + query, {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${Cookies.get("token")}`,
-        "Accept": "application/json"
-      },
-      body: userData,
-    })
-    .then((response) => {
-      if (response.ok) {
-        dispatch(displaySuccess("All good!"));
-        return response.json();
-      } else {
-        dispatch(displayError("Oops, something bad happened!"));
-        setError("An unexpected error occurred.");
-        }
-      })
-    .catch((error) => {
-      dispatch(displayError(error));
-      console.log(error);
-    });
+
+    try {
+      const response = await fetch(API_URL + query, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${Cookies.get("token")}`,
+          "Accept": "application/json"
+        },
+        body: userData,
+      });
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw responseData;
+      }
+      setData(responseData);
+      setIsLoading(false);
+      return responseData;
+    } catch (error) {
+      const errMessage = error.errors ? error.errors : "An error has occured";
+      setError(errMessage);
+      console.log(errMessage);
+    }
   };
 
-  const put = (query, userData) => {
+  const put = async (query, userData) => {
     setIsLoading(true);
     setError(null);
 
-    fetch(API_URL + query, {
-      method: "PUT",
-      headers: {
-        Authorization: `Bearer ${Cookies.get("token")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-    .then((response) => {
+    try {
+      const response = await fetch(API_URL + query, {
+        method: "PUT",
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+
+      const responseData = await response.json();
+
       if (!response.ok) {
-        throw response;
+        throw responseData;
       }
-      return response.json();
-    })
-    .then(() => {
+      setData(responseData);
       setIsLoading(false);
-    })
-    .catch((error) => {
-      setError("error", error.errors);
-    });
+      return responseData;
+    } catch (error) {
+      const errMessage = error.errors ? error.errors : "An error has occured";
+      setError(errMessage);
+      console.log(errMessage);
+    }
   };
 
-  const patch = (query, userData) => {
+  const patch = async (query, userData) => {
     setIsLoading(true);
     setError(null);
 
-    fetch(API_URL + query, {
-      method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${Cookies.get("token")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-    .then((response) => {
+    try {
+      const response = await fetch(API_URL + query, {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+
+      const responseData = await response.json();
+
       if (!response.ok) {
-        throw response;
+        throw responseData;
       }
-      return response.json();
-    })
-    .then((data) => {
+      setData(responseData);
       setIsLoading(false);
-    })
-    .catch((error) => {
-      setError("error", error.errors);
-    });
+      return responseData;
+    } catch (error) {
+      const errMessage = error.errors ? error.errors : "An error has occured";
+      setError(errMessage);
+      console.log(errMessage);
+    }
   };
 
   const destroy = (query, callback) => {

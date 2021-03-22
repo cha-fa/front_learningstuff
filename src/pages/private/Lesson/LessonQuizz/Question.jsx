@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import useFetch from "hooks/useFetch";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Question = ({
   question,
@@ -18,7 +19,7 @@ const Question = ({
   const [questionsAnsweredCorrectly, setQuestionsAnsweredCorrectly] = useState(
     []
   );
-
+  const currentUser = useSelector((state) => state.auth.currentUser);
   const type = question && question.is_multiple ? "checkbox" : "radio";
   const correctAnswers =
     question && question.answers.filter((answer) => answer.is_correct);
@@ -68,6 +69,10 @@ const Question = ({
       `/courses/${ids.course}/chapters/${ids.chapter}/lessons/${ids.lesson}/results`,
       { quizz_result: score }
     );
+    // post(`/users/${currentUser.id}/progress`, {
+    //   course_id: ids.course,
+    //   achieved_lesson_id: ids.lesson,
+    // });
   };
 
   useEffect(() => {

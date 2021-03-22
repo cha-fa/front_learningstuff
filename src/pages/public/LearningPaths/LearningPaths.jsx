@@ -13,7 +13,6 @@ const LearningPaths = () => {
   useEffect(() => {
     get("/learning_paths");
   }, []);
-  console.log(input);
 return (
   <div className='LearningPaths'>
     <h2>LearningPaths</h2>

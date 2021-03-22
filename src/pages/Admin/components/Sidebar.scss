@@ -1,0 +1,21 @@
+@import "style/variables.scss";
+
+.Sidebar {
+  height: 100vh;
+  background-color: $primary-old;
+
+  a {
+    text-decoration: none;
+    color: $secondary;
+    font-weight: bold;
+    margin: 15px 10px 15px;
+    font-size: larger;
+    &:hover {
+      color: $light-orange;
+    }
+  }
+
+  .active {
+    font-size: x-large;
+  }
+}

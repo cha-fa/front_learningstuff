@@ -11,9 +11,12 @@ role: Rôle
 student: Étudiant
 teacher: Professeur
 loading: Chargement en cours
-price: Prix
+price_in_cents: Prix (en centimes)
 courses_list: Liste des cours
 title: Titre
 remove_this_course: Retirer ce cours
 add_a_course: Ajouter un cours
 validate_add: Valider l'ajout
+are_you_sure: Êtes-vous sûr ?
+edit: Modifier
+dashboard_admin: Espace Admin

@@ -22,6 +22,9 @@ const ManageUsers = () => {
       {(isLoading && t("loading")) ||
         (data && (
           <>
+            <div className="text-center">
+              <h3>{t("manage_users")}</h3>
+            </div>
             <Table striped bordered hover>
               <thead>
                 <tr>

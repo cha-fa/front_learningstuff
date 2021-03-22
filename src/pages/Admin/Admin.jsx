@@ -13,11 +13,11 @@ const Admin = () => {
 
   return (
     <div className="Admin">
-      <Row>
-        <Col md={2}>
+      <Row className="m-0 p-0">
+        <Col md={2} className="m-0 p-0">
           <Sidebar />
         </Col>
-        <Col md={10}>
+        <Col md={10} className="m-0 p-0">
           <Switch>
             <AdminRoute
               currentUser={currentUser}

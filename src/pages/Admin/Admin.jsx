@@ -6,6 +6,7 @@ import { Switch } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ManageApproval from "./components/ManageApproval/ManageApproval";
 import ManageUsers from "./components/ManageUsers/ManageUsers";
+import ManageLearningPath from "./components/ManageLearningPath/ManageLearningPath";
 
 const Admin = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -33,6 +34,11 @@ const Admin = () => {
               currentUser={currentUser}
               component={ManageUsers}
               path="/admin/users"
+            />
+            <AdminRoute
+              currentUser={currentUser}
+              component={ManageLearningPath}
+              path="/admin/learning_paths"
             />
           </Switch>
         </Col>

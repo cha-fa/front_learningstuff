@@ -1,7 +1,8 @@
-title: Gérer les demandes d'approbation
+manage_approval_requests: Gérer les demandes d'approbation
 pending_for_review: Utilisateurs en attente d'approbation
 manage_approvals: Gérer les approbations
 manage_users: Gérer les utilisateurs
+manage_learning_paths: Gérer les parcours
 first_name: Prénom
 last_name: Nom
 email: Email
@@ -10,3 +11,9 @@ role: Rôle
 student: Étudiant
 teacher: Professeur
 loading: Chargement en cours
+price: Prix
+courses_list: Liste des cours
+title: Titre
+remove_this_course: Retirer ce cours
+add_a_course: Ajouter un cours
+validate_add: Valider l'ajout

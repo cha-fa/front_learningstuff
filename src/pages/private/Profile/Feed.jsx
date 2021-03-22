@@ -1,33 +1,50 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import useFetch from "hooks/useFetch";
-import { useTranslation} from "react-i18next";
+import MyCourses from "./components/MyCourses";
 import EditProfile from "./components/EditProfile";
 import EditAvatar from "./components/EditAvatar";
+import EditRegistration from "./components/EditRegistration";
+import MyInvoices from "./components/MyInvoices";
 
-const Feed  = ( {currentUser} ) => {
+const Feed  = () => {
 
-  const history = useHistory();
-  const {t}=useTranslation();
+  const currentUser = useSelector((state) => state.auth.currentUser);
   const { put, postAvatar } = useFetch();
 
   const updateProfile = (newDetails) => {
     put("/profile", newDetails);
-    history.push("/profile");
   };
 
   const updateAvatar = (newAvatar) => {
     postAvatar(`/users/${currentUser.id}/avatars`, newAvatar);
-    history.push("/profile");
+  };
+
+  const updateRegistration = (newCredentials) => {
+    console.log("TODO --> Modifier Devise Registration", newCredentials);
   };
   
   return (
-    <div className="Feed">
-      <Switch>
-        <Route path="/profile/edit">
-          <EditProfile onSubmit={updateProfile} />
-        </Route>
-      </Switch>
+    <div className="Feed card border-light p-2">
+      <div className="card-body p-2">
+        <Switch>
+          <Route path="/profile/courses">
+            <MyCourses />
+          </Route>
+          <Route path="/profile/edit">
+            <EditProfile onSubmit={updateProfile} />
+          </Route>
+          <Route path="/profile/avatar">
+            <EditAvatar onSubmit={updateAvatar} />
+          </Route>
+          <Route path="/profile/editregistration">
+            <EditRegistration onSubmit={updateRegistration} />
+          </Route>
+          <Route path="/profile/invoices">
+            <MyInvoices />
+          </Route>
+        </Switch>
+      </div>
     </div>
   );
 };

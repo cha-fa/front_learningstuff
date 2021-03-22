@@ -1,0 +1,16 @@
+@import "style/variables.scss";
+
+.user-menu-link {
+  display: flex;
+  align-items: center;
+  color: #434343;
+}
+
+.user-menu-link:hover {
+  color: #292b2c;
+  background-color: $light-orange;
+}
+
+.user-menu-icon {
+  margin-left: auto;
+}

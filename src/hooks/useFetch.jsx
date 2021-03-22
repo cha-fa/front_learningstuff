@@ -54,13 +54,16 @@ const useFetch = () => {
       },
       body: JSON.stringify(userData),
     })
-    .then((response) => {
-      if (response.ok) {
-        dispatch(displaySuccess("All good!"));
+      .then((response) => {
+        if (response.statusCode >= 500) {
+          throw new Error("Error");
+        }
         return response.json();
-      } else {
-        dispatch(displayError("Oops, something bad happened!"));
-        setError("An unexpected error occurred.");
+      })
+      .then((responseData) => {
+        if (responseData.errors) {
+          setError(responseData.errors);
+          throw new Error(responseData.errors);
         }
       })
     .then(() => {
@@ -91,12 +94,10 @@ const useFetch = () => {
         setError("An unexpected error occurred.");
         }
       })
-    .then(() => {
-      setIsLoading(false);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .catch((error) => {
+        dispatch(displayError(error));
+        console.log(error);
+      });
   };
 
   const put = (query, userData) => {

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import BeATeacher from "./components/BeATeacher/BeATeacher";
 import HomeAchivement from "./components/HomeAchivement/HomeAchivement";
 import HomePresentation from "./components/HomePresentation/HomePresentation";
+import Pricing from "./components/Pricing/Pricing";
 
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
       <HomePresentation />
       <HomeAchivement />
       <BeATeacher/>
+      <Pricing/>
     </div>
   );
 };

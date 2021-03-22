@@ -25,21 +25,21 @@ const useFetch = () => {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          dispatch(displayError("Oops, something bad happened! "));
-          setError("An unexpected error occurred.");
-        }
-      })
-      .then((response) => {
-        setData(response);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        dispatch(displayError("Oops, something bad happened!"));
+        setError("An unexpected error occurred.");
+      }
+    })
+    .then((response) => {
+      setData(response);
+      setIsLoading(false);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   };
 
   const post = (query, userData) => {
@@ -54,22 +54,21 @@ const useFetch = () => {
       },
       body: JSON.stringify(userData),
     })
-      .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-        if (response.errors) {
-          dispatch(
-            displayError("Oops, something bad happened! " + response.errors)
-          );
-          return;
-        }
+    .then((response) => {
+      if (response.ok) {
         dispatch(displaySuccess("All good!"));
-        setIsLoading(false);
+        return response.json();
+      } else {
+        dispatch(displayError("Oops, something bad happened!"));
+        setError("An unexpected error occurred.");
+        }
       })
-      .catch((error) => {
-        console.log(error);
-      });
+    .then(() => {
+      setIsLoading(false);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   };
 
   const postAvatar = (query, userData) => {
@@ -83,22 +82,21 @@ const useFetch = () => {
       },
       body: userData,
     })
-      .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-        if (response.errors) {
-          dispatch(
-            displayError("Oops, something bad happened! " + response.errors)
-          );
-          return;
-        }
+    .then((response) => {
+      if (response.ok) {
         dispatch(displaySuccess("All good!"));
-        setIsLoading(false);
+        return response.json();
+      } else {
+        dispatch(displayError("Oops, something bad happened!"));
+        setError("An unexpected error occurred.");
+        }
       })
-      .catch((error) => {
-        console.log(error);
-      });
+    .then(() => {
+      setIsLoading(false);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   };
 
   const put = (query, userData) => {
@@ -113,21 +111,21 @@ const useFetch = () => {
       },
       body: JSON.stringify(userData),
     })
-      .then((response) => {
-        if (response.ok) {
-          dispatch(displaySuccess("All good!"));
-          return response.json();
-        } else {
-          dispatch(displayError("Oops, something bad happened!"));
-          setError("An unexpected error occurred.");
-        }
-      })
-      .then(() => {
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    .then((response) => {
+      if (response.ok) {
+        dispatch(displaySuccess("All good!"));
+        return response.json();
+      } else {
+        dispatch(displayError("Oops, something bad happened!"));
+        setError("An unexpected error occurred.");
+      }
+    })
+    .then(() => {
+      setIsLoading(false);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   };
 
   const patch = (query, userData) => {
@@ -142,21 +140,21 @@ const useFetch = () => {
       },
       body: JSON.stringify(userData),
     })
-      .then((response) => {
-        if (response.ok) {
-          dispatch(displaySuccess("All good!"));
-          return response.json();
-        } else {
-          dispatch(displayError("Oops, something bad happened! "));
-          setError("An unexpected error occurred.");
-        }
-      })
-      .then(() => {
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    .then((response) => {
+      if (response.ok) {
+        dispatch(displaySuccess("All good!"));
+        return response.json();
+      } else {
+        dispatch(displayError("Oops, something bad happened!"));
+        setError("An unexpected error occurred.");
+      }
+    })
+    .then(() => {
+      setIsLoading(false);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   };
 
   const destroy = (query, callback) => {
@@ -170,18 +168,18 @@ const useFetch = () => {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => {
-        setIsLoading(false);
-        if (response.ok) {
-          dispatch(displaySuccess("All good!"));
-          if (callback){
-            callback();
-          }
-        } else {
-          dispatch(displayError("Oops, something bad happened! "));
-          setError("Une erreur est survenue");
+    .then((response) => {
+      setIsLoading(false);
+      if (response.ok) {
+        dispatch(displaySuccess("All good!"));
+        if (callback){
+          callback();
         }
-      });
+      } else {
+        dispatch(displayError("Oops, something bad happened! "));
+        setError("An unexpected error occurred.");
+      }
+    });
   };
 
   return {

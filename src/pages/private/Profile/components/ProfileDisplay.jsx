@@ -1,21 +1,21 @@
 import capitalize from "capitalize";
 
-const ProfileDisplay = ( {data} ) => {
+const ProfileDisplay = ( {profile} ) => {
   return (
     <div className="ProfileDisplay">
-      <h5>{data.first_name} {data.last_name}</h5>
-      <p>{capitalize(data.role)}</p>
+      <h5>{profile.first_name} {profile.last_name}</h5>
+      <p>{capitalize(profile.role)}</p>
 
-      {data.description && (
-        <p>{data.description}</p>
+      {profile.description && (
+        <p>{profile.description}</p>
       )}
 
-      {data.linkedin_address && (
-        <a href={data.linkedin_address}>LinkedIn</a>
+      {profile.linkedin_address && (
+        <a href={profile.linkedin_address}>LinkedIn</a>
       )}
 
-      {data.job && (
-        <p>{data.job}</p>
+      {profile.job && (
+        <p>{profile.job}</p>
       )}
     </div>
   );

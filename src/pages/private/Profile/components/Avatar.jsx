@@ -1,12 +1,12 @@
 import noavatar from "assets/noavatar.jpg";
 
-const Avatar = ( {data: avatar} ) => {
+const Avatar = ( {profile} ) => {
 
   return (
     <div className="Avatar">
-      {avatar && (
+      {profile.avatar && (
         <img 
-        src={`http://localhost:8080/${avatar}`}
+        src={`http://localhost:8080/${profile.avatar}`}
         alt="Real avatar."
         className="img-thumbnail profile_pic rounded-circle m-3"
         style={{height: "150px", width:"150px"}}

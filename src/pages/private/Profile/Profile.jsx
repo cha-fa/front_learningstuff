@@ -1,26 +1,19 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import useFetch from "hooks/useFetch";
-import EditProfile from "pages/private/Profile/components/EditProfile";
-import ProfileDisplay from "pages/private/Profile/components/ProfileDisplay";
-import Avatar from "pages/private/Profile/components/Avatar";
-import EditAvatar from "pages/private/Profile/components/EditAvatar";
+import { Container, Row, Col } from "react-bootstrap";
+import Menu from "./Menu";
+import Feed from "./Feed";
 
 const Profile = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const [profile, setProfile] = useState(currentUser);
 
-  const { get, put, postAvatar, data: updatedInfo } = useFetch();
-  
-  const updateProfile = (newDetails) => {
-    put("/profile", newDetails);
-    get("/profile");
-  };
+  const { get, data: updatedInfo } = useFetch();
 
-  const updateAvatar = (newAvatar) => {
-    postAvatar(`/users/${currentUser.id}/avatars`, newAvatar);
+  useEffect(() => {
     get("/profile");
-  };
+  }, []);
   
   useEffect(() => {
     if (updatedInfo) {
@@ -29,18 +22,16 @@ const Profile = () => {
   }, [updatedInfo]);
 
   return (
-    <div className="Profile container my-3">
-      <div className="text-center">
-        <div className="my-4">
-          <Avatar profile={profile} />
-          <EditAvatar onSubmit={updateAvatar} />
-        </div>
-        <div className="my-4">
-          <ProfileDisplay profile={profile} />
-          <EditProfile onSubmit={updateProfile} />
-        </div>
-      </div>
-    </div>
+    <Container className="Profile my-5">
+      <Row>
+        <Col md="4">
+          <Menu profile={profile} />
+        </Col>
+        <Col md="8" className="col-8">
+          <Feed profile={profile} />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

@@ -96,7 +96,6 @@ const App = () => {
               currentUser={currentUser}
               component={Profile}
               path="/profile"
-              exact
             />
             <AdminRoute
               currentUser={currentUser}

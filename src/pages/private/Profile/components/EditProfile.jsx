@@ -26,10 +26,10 @@ const EditProfile = ( { onSubmit } ) => {
 
   return (
     <div className="EditProfile">
-      <h4>{t("editprofile:header")}</h4>
+      <h4>{t("profile:editheader")}</h4>
       <Form onSubmit={handleSubmit}>
         <FormGroup>
-          <FormLabel>{t("editprofile:firstname")}</FormLabel>
+          <FormLabel>{t("profile:firstname")}</FormLabel>
           <FormControl
             required
             value={firstName}
@@ -37,7 +37,7 @@ const EditProfile = ( { onSubmit } ) => {
           />
         </FormGroup>
         <FormGroup>
-          <FormLabel>{t("editprofile:lastname")}</FormLabel>
+          <FormLabel>{t("profile:lastname")}</FormLabel>
           <FormControl
             required
             value={lastName}
@@ -45,7 +45,7 @@ const EditProfile = ( { onSubmit } ) => {
           />
         </FormGroup>
         <FormGroup>
-          <FormLabel>{t("editprofile:description")}</FormLabel>
+          <FormLabel>{t("profile:description")}</FormLabel>
           <FormControl as="textarea"
             required
             value={description}
@@ -53,20 +53,20 @@ const EditProfile = ( { onSubmit } ) => {
           />
         </FormGroup>
         <FormGroup>
-          <FormLabel>{t("editprofile:linkedin")}</FormLabel>
+          <FormLabel>{t("profile:linkedin")}</FormLabel>
           <FormControl
             value={linkedIn}
             onChange={(e) => setLinkedIn(e.target.value)}
           />
         </FormGroup>
         <FormGroup>
-          <FormLabel>{t("editprofile:job")}</FormLabel>
+          <FormLabel>{t("profile:job")}</FormLabel>
           <FormControl
             value={job}
             onChange={(e) => setJob(e.target.value)}
           />
         </FormGroup>
-        <Button className="btn btn-primary float-right">{t("editprofile:cta")}</Button>
+        <Button type="submit" className="ButtonPrimary float-right my-3">{t("profile:cta")}</Button>
       </Form>
     </div>
   );

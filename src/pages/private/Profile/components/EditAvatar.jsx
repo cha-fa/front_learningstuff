@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { Form, Button } from "react-bootstrap";
 
 const EditAvatar = ( { onSubmit } ) => {
   const { t } = useTranslation();
@@ -21,18 +22,19 @@ const EditAvatar = ( { onSubmit } ) => {
 
   return (
     <div className="EditAvatar">
-      <form onSubmit={handleSubmit}>
+      <h4>{t("profile:avatarheader")}</h4>
+      <Form onSubmit={handleSubmit}>
         <input
           type="file"
           onChange={onAvatarChange}
           accept="image/*"
         />
-        <button
+        <Button
           type="submit" 
-          className="btn btn-sm btn-success">
-          {t("editprofile:avatarheader")} 
-        </button> 
-      </form>
+          className="ButtonPrimary btn-sm">
+          {t("profile:cta")} 
+        </Button>
+      </Form>
     </div>
   );
 };

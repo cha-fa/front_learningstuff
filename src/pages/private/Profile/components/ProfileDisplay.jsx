@@ -1,14 +1,16 @@
+import { FaLinkedin } from "react-icons/fa";
+
 const ProfileDisplay = ( {profile} ) => {
   return (
     <div className="ProfileDisplay">
-      <h5>{profile.first_name} {profile.last_name}</h5>
-
-      {profile.description && (
-        <p>{profile.description}</p>
-      )}
+      <p className="lead mt-2 mb-2">{profile.first_name} {profile.last_name}</p>
 
       {profile.linkedin_address && (
-        <a href={profile.linkedin_address}>LinkedIn</a>
+        <a href={profile.linkedin_address}><FaLinkedin /></a>
+      )}
+
+      {profile.description && (
+        <p className="text-muted font-italic">{profile.description}</p>
       )}
 
       {profile.job && (

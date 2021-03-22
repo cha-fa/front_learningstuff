@@ -74,13 +74,6 @@ const Navigation = () => {
 
           {!currentUser && (
             <>
-              <Link className="m-2" to="/">
-                <ButtonPrimary
-                  sizeClass="medium"
-                  label={t("navigation:linkContributor")}
-                />
-              </Link>
-
               <Link className="m-2" to="/login">
                 <ButtonPrimary
                   type="button"
@@ -119,13 +112,6 @@ const Navigation = () => {
                   {t("navigation:linkLogout")}
                 </NavDropdown.Item>
               </NavDropdown>
-
-              <Link className="m-2" to="/">
-                <ButtonPrimary
-                  sizeClass="medium"
-                  label={t("navigation:linkContributor")}
-                />
-              </Link>
             </>
           )}
         </Nav>

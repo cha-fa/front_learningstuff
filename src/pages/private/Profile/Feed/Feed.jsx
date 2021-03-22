@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
-import  { useHistory } from "react-router-dom";
 import useFetch from "hooks/useFetch";
 import MyCourses from "../components/MyCourses";
 import EditProfile from "../components/EditProfile";
@@ -8,22 +7,18 @@ import EditAvatar from "../components/EditAvatar";
 import EditRegistration from "../components/EditRegistration";
 import MyInvoices from "../components/MyInvoices";
 
-const Feed  = ( {reload, reloadAvatar} ) => {
-
+const Feed  = ( {reload} ) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { put, postAvatar } = useFetch();
-  const history = useHistory();
 
-  const updateProfile = (newDetails) => {
-    put("/profile", newDetails);
+  const updateProfile = async (newDetails) => {
+    await put("/profile", newDetails);
     reload(true);
-    history.push("/profile/mycourses");
   };
 
-  const updateAvatar = (newAvatar) => {
-    postAvatar(`/users/${currentUser.id}/avatars`, newAvatar);
-    reloadAvatar(true);
-    history.push("/profile/mycourses");
+  const updateAvatar = async (newAvatar) => {
+    await postAvatar(`/users/${currentUser.id}/avatars`, newAvatar);
+    reload(true);
   };
 
   const updateRegistration = (newCredentials) => {

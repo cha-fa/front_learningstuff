@@ -1,21 +1,24 @@
-import capitalize from "capitalize";
+import { useSelector } from "react-redux";
+import { FaLinkedin } from "react-icons/fa";
 
-const ProfileDisplay = ( {data} ) => {
+const ProfileDisplay = () => {
+
+  const currentUser = useSelector((state) => state.auth.currentUser);
+  
   return (
     <div className="ProfileDisplay">
-      <h5>{data.first_name} {data.last_name}</h5>
-      <p>{capitalize(data.role)}</p>
+      <p className="lead mt-2 mb-2">{currentUser.first_name} {currentUser.last_name}</p>
 
-      {data.description && (
-        <p>{data.description}</p>
+      {currentUser.linkedin_address && (
+        <a href={currentUser.linkedin_address}><FaLinkedin /></a>
       )}
 
-      {data.linkedin_address && (
-        <a href={data.linkedin_address}>LinkedIn</a>
+      {currentUser.description && (
+        <p className="text-muted font-italic">{currentUser.description}</p>
       )}
 
-      {data.job && (
-        <p>{data.job}</p>
+      {currentUser.job && (
+        <p>{currentUser.job}</p>
       )}
     </div>
   );

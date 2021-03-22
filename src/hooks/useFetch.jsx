@@ -26,52 +26,47 @@ const useFetch = () => {
       },
     })
     .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        dispatch(displayError("Oops, something bad happened!"));
-        setError("An unexpected error occurred.");
+      if (!response.ok) {
+        throw response;
       }
+      return response.json();
     })
-    .then((response) => {
-      setData(response);
+    .then((data) => {
+      setData(data);
       setIsLoading(false);
     })
     .catch((error) => {
-      console.log(error);
+      setError("error", error.errors);
     });
   };
 
-  const post = (query, userData) => {
+  const post = async (query, userData) => {
     setIsLoading(true);
     setError(null);
 
-    fetch(API_URL + query, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${Cookies.get("token")}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userData),
-    })
-      .then((response) => {
-        if (response.statusCode >= 500) {
-          throw new Error("Error");
-        }
-        return response.json();
-      })
-      .then((responseData) => {
-        if (responseData.errors) {
-          setError(responseData.errors);
-          throw new Error(responseData.errors);
-        }
-      })
-    .then(() => {
+    try {
+      const response = await fetch(API_URL + query, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
+
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw responseData;
+      }
+      setData(responseData);
       setIsLoading(false);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      return responseData;
+    } catch (error) {
+      const errMessage = error.errors ? error.errors : "An error has occured";
+      setError(errMessage);
+      console.log(errMessage);
+    }
   };
 
   const postAvatar = (query, userData) => {
@@ -94,10 +89,10 @@ const useFetch = () => {
         setError("An unexpected error occurred.");
         }
       })
-      .catch((error) => {
-        dispatch(displayError(error));
-        console.log(error);
-      });
+    .catch((error) => {
+      dispatch(displayError(error));
+      console.log(error);
+    });
   };
 
   const put = (query, userData) => {
@@ -113,19 +108,16 @@ const useFetch = () => {
       body: JSON.stringify(userData),
     })
     .then((response) => {
-      if (response.ok) {
-        dispatch(displaySuccess("All good!"));
-        return response.json();
-      } else {
-        dispatch(displayError("Oops, something bad happened!"));
-        setError("An unexpected error occurred.");
+      if (!response.ok) {
+        throw response;
       }
+      return response.json();
     })
     .then(() => {
       setIsLoading(false);
     })
     .catch((error) => {
-      console.log(error);
+      setError("error", error.errors);
     });
   };
 
@@ -142,19 +134,16 @@ const useFetch = () => {
       body: JSON.stringify(userData),
     })
     .then((response) => {
-      if (response.ok) {
-        dispatch(displaySuccess("All good!"));
-        return response.json();
-      } else {
-        dispatch(displayError("Oops, something bad happened!"));
-        setError("An unexpected error occurred.");
+      if (!response.ok) {
+        throw response;
       }
+      return response.json();
     })
-    .then(() => {
+    .then((data) => {
       setIsLoading(false);
     })
     .catch((error) => {
-      console.log(error);
+      setError("error", error.errors);
     });
   };
 
@@ -168,17 +157,16 @@ const useFetch = () => {
         Authorization: `Bearer ${Cookies.get("token")}`,
         "Content-Type": "application/json",
       },
-    })
-    .then((response) => {
+    }).then((response) => {
       setIsLoading(false);
       if (response.ok) {
         dispatch(displaySuccess("All good!"));
-        if (callback){
+        if (callback) {
           callback();
         }
       } else {
         dispatch(displayError("Oops, something bad happened! "));
-        setError("An unexpected error occurred.");
+        setError("Une erreur est survenue");
       }
     });
   };

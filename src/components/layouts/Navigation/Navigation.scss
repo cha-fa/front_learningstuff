@@ -4,44 +4,41 @@
   background-color: $secondary;
   min-height: 114px;
   font-family: $font-family;
-    h1{
-      color: $footer-color;
-    }
-    .title-bold{
-      font-weight: bold;
-    }
+  h1 {
+    color: $footer-color;
+  }
+  .title-bold {
+    font-weight: bold;
+  }
 }
 
-.nav-link{
+.nav-link {
   background-image: $primary;
   background-color: $primary-old;
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
-  -webkit-text-fill-color: transparent; 
+  -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
   background-size: 0, 100%;
 }
 
 .nav-icons {
   color: $primary;
-  size : 40;
+  size: 40;
 }
 
-.link-position{
+.link-position {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
-.user-profil{
+.user-profil {
   width: 50px;
   height: 50px;
   border-radius: 50%;
- 
 }
 
-
-
-span{
-z-index: +1;
+span {
+  z-index: +1;
 }

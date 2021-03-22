@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { fetchToLogin } from "stores/authentication/authMiddleware";
-import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
 import { useTranslation } from "react-i18next";
 import loginregisterside from "assets/loginregisterside.jpg";
 import Row from "react-bootstrap/Row";

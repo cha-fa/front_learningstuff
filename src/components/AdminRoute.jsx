@@ -4,7 +4,7 @@ import { Route, Redirect } from "react-router-dom";
 
 const AdminRoute = ({ component: Component, ...rest }) => {
   const isLogged = useSelector((state) => state.auth.isLogged);
-  const currentUser = useSelector((state) => state.auth.currentUser);
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
 
   return (
     // Show the component only when the user is logged in
@@ -12,11 +12,7 @@ const AdminRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        isLogged && currentUser?.role === "admin" ? (
-          <Component {...props} />
-        ) : (
-          <Redirect to="/" />
-        )
+        isLogged && isAdmin ? <Component {...props} /> : <Redirect to="/" />
       }
     />
   );

@@ -2,18 +2,26 @@ import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
 import { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import useFetch from "hooks/useFetch";
+import { Link } from "react-router-dom";
 
 const Question = ({
   question,
-  handleCorrectQuestion,
-  lastQuestion,
-  sendResult,
+  questionsQuantity,
+  ids,
+  questionIndex,
+  handleClose,
 }) => {
+  const { post } = useFetch();
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const [answered, setAnswered] = useState();
+  const [questionsAnsweredCorrectly, setQuestionsAnsweredCorrectly] = useState(
+    []
+  );
 
-  const type = question.is_multiple ? "checkbox" : "radio";
-  const correctAnswers = question.answers.filter((answer) => answer.is_correct);
+  const type = question && question.is_multiple ? "checkbox" : "radio";
+  const correctAnswers =
+    question && question.answers.filter((answer) => answer.is_correct);
   const { t } = useTranslation("lesson");
 
   const handleChangeCheckbox = (event) => {
@@ -41,14 +49,25 @@ const Question = ({
       JSON.stringify(correctAnswersIds.sort())
     ) {
       setAnswered("right");
-      handleCorrectQuestion(question.id);
+      setQuestionsAnsweredCorrectly([
+        ...questionsAnsweredCorrectly,
+        question.id,
+      ]);
     } else {
       setAnswered("wrong");
     }
 
-    if (lastQuestion) {
+    if (questionIndex === questionsQuantity - 1) {
       sendResult();
     }
+  };
+
+  const sendResult = () => {
+    const score = `${questionsAnsweredCorrectly.length}/${questionsQuantity}`;
+    post(
+      `/courses/${ids.course}/chapters/${ids.chapter}/lessons/${ids.lesson}/results`,
+      { quizz_result: score }
+    );
   };
 
   useEffect(() => {
@@ -102,7 +121,27 @@ const Question = ({
               </p>
             </>
           ))}
-        {answered && lastQuestion && t("quizz_over")}
+        {answered && questionIndex === questionsQuantity - 1 && (
+          <>
+            <p>
+              {t("quizz_over")} ! {t("result")}:{" "}
+              {questionsAnsweredCorrectly.length + " / " + questionsQuantity}
+            </p>{" "}
+            {(question.lesson.next_lesson && (
+              <Link
+                onClick={handleClose}
+                to={`/courses/${ids.course}/chapters/${question.lesson.next_lesson.chapter_id}/lessons/${question.lesson.next_lesson.id}`}
+              >
+                {t("next_lesson")}
+              </Link>
+            )) || (
+              <h3>
+                {t("course_is_over")}{" "}
+                <Link to={"/profile"}>{t("back_to_profile")}</Link>
+              </h3>
+            )}
+          </>
+        )}
       </Form>
     </div>
   );

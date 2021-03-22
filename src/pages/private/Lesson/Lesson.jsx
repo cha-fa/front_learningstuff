@@ -23,7 +23,7 @@ const Lesson = () => {
 
   useEffect(() => {
     get(`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`);
-  }, []);
+  }, [lessonId]);
 
   return (
     <Container fluid className="Lesson">
@@ -85,21 +85,37 @@ const Lesson = () => {
             <Row>
               <Col>ETAPES VIDEO</Col>
               <Col>
-                <ButtonPrimary
-                  handleClick={handleShow}
-                  className="ButtonPrimary medium"
-                  label={t("do_quizz")}
-                />
-                <Modal show={show} onHide={handleClose}>
-                  <Modal.Header closeButton>{data.title}</Modal.Header>
-                  <LessonQuizz
-                    ids={{
-                      course: courseId,
-                      chapter: chapterId,
-                      lesson: lessonId,
-                    }}
-                  />
-                </Modal>
+                {(!data.questions.length && data.next_lesson && (
+                  <Link
+                    to={`/courses/${courseId}/chapters/${data.next_lesson.chapter_id}/lessons/${data.next_lesson.id}`}
+                  >
+                    Passer à la leçon suivante
+                  </Link>
+                )) ||
+                  (!data.questions.length && !data.next_lesson && (
+                    <p>Cours terminé</p>
+                  ))}
+
+                {data.questions.length > 0 && (
+                  <>
+                    <ButtonPrimary
+                      handleClick={handleShow}
+                      className="ButtonPrimary medium"
+                      label={t("do_quizz")}
+                    />
+                    <Modal show={show} onHide={handleClose}>
+                      <Modal.Header closeButton>{data.title}</Modal.Header>
+                      <LessonQuizz
+                        ids={{
+                          course: courseId,
+                          chapter: chapterId,
+                          lesson: lessonId,
+                        }}
+                        handleClose={handleClose}
+                      />
+                    </Modal>
+                  </>
+                )}
               </Col>
             </Row>
           </Col>

@@ -40,7 +40,7 @@ const useFetch = () => {
       });
   };
 
-  const post = async (query, userData) => {
+    const post = async (query, userData) => {
     setIsLoading(true);
     setError(null);
 

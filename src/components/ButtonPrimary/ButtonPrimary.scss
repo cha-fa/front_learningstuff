@@ -8,6 +8,12 @@
   color: white;
   font-family: $font-family;
 }
+
+button:disabled {
+  background-image: none;
+  background-color: grey !important;
+}
+
 .large {
   width: 423px;
   height: 60px;

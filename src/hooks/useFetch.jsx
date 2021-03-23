@@ -14,33 +14,34 @@ const useFetch = () => {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
 
-  const get = (query) => {
+  const get = async (query) => {
     setIsLoading(true);
     setError(null);
 
-    fetch(API_URL + query, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${Cookies.get("token")}`,
-        "Content-Type": "application/json",
-      },
-    })
-    .then((response) => {
+    try {
+      const response = await fetch(API_URL + query, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+          "Content-Type": "application/json",
+        },
+      });
+      const responseData = await response.json();
+
       if (!response.ok) {
-        throw response;
+        throw responseData;
       }
-      return response.json();
-    })
-    .then((data) => {
-      setData(data);
+      setData(responseData);
       setIsLoading(false);
-    })
-    .catch((error) => {
-      setError("error", error.errors);
-    });
+      return responseData;
+    } catch (error) {
+      const errMessage = error.error ? error.error : "An error has occured";
+      setError(errMessage);
+      console.log(errMessage);
+    }
   };
 
-  const post = async (query, userData) => {
+  const post = async (query, userData, callback) => {
     setIsLoading(true);
     setError(null);
 
@@ -59,11 +60,13 @@ const useFetch = () => {
       if (!response.ok) {
         throw responseData;
       }
-      setData(responseData);
       setIsLoading(false);
+      if (callback) {
+        callback();
+      }
       return responseData;
     } catch (error) {
-      const errMessage = error.errors ? error.errors : "An error has occured";
+      const errMessage = error.errors ? error.errors : "An error has occurred.";
       setError(errMessage);
       console.log(errMessage);
     }
@@ -77,8 +80,8 @@ const useFetch = () => {
       const response = await fetch(API_URL + query, {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${Cookies.get("token")}`,
-          "Accept": "application/json"
+          Authorization: `Bearer ${Cookies.get("token")}`,
+          Accept: "application/json",
         },
         body: userData,
       });
@@ -92,7 +95,7 @@ const useFetch = () => {
       setIsLoading(false);
       return responseData;
     } catch (error) {
-      const errMessage = error.errors ? error.errors : "An error has occured";
+      const errMessage = error.errors ? error.errors : "An error has occurred.";
       setError(errMessage);
       console.log(errMessage);
     }
@@ -121,7 +124,7 @@ const useFetch = () => {
       setIsLoading(false);
       return responseData;
     } catch (error) {
-      const errMessage = error.errors ? error.errors : "An error has occured";
+      const errMessage = error.errors ? error.errors : "An error has occurred.";
       setError(errMessage);
       console.log(errMessage);
     }
@@ -150,7 +153,7 @@ const useFetch = () => {
       setIsLoading(false);
       return responseData;
     } catch (error) {
-      const errMessage = error.errors ? error.errors : "An error has occured";
+      const errMessage = error.errors ? error.errors : "An error has occurred.";
       setError(errMessage);
       console.log(errMessage);
     }

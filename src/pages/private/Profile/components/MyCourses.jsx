@@ -3,10 +3,17 @@ import Subscription from "pages/private/Subscription/Subscription";
 import CourseCard from "components/CourseCard/CourseCard";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
+import paymentFetch from "hooks/paymentFetch";
 
 const MyCourses = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { data, error, isLoading, patch, get } = useFetch();
+
+  const { newPayment } = paymentFetch();
+
+  const handlePayment = () => {
+    newPayment(4000, "TEST ARGUMENT LEARNING PATH");
+  };
 
   useEffect(() => {
     if (currentUser) get(`/users/${currentUser.id}/subscriptions`);
@@ -25,6 +32,7 @@ const MyCourses = () => {
             />
           );
         })}
+      <button onClick={handlePayment}>TEST PAIEMENT</button>
     </div>
   );
 };

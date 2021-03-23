@@ -3,6 +3,7 @@ import useFetch from "hooks/useFetch";
 import { Table } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import LearningPathLine from "./LearningPathLine";
+import NewLearningPath from "./NewLearningPath";
 
 const ManageLearningPath = () => {
   const { data, error, isLoading, get } = useFetch();
@@ -26,6 +27,7 @@ const ManageLearningPath = () => {
             <div className="text-center">
               <h3>{t("manage_learning_paths")}</h3>
             </div>
+            <NewLearningPath handleEdit={handleEdit} />
             <Table striped bordered hover>
               <thead>
                 <tr>

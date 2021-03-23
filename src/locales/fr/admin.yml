@@ -10,7 +10,7 @@ approval?: Approuver?
 role: Rôle
 student: Étudiant
 teacher: Professeur
-loading: Chargement en cours
+loading: Chargement en cours...
 price_in_cents: Prix (en centimes)
 courses_list: Liste des cours
 title: Titre
@@ -20,3 +20,8 @@ validate_add: Valider l'ajout
 are_you_sure: Êtes-vous sûr ?
 edit: Modifier
 dashboard_admin: Espace Admin
+add_courses: Ajouter des cours
+add_categories: Ajouter des catégories
+validate_creation: Valider la création
+cancel_creation: Annuler la création
+create_learning_path: Créer un parcours

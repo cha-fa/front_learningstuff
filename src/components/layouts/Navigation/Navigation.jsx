@@ -34,7 +34,7 @@ const Navigation = () => {
           </Nav.Link>
           <NavDropdown title="Learn" className="m-2">
             <NavDropdown.Item>
-              <Link className="nav-link" to="/learning_paths">{t("navigation:linkLearningPath")}</Link>
+              <Link className="nav-link " to="/learning_paths">{t("navigation:linkLearningPath")}</Link>
             </NavDropdown.Item>
             <NavDropdown.Item>
               <Link className="nav-link" to="/courses">{t("navigation:linkCourse")}</Link>
@@ -42,17 +42,7 @@ const Navigation = () => {
           </NavDropdown>
           <Nav.Link>
             <Link className="nav-link" to="/">
-              {t("navigation:linkBlog")}
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link className="nav-link" to="/">
               {t("navigation:linkAbout")}
-            </Link>
-          </Nav.Link>
-          <Nav.Link>
-            <Link className="nav-link" to="/">
-              {t("navigation:linkContact")}
             </Link>
           </Nav.Link>
           <Nav.Link> 
@@ -94,26 +84,31 @@ const Navigation = () => {
           )}
           {currentUser && (
             <>
-              <Link className="nav-link" to="/profile">
-                <span className="user-name-navbar">{currentUser.first_name}&nbsp;&nbsp;</span>
-                {currentUser.avatar && (
-                  <Image 
-                    src={currentUser.avatar}
-                    alt="Real avatar."
-                    className="user-avatar-navbar"
-                    roundedCircle
-                  />
-                ) || (
-                  <Image 
-                    src={noavatar}
-                    alt="Unknown avatar in case the user hasn't upload his/her."
-                    className="user-avatar-navbar"
-                    roundedCircle
-                  />
-                )}
-              </Link>
+              <Nav.Link>
+                <Link className="nav-link" to="/profile">
+                  {currentUser.first_name} {currentUser.last_name}
+                </Link>
+              </Nav.Link>
 
-              <NavDropdown title="Menu" id="collasible-nav-dropdown">
+              <NavDropdown className="mr-5" title={
+                <div>
+                  {currentUser.avatar && (
+                    <Image 
+                      src={currentUser.avatar}
+                      alt="Real avatar."
+                      className="user-avatar-navbar"
+                      roundedCircle
+                    />
+                  ) || (
+                    <Image 
+                      src={noavatar}
+                      alt="Unknown avatar in case the user hasn't upload his/her."
+                      className="user-avatar-navbar"
+                      roundedCircle
+                    />
+                  )}
+                </div>
+              } id="collasible-nav-dropdown">
                 <NavDropdown.Item>
                   {t("navigation:linkCourse")}
                 </NavDropdown.Item>

@@ -81,13 +81,14 @@ const Question = ({
   }, [question]);
 
   return (
-    <div className="Question">
-      <h2>{question.content} ?</h2>
+    <div className="Question h-100 d-flex justify-content-center flex-column ">
+      <h3>{question.content} ?</h3>
 
       <Form>
         <div key={`default-${type}`} className="mb-3">
           {question.answers.map((answer) => (
             <Form.Check
+              className="mb-2"
               key={answer.id}
               type={type}
               name={type}
@@ -136,8 +137,9 @@ const Question = ({
               <Link
                 onClick={handleClose}
                 to={`/courses/${ids.course}/chapters/${question.lesson.next_lesson.chapter_id}/lessons/${question.lesson.next_lesson.id}`}
+                className="mt-auto"
               >
-                {t("next_lesson")}
+                {t("go_to_next_lesson")}
               </Link>
             )) || (
               <h3>

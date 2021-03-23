@@ -34,6 +34,8 @@ const CourseCard = ({ course, subscribed }) => {
     handleAlert();
   };
 
+  console.log(course);
+
   return (
     <Link to={`/courses/${id}`}>
       <div className="CourseCard">

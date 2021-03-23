@@ -8,7 +8,7 @@ const Avatar = () => {
     <div className="Avatar">
       {(currentUser && currentUser.avatar && (
         <img
-          src={`${ACTIVE_STORAGE_URL}${currentUser.avatar}`}
+          src={currentUser.avatar}
           alt="Real avatar."
           className="img-thumbnail profile_pic rounded-circle"
           style={{ height: "150px", width: "150px" }}

@@ -1,12 +1,15 @@
 import "./ShowCourse.scss";
 import { useEffect } from "react";
 import useFetch from "hooks/useFetch";
+import { Link, useParams } from "react-router-dom";
 
 const ShowCourse = ({ match }) => {
   const { data, get } = useFetch();
 
+  const { id } = useParams();
+
   useEffect(() => {
-    get(`/learning_paths/${parseInt(match.params.id)}`);
+    get(`/learning_paths/${id}`);
   }, []);
 
   console.log(data);
@@ -21,7 +24,13 @@ const ShowCourse = ({ match }) => {
               <ul>
                 <h3> {chapter.title}</h3>
                 {chapter.lessons.map((lesson) => (
-                  <li key={lesson.id}>{lesson.title}</li>
+                  <li key={lesson.id}>
+                    <Link
+                      to={`/courses/${data.courses[0].id}/chapters/${chapter.id}/lessons/${lesson.id}`}
+                    >
+                      {lesson.title}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </li>

@@ -3,7 +3,6 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 
 const paymentFetch = () => {
-
   const API_KEY = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY;
   const STRIPE_PROMISE = loadStripe(API_KEY);
   const API_URL = process.env.REACT_APP_API_URL;
@@ -27,7 +26,7 @@ const paymentFetch = () => {
         },
         body: JSON.stringify({
           total: total,
-          learningPath: learningPath
+          learningPath: learningPath,
         }),
       });
 

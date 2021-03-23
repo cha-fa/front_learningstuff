@@ -25,22 +25,22 @@ const useFetch = () => {
         "Content-Type": "application/json",
       },
     })
-    .then((response) => {
-      if (!response.ok) {
-        throw response;
-      }
-      return response.json();
-    })
-    .then((data) => {
-      setData(data);
-      setIsLoading(false);
-    })
-    .catch((error) => {
-      setError("error", error.errors);
-    });
+      .then((response) => {
+        if (!response.ok) {
+          throw response;
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setData(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setError("error", error.errors);
+      });
   };
 
-  const post = async (query, userData) => {
+  const post = async (query, userData, callback) => {
     setIsLoading(true);
     setError(null);
 
@@ -59,8 +59,10 @@ const useFetch = () => {
       if (!response.ok) {
         throw responseData;
       }
-      setData(responseData);
       setIsLoading(false);
+      if (callback) {
+        callback();
+      }
       return responseData;
     } catch (error) {
       const errMessage = error.errors ? error.errors : "An error has occured";
@@ -77,8 +79,8 @@ const useFetch = () => {
       const response = await fetch(API_URL + query, {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${Cookies.get("token")}`,
-          "Accept": "application/json"
+          Authorization: `Bearer ${Cookies.get("token")}`,
+          Accept: "application/json",
         },
         body: userData,
       });

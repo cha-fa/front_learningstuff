@@ -1,23 +1,24 @@
 import React from "react";
 import { Col, Form, Row } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 
+const Searchbar = ({ getInput }) => {
 
-const SearchbarLearningPath = ({ getInput }) => {
-
+  const { t } = useTranslation();
   const handleChange = (e) => {
     getInput(e.target.value);
   };
 
 return (
-<div className='SearchbarLearningPath'>
-  <Form className="m-5" >
+<div>
+  <Form className="m-5" onSubmit={e => { e.preventDefault();}} >
     <Row>
       <Col>
         <Form.Control
          onChange={handleChange}
          type="text"
-         placeholder="Search LearningPath"
+         placeholder={t("common:placeholderSearch")}
          />
       </Col>
     </Row>
@@ -26,4 +27,4 @@ return (
 );
 };
   
-export default SearchbarLearningPath;
+export default Searchbar;

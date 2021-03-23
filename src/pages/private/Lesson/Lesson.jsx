@@ -10,6 +10,7 @@ import useFetch from "hooks/useFetch";
 import LessonVideo from "./LessonVideo/LessonVideo";
 import LessonQuizz from "./LessonQuizz/LessonQuizz";
 import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
+import { useHistory } from "react-router-dom";
 
 const Lesson = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -21,15 +22,32 @@ const Lesson = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  let history = useHistory();
+
+  const handleNextLesson = () => {
+    history.push(
+      `/courses/${courseId}/chapters/${data.next_lesson.chapter_id}/lessons/${data.next_lesson.id}`
+    );
+  };
+
   useEffect(() => {
     get(`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`);
-  }, []);
+  }, [lessonId]);
 
   return (
     <Container fluid className="Lesson">
       {data && (
         <Row>
           <Col md={6}>
+            {data.previous_lesson && (
+              <Link
+                onClick={handleClose}
+                to={`/courses/${courseId}/chapters/${data.previous_lesson.chapter_id}/lessons/${data.previous_lesson.id}`}
+              >
+                {t("previous_lesson")}
+              </Link>
+            )}
+
             <Nav variant="tabs">
               <Nav.Item>
                 <Link
@@ -85,21 +103,37 @@ const Lesson = () => {
             <Row>
               <Col>ETAPES VIDEO</Col>
               <Col>
-                <ButtonPrimary
-                  handleClick={handleShow}
-                  className="ButtonPrimary medium"
-                  label={t("do_quizz")}
-                />
-                <Modal show={show} onHide={handleClose}>
-                  <Modal.Header closeButton>{data.title}</Modal.Header>
-                  <LessonQuizz
-                    ids={{
-                      course: courseId,
-                      chapter: chapterId,
-                      lesson: lessonId,
-                    }}
+                {(!data.questions.length && data.next_lesson && (
+                  <ButtonPrimary
+                    handleClick={handleNextLesson}
+                    className="ButtonPrimary large"
+                    label={t("next_lesson")}
                   />
-                </Modal>
+                )) ||
+                  (!data.questions.length && !data.next_lesson && (
+                    <p>Cours terminé</p>
+                  ))}
+
+                {data.questions.length > 0 && (
+                  <>
+                    <ButtonPrimary
+                      handleClick={handleShow}
+                      className="ButtonPrimary large"
+                      label={t("do_quizz")}
+                    />
+                    <Modal show={show} onHide={handleClose}>
+                      <Modal.Header closeButton>{data.title}</Modal.Header>
+                      <LessonQuizz
+                        ids={{
+                          course: courseId,
+                          chapter: chapterId,
+                          lesson: lessonId,
+                        }}
+                        handleClose={handleClose}
+                      />
+                    </Modal>
+                  </>
+                )}
               </Col>
             </Row>
           </Col>

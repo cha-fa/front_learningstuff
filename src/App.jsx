@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCurrentUser } from "stores/authentication/authMiddleware";
+import * as authActions from "stores/authentication/authActions";
 import "./i18n";
 import Cookies from "js-cookie";
 import Home from "pages/public/Home/Home";
@@ -24,100 +25,48 @@ import ShowCourse from "pages/public/Courses/ShowCourse/ShowCourse";
 import Subscription from "pages/private/Subscription/Subscription";
 
 const App = () => {
-  const [loadReady, setLoadReady] = useState(false);
-  const currentUser = useSelector((state) => state.auth.currentUser);
   const displayFlash = useSelector((state) => state.flash.display);
   const dispatch = useDispatch();
 
   const autoLogin = async () => {
     const token = Cookies.get("token");
-    if (!currentUser && token) {
-      dispatch(fetchCurrentUser(token));
+    if (!token) {
+      dispatch(authActions.loginFail());
+      return;
     }
-    setLoadReady(true);
+    dispatch(fetchCurrentUser(token));
   };
 
   useEffect(() => {
     autoLogin();
-  }, [currentUser]);
+  }, []);
 
   return (
     <section className="App">
       <Router>
         <Navigation />
         {displayFlash && <FlashMessage />}
-        {loadReady && (
-          <Switch>
-            <PublicRoute
-              restricted={false}
-              currentUser={currentUser}
-              component={Home}
-              path="/"
-              exact
-            />
-            <PublicRoute
-              restricted
-              currentUser={currentUser}
-              component={Login}
-              path="/login"
-              exact
-            />
-            <PublicRoute
-              restricted
-              currentUser={currentUser}
-              component={Register}
-              path="/register"
-              exact
-            />
-            <PublicRoute
-              currentUser={currentUser}
-              component={LearningPaths}
-              path="/learning_paths"
-              exact
-            />
-            <PublicRoute
-              currentUser={currentUser}
-              component={ShowLearningPath}
-              path="/learning_paths/:id"
-              exact
-            />
-            <PublicRoute
-              currentUser={currentUser}
-              component={Courses}
-              path="/courses"
-              exact
-            />
-            <PublicRoute
-              currentUser={currentUser}
-              component={ShowCourse}
-              path="/courses/:id"
-              exact
-            />
-            <PrivateRoute
-              currentUser={currentUser}
-              component={Profile}
-              path="/profile"
-              exact
-            />
-            <PrivateRoute
-              currentUser={currentUser}
-              component={Subscription}
-              path="/subscription"
-              exact
-            />
-            <AdminRoute
-              currentUser={currentUser}
-              component={Admin}
-              path="/admin"
-            />
-            <PrivateRoute
-              currentUser={currentUser}
-              component={Lesson}
-              path="/courses/:courseId/chapters/:chapterId/lessons/:lessonId"
-            />
-            <PublicRoute restricted={false} component={PageNotFound} />
-          </Switch>
-        )}
+        <Switch>
+          <PublicRoute restricted={false} component={Home} path="/" exact />
+          <PublicRoute restricted component={Login} path="/login" exact />
+          <PublicRoute restricted component={Register} path="/register" exact />
+          <PublicRoute component={LearningPaths} path="/learning_paths" exact />
+          <PublicRoute
+            component={ShowLearningPath}
+            path="/learning_paths/:id"
+            exact
+          />
+          <PublicRoute component={Courses} path="/courses" exact />
+          <PublicRoute component={ShowCourse} path="/courses/:id" exact />
+          <PrivateRoute component={Profile} path="/profile" />
+          <PrivateRoute component={Subscription} path="/subscription" exact />
+          <AdminRoute component={Admin} path="/admin" />
+          <PrivateRoute
+            component={Lesson}
+            path="/courses/:courseId/chapters/:chapterId/lessons/:lessonId"
+          />
+          <PublicRoute restricted={false} component={PageNotFound} />
+        </Switch>
         <Footer />
       </Router>
     </section>

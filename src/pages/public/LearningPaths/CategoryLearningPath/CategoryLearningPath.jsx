@@ -23,7 +23,9 @@ const CategorieLearningPath = ({handleCategoryFilter}) => {
   useEffect(()=> {
     get("/categories");
   }, []);
+  
 
+  
  useEffect(() => {
    setCategory(data);
  }, [data]);
@@ -32,7 +34,7 @@ const CategorieLearningPath = ({handleCategoryFilter}) => {
   <>
   {error && <h4>{error}</h4>}
   {category &&
-  <Form>
+  <Form className="d-flex justify-content-center">
   {category.map((type) => (
     <div key={type.id} className="mb-3">
       <Form.Check 

@@ -24,7 +24,7 @@ const ManageApproval = () => {
         (data && (
           <>
             <div className="text-center">
-              <h3>{t("title")}</h3>
+              <h3>{t("manage_approval_requests")}</h3>
               <p className="lead">
                 {t("pending_for_review")} : {data.length}
               </p>

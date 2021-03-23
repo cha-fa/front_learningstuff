@@ -1,0 +1,13 @@
+@import "style/variables.scss";
+
+.BeATeacher {
+  text-align: center;
+  background: $light-orange;
+  h2 {
+    color: $primary;
+    color: $primary-alt;
+    color: $primary-old;
+    font-size: 40px;
+    font-weight: 200;
+  }
+}

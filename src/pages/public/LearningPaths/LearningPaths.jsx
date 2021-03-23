@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 import LearningPathCard from "components/LearningPathCard/LearningPathCard";
-import LearningPathList from "pages/public/LearningPaths/ShowLearningPath/LearningPathList";
 import "./LearningPaths.scss";
-import CategorieLearningPath from "./CatogorieLearningPath/CategorieLearningPath";
+import CategorieLearningPath from "./CategoryLearningPath/CategoryLearningPath";
+import Searchbar from "../../../components/Searchbar/Searchbar";
+
   
 const LearningPaths = () => {
 
@@ -14,8 +15,6 @@ const LearningPaths = () => {
   const [categoryList, setCategoryList]= useState([]);
 
 
-  console.log(learningPath);
-
   const handleCategoryFilter = (list) => {
     setCategoryList(list);
   };
@@ -23,6 +22,10 @@ const LearningPaths = () => {
   useEffect(() => {
     get("/learning_paths");
   }, []);
+
+  useEffect(()=> {
+    get(`/learning_paths?categories=${categoryList.join(",")}`);
+  }, [categoryList]);
 
   // useEffect(()=>{
   // setLearningPathToShow(learningPath.filter((course)=>{
@@ -33,8 +36,20 @@ const LearningPaths = () => {
 return (
   <div className='LearningPaths'>
     <h2>LearningPaths</h2>
+    <Searchbar getInput={setInput}/>
     <CategorieLearningPath handleCategoryFilter={handleCategoryFilter} />
-    {learningPath && <LearningPathList learningPaths={learningPath} categoryList={categoryList}/>}
+    {learningPath && 
+     <div className='learningPaths'> 
+      {!error && learningPath && learningPath.length > 0 &&
+        learningPath.filter((value) => {
+          if(input === "")
+            {return value;
+            }else if (value.title.toLowerCase().includes(input.toLowerCase()))
+            {return value;
+            }
+        }).map(path => <LearningPathCard key={path.id} learningPath={path} /> )
+      }
+    </div> }
   </div>
 );
 };

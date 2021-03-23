@@ -1,39 +1,41 @@
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import useFetch from "hooks/useFetch";
-import EditProfile from "pages/private/Profile/components/EditProfile";
-import ProfileDisplay from "pages/private/Profile/components/ProfileDisplay";
-import Avatar from "pages/private/Profile/components/Avatar";
-import EditAvatar from "pages/private/Profile/components/EditAvatar";
+import { useDispatch } from "react-redux";
+import  { useHistory } from "react-router-dom";
+import { fetchCurrentUser } from "stores/authentication/authMiddleware";
+import Cookies from "js-cookie";
+import { Container, Row, Col } from "react-bootstrap";
+import Menu from "./Menu/Menu";
+import Feed from "./Feed/Feed";
 
 const Profile = () => {
-  const currentUser = useSelector((state) => state.auth.currentUser);
-  const [profile, setProfile] = useState(currentUser);
-  const [editing, setEditing] = useState(false);
-
-  const { get, put, data: updatedInfo } = useFetch();
-
-  const updateProfile = (newDetails) => {
-    put("/profile", newDetails);
-    setEditing(editing);
-    get("/profile");
-  };
+  const [userUpdated, setUserUpdated] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
-    if (updatedInfo) {
-      setProfile(updatedInfo);
+    history.push("/profile/mycourses");
+  }, []);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if(userUpdated){
+      dispatch(fetchCurrentUser(token));
     }
-  }, [updatedInfo]);
+    setUserUpdated(false);
+    history.push("/profile/mycourses");
+  }, [userUpdated]);
 
   return (
-    <div className="Profile container my-5">
-      <div className="text-center">
-        <Avatar />
-        <EditAvatar />
-        <ProfileDisplay data={profile} />
-        <EditProfile onSubmit={updateProfile} />
-      </div>
-    </div>
+    <Container className="Profile">
+      <Row>
+        <Col md="4" className="d-none d-lg-block">
+          <Menu />
+        </Col>
+        <Col md="8">
+          <Feed reload={setUserUpdated}/>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

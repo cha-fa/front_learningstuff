@@ -11,7 +11,6 @@ const LearningPaths = () => {
   const { data, error, get } = useFetch();
   const learningPath = (data ? data.filter(course => !course.is_single_course) : null);
   const [input, setInput]= useState("");
-  const [learningPathCategoryIds, setLearningPathCategoryIds]= useState([]);
   const [categoryList, setCategoryList]= useState([]);
 
 
@@ -27,11 +26,6 @@ const LearningPaths = () => {
     get(`/learning_paths?categories=${categoryList.join(",")}`);
   }, [categoryList]);
 
-  // useEffect(()=>{
-  // setLearningPathToShow(learningPath.filter((course)=>{
-  //     if(course.includes())
-  // }));
-  // },[categoryList]);
 
 return (
   <div className='LearningPaths'>
@@ -44,10 +38,14 @@ return (
         learningPath.filter((value) => {
           if(input === "")
             {return value;
-            }else if (value.title.toLowerCase().includes(input.toLowerCase()))
-            {return value;
+          }else if (value.title.toLowerCase().includes(input.toLowerCase()))
+            {return value; 
             }
-        }).map(path => <LearningPathCard key={path.id} learningPath={path} /> )
+        }).map(path =>  <LearningPathCard key={path.id} learningPath={path} /> )
+      }
+      
+      {learningPath.length<1 &&
+      <h1>Aucun Résultat</h1>
       }
     </div> }
   </div>

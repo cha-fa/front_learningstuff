@@ -40,6 +40,9 @@ return (
             }
         }).map(course => <CourseCard key={course.id} course={course} /> )
     }
+    {singleCourse.length < 1 &&
+      <h1>Aucun résultat </h1>
+    }
   </div>
 </div>
 );

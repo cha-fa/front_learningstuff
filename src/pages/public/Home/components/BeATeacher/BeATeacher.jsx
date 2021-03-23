@@ -27,9 +27,7 @@ const BeATeacher = () => {
               {t("BeATeacherTitle")}
             </h2>
             <p className="pt-5 pb-5">
-            {t("AnywhereText")}
-            {t("UnlimitedText")}
-            {t("ExpertTeacherText")}
+            {t("MentorText")}
             </p>
             <Link to="/register">
               <Button className="ButtonPrimary" size="lg">{t("BeATeacherButton")}</Button>

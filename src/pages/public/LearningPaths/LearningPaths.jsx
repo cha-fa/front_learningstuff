@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 import LearningPathCard from "components/LearningPathCard/LearningPathCard";
 import "./LearningPaths.scss";
-import SearchbarLearningPath from "./SearchbarLearningPath/SearchbarLearningPath";
+import Searchbar from "../../../components/Searchbar/Searchbar";
   
 const LearningPaths = () => {
 
@@ -16,7 +16,7 @@ const LearningPaths = () => {
 return (
   <div className='LearningPaths'>
     <h2>LearningPaths</h2>
-    <SearchbarLearningPath getInput={setInput}/>
+    <Searchbar getInput={setInput}/>
     <div className='learningPaths'> 
       {!error && learningPath && learningPath.length > 0 &&
         learningPath.filter((value) => {

@@ -2,6 +2,7 @@ manage_approval_requests: Gérer les demandes d'approbation
 pending_for_review: Utilisateurs en attente d'approbation
 manage_approvals: Gérer les approbations
 manage_users: Gérer les utilisateurs
+manage_categories: Gérer les catégories
 manage_learning_paths: Gérer les parcours
 first_name: Prénom
 last_name: Nom

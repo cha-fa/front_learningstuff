@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import ManageApproval from "./components/ManageApproval/ManageApproval";
 import ManageUsers from "./components/ManageUsers/ManageUsers";
 import ManageLearningPath from "./components/ManageLearningPath/ManageLearningPath";
+import ManageCategories from "./components/ManageCategories/ManageCategories";
 
 const Admin = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -35,6 +36,11 @@ const Admin = () => {
                 currentUser={currentUser}
                 component={ManageUsers}
                 path="/admin/users"
+              />
+              <AdminRoute
+                currentUser={currentUser}
+                component={ManageCategories}
+                path="/admin/categories"
               />
               <AdminRoute
                 currentUser={currentUser}

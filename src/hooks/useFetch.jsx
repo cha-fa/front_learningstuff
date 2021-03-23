@@ -14,30 +14,31 @@ const useFetch = () => {
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
 
-  const get = (query) => {
+  const get = async (query) => {
     setIsLoading(true);
     setError(null);
 
-    fetch(API_URL + query, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${Cookies.get("token")}`,
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw response;
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setData(data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError("error", error.errors);
+    try {
+      const response = await fetch(API_URL + query, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${Cookies.get("token")}`,
+          "Content-Type": "application/json",
+        },
       });
+      const responseData = await response.json();
+
+      if (!response.ok) {
+        throw responseData;
+      }
+      setData(responseData);
+      setIsLoading(false);
+      return responseData;
+    } catch (error) {
+      const errMessage = error.error ? error.error : "An error has occured";
+      setError(errMessage);
+      console.log(errMessage);
+    }
   };
 
   const post = async (query, userData, callback) => {
@@ -65,7 +66,7 @@ const useFetch = () => {
       }
       return responseData;
     } catch (error) {
-      const errMessage = error.errors ? error.errors : "An error has occured";
+      const errMessage = error.errors ? error.errors : "An error has occurred.";
       setError(errMessage);
       console.log(errMessage);
     }
@@ -94,7 +95,7 @@ const useFetch = () => {
       setIsLoading(false);
       return responseData;
     } catch (error) {
-      const errMessage = error.errors ? error.errors : "An error has occured";
+      const errMessage = error.errors ? error.errors : "An error has occurred.";
       setError(errMessage);
       console.log(errMessage);
     }
@@ -123,7 +124,7 @@ const useFetch = () => {
       setIsLoading(false);
       return responseData;
     } catch (error) {
-      const errMessage = error.errors ? error.errors : "An error has occured";
+      const errMessage = error.errors ? error.errors : "An error has occurred.";
       setError(errMessage);
       console.log(errMessage);
     }
@@ -152,7 +153,7 @@ const useFetch = () => {
       setIsLoading(false);
       return responseData;
     } catch (error) {
-      const errMessage = error.errors ? error.errors : "An error has occured";
+      const errMessage = error.errors ? error.errors : "An error has occurred.";
       setError(errMessage);
       console.log(errMessage);
     }

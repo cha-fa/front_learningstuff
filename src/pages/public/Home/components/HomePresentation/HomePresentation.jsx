@@ -48,16 +48,13 @@ const HomePresentation = () => {
           <h2>
             {t("AnywhereTitle")}
             <br />
-            {t("ExpertTeacherTitle")}
-            <br />
             <span className="HomePresentation__bold">
-              {t("UnlimitedTitle")}
+            {t("ExpertTeacherTitle")}
             </span>
           </h2>
           <p className="pt-5 pb-5">
-            {t("AnywhereText")}
-            {t("UnlimitedText")}
-            {t("ExpertTeacherText")}
+            {t("AnywhereText")} 
+            {t("ExpertTeacherText2")}
           </p>
           <Link to="/login">
             <ButtonPrimary sizeClass="medium" label="Get Started" />

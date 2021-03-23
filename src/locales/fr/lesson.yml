@@ -14,5 +14,6 @@ do_quizz: Faire le quizz
 result: Résultat
 course_is_over: Féliciations, tu as terminé ce cours !
 back_to_profile: Retour à mon profil
-next_lesson: Passer à la leçon suivante
-previous_lesson: Voir la leçon précédente
+go_to_next_lesson: Passer à la leçon suivante
+previous_lesson: Leçon précédente
+next_lesson: Leçon suivante

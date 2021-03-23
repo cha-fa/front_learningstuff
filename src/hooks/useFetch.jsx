@@ -65,7 +65,7 @@ const useFetch = () => {
       }
       return responseData;
     } catch (error) {
-      const errMessage = error.errors ? error.errors : "An error has occured";
+      const errMessage = error.errors ? error.errors : "An error has occurred.";
       setError(errMessage);
       console.log(errMessage);
     }
@@ -94,7 +94,7 @@ const useFetch = () => {
       setIsLoading(false);
       return responseData;
     } catch (error) {
-      const errMessage = error.errors ? error.errors : "An error has occured";
+      const errMessage = error.errors ? error.errors : "An error has occurred.";
       setError(errMessage);
       console.log(errMessage);
     }
@@ -123,7 +123,7 @@ const useFetch = () => {
       setIsLoading(false);
       return responseData;
     } catch (error) {
-      const errMessage = error.errors ? error.errors : "An error has occured";
+      const errMessage = error.errors ? error.errors : "An error has occurred.";
       setError(errMessage);
       console.log(errMessage);
     }
@@ -152,7 +152,7 @@ const useFetch = () => {
       setIsLoading(false);
       return responseData;
     } catch (error) {
-      const errMessage = error.errors ? error.errors : "An error has occured";
+      const errMessage = error.errors ? error.errors : "An error has occurred.";
       setError(errMessage);
       console.log(errMessage);
     }

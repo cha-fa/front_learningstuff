@@ -12,9 +12,9 @@ const Searchbar = ({ getInput }) => {
 
 return (
 <div>
-  <Form className="m-5" onSubmit={e => { e.preventDefault();}} >
-    <Row>
-      <Col>
+  <Form className="Searchbar m-5" onSubmit={e => { e.preventDefault();}} >
+    <Row className="justify-content-center">
+      <Col lg={6}>
         <Form.Control
          onChange={handleChange}
          type="text"

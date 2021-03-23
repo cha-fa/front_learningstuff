@@ -1,0 +1,21 @@
+@import "style/variables.scss";
+
+.ChapterProgressBar {
+  background-color: $orange-background;
+  padding: 15px;
+
+  &__unread {
+    color: lighten($orange-background, 20%);
+  }
+
+  svg {
+    margin: 0 10px 0;
+  }
+  a {
+    text-decoration: "none";
+    color: white;
+    &:hover {
+      color: lighten($orange-background, 20%);
+    }
+  }
+}

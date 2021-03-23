@@ -23,7 +23,7 @@ const LessonQuizz = ({ ids, handleClose }) => {
   }, []);
 
   return (
-    <div className="LessonQuizz p-5">
+    <div className="LessonQuizz p-5 " style={{ height: "50vh" }}>
       {data && (
         <>
           <Question

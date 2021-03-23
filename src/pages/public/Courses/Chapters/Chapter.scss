@@ -1,0 +1,19 @@
+@import "style/variables.scss";
+.Chapter {
+  h3 {
+    color: $secondary;
+    font-size: 40px;
+    font-weight: 200;
+  }
+  background: $orange-background;
+  .card-body {
+    background: $light-orange;
+    color: $footer-color;
+  }
+  a:hover {
+    background: red;
+  }
+  a {
+    color: $footer-color;
+  }
+}

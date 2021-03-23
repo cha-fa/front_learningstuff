@@ -34,10 +34,8 @@ const CourseCard = ({ course, subscribed }) => {
     handleAlert();
   };
 
-  console.log(course);
-
   return (
-    <Link to={`/courses/${id}`}>
+    <Link to={`/courses/${course.courses[0].id}`}>
       <div className="CourseCard">
         <div className="header">
           {!subscribed && (

@@ -20,7 +20,6 @@ const LearningPathCard = ( { learningPath } ) => {
 
   return (
   <div>
-
       <div onClick={toggleDisplay} className='LearningPathsCard' style={{ backgroundImage: "url(\"https://source.unsplash.com/random"}}>
         <div className="header" >
         <Button
@@ -30,7 +29,6 @@ const LearningPathCard = ( { learningPath } ) => {
           >
             {price_in_cents && price_in_cents / 100} € Subscribe Now!
           </Button>
-          <p>{`${price_in_cents && price_in_cents/100}`} €</p>
         </div>
         <div className='bottomCard' >
             <p>{title}</p>

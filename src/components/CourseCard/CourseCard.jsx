@@ -9,7 +9,7 @@ import {
   displayError,
 } from "stores/flashmessages/flashMiddleware";
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, subscribed }) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { title, price_in_cents, id } = course;
   const { post, error } = useFetch();
@@ -38,13 +38,15 @@ const CourseCard = ({ course }) => {
     <Link to={`/courses/${id}`}>
       <div className="CourseCard">
         <div className="header">
-          <Button
-            onClick={handleSubscription}
-            className="ButtonPrimary"
-            size="sm"
-          >
-            {price_in_cents && price_in_cents / 100} € Subscribe Now!
-          </Button>
+          {!subscribed && (
+            <Button
+              onClick={handleSubscription}
+              className="ButtonPrimary"
+              size="sm"
+            >
+              {price_in_cents && price_in_cents / 100} € Subscribe Now!
+            </Button>
+          )}
         </div>
         <div className="bottomCard">
           <p>{title}</p>

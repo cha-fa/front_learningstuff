@@ -1,33 +1,40 @@
 import { useEffect, useState } from "react";
 import useFetch from "hooks/useFetch";
 import LearningPathCard from "components/LearningPathCard/LearningPathCard";
+import LearningPathList from "pages/public/LearningPaths/ShowLearningPath/LearningPathList";
 import "./LearningPaths.scss";
-import SearchbarLearningPath from "./SearchbarLearningPath/SearchbarLearningPath";
+import CategorieLearningPath from "./CatogorieLearningPath/CategorieLearningPath";
   
 const LearningPaths = () => {
 
   const { data, error, get } = useFetch();
-  const learningPath = (data ? data.filter(course => !course.is_single_course) : "");
+  const learningPath = (data ? data.filter(course => !course.is_single_course) : null);
   const [input, setInput]= useState("");
+  const [learningPathCategoryIds, setLearningPathCategoryIds]= useState([]);
+  const [categoryList, setCategoryList]= useState([]);
+
+
+  console.log(learningPath);
+
+  const handleCategoryFilter = (list) => {
+    setCategoryList(list);
+  };
 
   useEffect(() => {
     get("/learning_paths");
   }, []);
+
+  // useEffect(()=>{
+  // setLearningPathToShow(learningPath.filter((course)=>{
+  //     if(course.includes())
+  // }));
+  // },[categoryList]);
+
 return (
   <div className='LearningPaths'>
     <h2>LearningPaths</h2>
-    <SearchbarLearningPath getInput={setInput}/>
-    <div className='learningPaths'> 
-      {!error && learningPath && learningPath.length > 0 &&
-        learningPath.filter((value) => {
-          if(input === "")
-            {return value;
-            }else if (value.title.toLowerCase().includes(input.toLowerCase()))
-            {return value;
-            }
-        }).map(path => <LearningPathCard key={path.id} learningPath={path} /> )
-      }
-    </div>
+    <CategorieLearningPath handleCategoryFilter={handleCategoryFilter} />
+    {learningPath && <LearningPathList learningPaths={learningPath} categoryList={categoryList}/>}
   </div>
 );
 };

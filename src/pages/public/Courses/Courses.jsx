@@ -44,7 +44,7 @@ const Courses = () => {
     {singleCourseFiltered.length > 0 ?
       singleCourseFiltered.map(course => <CourseCard key={course.id} course={course} /> )
       :
-      <h1>{t("common:noResult")}</h1>
+      <h3>{t("common:noResult")}</h3>
       }
     </div> }
   </div>

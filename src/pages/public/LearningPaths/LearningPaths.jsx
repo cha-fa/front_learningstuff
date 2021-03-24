@@ -47,7 +47,7 @@ return (
       {learningPathFiltered.length > 0 ? 
       learningPathFiltered.map(path =><LearningPathCard key={path.id} learningPath={path} /> )
       : 
-      <h1>{t("common:noResult")}</h1>
+      <h3>{t("common:noResult")}</h3>
       }
     </div> }
   </div>

@@ -4,7 +4,8 @@
   height: 100vh;
   background-color: $primary-old;
 
-  a {
+  a,
+  button {
     text-decoration: none;
     color: $secondary;
     font-weight: bold;
@@ -15,7 +16,15 @@
     }
   }
 
+  button {
+    margin: 0;
+  }
+
   .active {
     font-size: x-large;
+  }
+
+  .accordion a {
+    margin-left: 10px;
   }
 }

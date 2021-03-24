@@ -84,11 +84,29 @@ const Navigation = () => {
           )}
           {currentUser && (
             <>
+              <Nav.Link>
+                <Link className="nav-link" to="/profile">
+                  {currentUser.first_name} {currentUser.last_name}
+                </Link>
+              </Nav.Link>
 
               <NavDropdown className="mr-5" title={
                 <div>
-                  <img className="user-profil" src={noavatar}>
-                  </img>
+                  {currentUser.avatar && (
+                    <Image 
+                      src={currentUser.avatar}
+                      alt="Real avatar."
+                      className="user-avatar-navbar"
+                      roundedCircle
+                    />
+                  ) || (
+                    <Image 
+                      src={noavatar}
+                      alt="Unknown avatar in case the user hasn't upload his/her."
+                      className="user-avatar-navbar"
+                      roundedCircle
+                    />
+                  )}
                 </div>
               } id="collasible-nav-dropdown">
                 <NavDropdown.Item>

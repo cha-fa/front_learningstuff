@@ -9,11 +9,16 @@
   .card-body {
     background: $light-orange;
     color: $footer-color;
-  }
-  a:hover {
-    background: red;
+    padding: 0;
   }
   a {
     color: $footer-color;
+  }
+  p {
+    margin: 0;
+    padding: 10px;
+    &:hover {
+      background: $orange-background;
+    }
   }
 }

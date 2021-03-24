@@ -20,7 +20,7 @@ const ShowCourse = ({ match }) => {
         <>
           <h1>{data.title}</h1>
 
-          <Accordion>
+          <Accordion className="my-5">
             {data.chapters.map((chapter) => (
               <Chapters key={chapter.id} courseId={id} chapter={chapter} />
             ))}

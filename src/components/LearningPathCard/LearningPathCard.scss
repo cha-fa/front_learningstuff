@@ -1,6 +1,12 @@
 @import "style/variables.scss";
 
-.LearningPathsCard{
+.LearningPathsCard {
+  a {
+    color: white;
+    &:hover {
+      background: black;
+    }
+  }
   cursor: pointer;
   border-radius: 10px;
   min-width: 400px;
@@ -12,15 +18,15 @@
   color: $secondary;
   font-family: $font-family;
   font-size: 18px;
-  .header{
+  .header {
     align-self: flex-end;
-    background-image: $primary-alt; 
+    background-image: $primary-alt;
     background-image: $primary;
     border-radius: 0px 10px 0px 10px;
     width: 25%;
     text-align: center;
   }
-  .bottomCard{  
+  .bottomCard {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -30,23 +36,23 @@
     padding-bottom: 0px;
     padding-left: 10px;
     height: 25%;
-    background-image: $primary-alt; 
+    background-image: $primary-alt;
     background-image: $primary;
   }
 }
-.courses{
+.courses {
   background-color: rgb(41, 41, 41);
   padding-bottom: 10px;
   margin: -20px 10px 10px 10px;
   padding-top: 20px;
   border-radius: 0px 0px 10px 10px;
 }
-.courseLine{
+.courseLine {
   color: $secondary;
   padding-left: 10px;
   padding-top: 3px;
   padding-bottom: 3px;
-  &:hover{
+  &:hover {
     background-color: beige;
     color: black;
     list-style: none;

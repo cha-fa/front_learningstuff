@@ -19,7 +19,7 @@ const MyCourses = () => {
   useEffect(() => {
     if (currentUser) get(`/users/${currentUser.id}/subscriptions`);
   }, [currentUser]);
-
+  console.log("sub", data);
   return (
     <div className="MyCourses d-flex flex-wrap">
       {data &&
@@ -30,6 +30,7 @@ const MyCourses = () => {
                 key={subscription.id}
                 course={subscription.learning_path}
                 subscribed={true}
+                currentLesson={subscription.current_lesson}
               />
             );
           }

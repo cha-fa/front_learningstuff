@@ -6,9 +6,8 @@ import useFetch from "hooks/useFetch";
 import paymentFetch from "hooks/paymentFetch";
 import { useDispatch } from "react-redux";
 
-
-const CourseCard = ({ course }) => {
-
+const CourseCard = ({ course, subscribed }) => {
+  const currentUser = useSelector((state) => state.auth.currentUser);
   const { title, price_in_cents, id } = course;
   const { post, error } = useFetch();
   const { newPayment } = paymentFetch();
@@ -19,10 +18,10 @@ const CourseCard = ({ course }) => {
   };
 
   return (
-    <>
-      <Link to={`/courses/${id}`}>
-        <div className="CourseCard">
-          <div className="header">
+    <Link to={`/courses/${course.courses[0].id}`}>
+      <div className="CourseCard">
+        <div className="header">
+          {!subscribed && (
             <Button
               onClick={handleSubscription}
               className="ButtonPrimary"
@@ -30,14 +29,14 @@ const CourseCard = ({ course }) => {
             >
               {price_in_cents && price_in_cents / 100} € Subscribe Now!
             </Button>
-          </div>
-          <div className="bottomCard">
-            <p>{title}</p>
-          </div>
-          <h1 style={{ color: "black" }}>{error && error}</h1>
+          )}
         </div>
-      </Link>
-    </>
+        <div className="bottomCard">
+          <p>{title}</p>
+          {error && <h2 style={{ color: "black" }}>{error}</h2>}
+        </div>
+      </div>
+    </Link>
   );
 };
 

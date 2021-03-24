@@ -1,12 +1,12 @@
-title: Créer votre compte
+title: Créez votre compte
 placeholderfirstname: Prénom
 placeholderlastname: Nom
-placeholderemail: Courriel
+placeholderemail: Email
 placeholderpassword: Mot de Passe
-role: rôle
+role: Rôle
 optionstudent: Apprenant
 optionteacher: Formateur
 optionadmin: Administrateur
 accountquestion: Vous avez déjà un compte ?
-loginnow: Connectez vous !
-labelbutton: Créer votre compte
+loginnow: Connectez-vous !
+labelbutton: Créez votre compte

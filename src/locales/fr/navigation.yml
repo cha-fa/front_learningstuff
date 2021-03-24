@@ -1,14 +1,16 @@
 navBrand: LearningStuff
 linkHome: Accueil
-linkCourse: Cours
+linkCourse: Les Cours
 linkBlog: Blog
 linkAbout: À Propos de nous
 linkContact: Contactez-nous
-linkLearningPath: Parcours
+linkLearningPath: Les Parcours
 linkContributor: Contribuer
 linkLogin: Se connecter
 linkMenu: Menu
-linkOrders: Commandes
+linkOrders: Mes Commandes
 linkSettings: Paramètres
 linkLogout: Se déconnecter
 linkAdmin: Dashboard Admin
+my_courses: Mes cours
+my_profile: Mon profil

@@ -49,15 +49,15 @@ const HomePresentation = () => {
             {t("AnywhereTitle")}
             <br />
             <span className="HomePresentation__bold">
-            {t("ExpertTeacherTitle")}
+              {t("ExpertTeacherTitle")}
             </span>
           </h2>
           <p className="pt-5 pb-5">
-            {t("AnywhereText")} 
+            {t("AnywhereText")}
             {t("ExpertTeacherText2")}
           </p>
-          <Link to="/login">
-            <ButtonPrimary sizeClass="medium" label="Get Started" />
+          <Link to="/learning_paths">
+            <ButtonPrimary sizeClass="medium" label={t("get_started")} />
           </Link>
         </Col>
       </Row>

@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchToLogout } from "stores/authentication/authMiddleware";
 import { Navbar, NavDropdown, Nav, Image } from "react-bootstrap";
@@ -22,45 +22,44 @@ const Navigation = () => {
     history.push("/");
   };
   return (
-    <Navbar expand="lg">
-      <Navbar.Brand>{t("navigation:navBrand")}</Navbar.Brand>
+    <Navbar className="Navigation" expand="lg">
+      <Navbar.Brand>
+        <Link className="Navigation__logo" to="/">
+          {t("navigation:navBrand")}
+        </Link>
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav inline className="ml-auto">
           <Nav.Link>
-            <Link className="nav-link" to="/">
+            <NavLink className="nav-link" to="/">
               {t("navigation:linkHome")}
-            </Link>
+            </NavLink>
           </Nav.Link>
-          <NavDropdown title="Learn" className="m-2">
-            <NavDropdown.Item>
-              <Link className="nav-link " to="/learning_paths">{t("navigation:linkLearningPath")}</Link>
-            </NavDropdown.Item>
-            <NavDropdown.Item>
-              <Link className="nav-link" to="/courses">{t("navigation:linkCourse")}</Link>
-            </NavDropdown.Item>
-          </NavDropdown>
           <Nav.Link>
-            <Link className="nav-link" to="/">
-              {t("navigation:linkAbout")}
-            </Link>
+            <NavLink className="nav-link " to="/learning_paths">
+              {t("navigation:linkLearningPath")}
+            </NavLink>
           </Nav.Link>
-          <Nav.Link> 
-            <Link className="nav-link" to="/subscription">
-                <AiOutlineShoppingCart 
-                  size={25}
-                  style={{ color: "orange" }}
-                />
-            </Link>
+          <Nav.Link>
+            <NavLink className="nav-link" to="/courses">
+              {t("navigation:linkCourse")}
+            </NavLink>
           </Nav.Link>
 
-          {currentUser && (
+          {/* <Nav.Link>
+            <NavLink className="nav-link" to="/subscription">
+              <AiOutlineShoppingCart size={35} style={{ color: "orange" }} />
+            </NavLink>
+          </Nav.Link> */}
+
+          {/* {currentUser && (
             <Nav.Link>
               <Link className="nav-link" to="/">
-                <AiFillBell size={25} style={{ color: "orange" }} />
+                <AiFillBell size={35} style={{ color: "orange" }} />
               </Link>
             </Nav.Link>
-          )}
+          )} */}
 
           {!currentUser && (
             <>
@@ -84,44 +83,54 @@ const Navigation = () => {
           )}
           {currentUser && (
             <>
-              <Nav.Link>
-                <Link className="nav-link" to="/profile">
+              <NavDropdown
+                title={
+                  <div>
+                    {(currentUser.avatar && (
+                      <Image
+                        src={currentUser.avatar}
+                        alt="Real avatar."
+                        className="user-avatar-navbar"
+                        roundedCircle
+                      />
+                    )) || (
+                      <Image
+                        src={noavatar}
+                        alt="Unknown avatar in case the user hasn't upload his/her."
+                        className="user-avatar-navbar"
+                        roundedCircle
+                      />
+                    )}
+                  </div>
+                }
+                id="collasible-nav-dropdown"
+              >
+                <NavDropdown.Item>
+                  <Link className="dropdown-item" to="profile/mycourses">
+                    {t("navigation:my_courses")}
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link className="dropdown-item" to="/">
+                    {t("navigation:linkOrders")}
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item>
+                  <Link className="dropdown-item" to="/profile/edit">
+                    {t("navigation:my_profile")}
+                  </Link>
+                </NavDropdown.Item>
+                <NavDropdown.Item className="dropdown-item">
+                  <Link className="dropdown-item" onClick={logout} to="/">
+                    {t("navigation:linkLogout")}
+                  </Link>
+                </NavDropdown.Item>
+              </NavDropdown>
+              <Nav.Link className="ml-0 pl-0">
+                <Link className="nav-link ml-0 pl-0" to="/profile">
                   {currentUser.first_name} {currentUser.last_name}
                 </Link>
               </Nav.Link>
-
-              <NavDropdown className="mr-5" title={
-                <div>
-                  {currentUser.avatar && (
-                    <Image 
-                      src={currentUser.avatar}
-                      alt="Real avatar."
-                      className="user-avatar-navbar"
-                      roundedCircle
-                    />
-                  ) || (
-                    <Image 
-                      src={noavatar}
-                      alt="Unknown avatar in case the user hasn't upload his/her."
-                      className="user-avatar-navbar"
-                      roundedCircle
-                    />
-                  )}
-                </div>
-              } id="collasible-nav-dropdown">
-                <NavDropdown.Item>
-                  {t("navigation:linkCourse")}
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  {t("navigation:linkOrders")}
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  {t("navigation:linkSettings")}
-                </NavDropdown.Item>
-                <NavDropdown.Item onClick={logout}>
-                  {t("navigation:linkLogout")}
-                </NavDropdown.Item>
-              </NavDropdown>
             </>
           )}
         </Nav>

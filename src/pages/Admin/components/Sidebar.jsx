@@ -12,6 +12,7 @@ const Sidebar = () => {
       <h2 className="mt-5 ml-2 mb-5">{t("dashboard_admin")}</h2>
       <NavLink to="/admin/approvals">{t("manage_approvals")}</NavLink>
       <NavLink to="/admin/users">{t("manage_users")}</NavLink>
+      <NavLink to="/admin/categories">{t("manage_categories")}</NavLink>
       <Accordion>
         <Accordion.Toggle as={Button} variant="link" eventKey="0">
           {t("manage_courses")} <GoTriangleRight />

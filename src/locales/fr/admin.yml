@@ -2,6 +2,7 @@ manage_approval_requests: Gérer les demandes d'approbation
 pending_for_review: Utilisateurs en attente d'approbation
 manage_approvals: Gérer les approbations
 manage_users: Gérer les utilisateurs
+manage_categories: Gérer les catégories
 manage_learning_paths: Gérer les parcours
 manage_courses: Gérer les cours
 first_name: Prénom
@@ -26,6 +27,9 @@ add_categories: Ajouter des catégories
 validate_creation: Valider la création
 cancel_creation: Annuler la création
 create_learning_path: Créer un parcours
+title_learning_path: Parcours
+categories: Catégories
+create_category: Créer une catégorie 
 in_learning_paths: Dans les parcours
 delete: Supprimer
 import_course: Importer un cours

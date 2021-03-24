@@ -2951,7 +2951,7 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
 
-bootstrap@^4.6.0:
+bootstrap@^4.3.0, bootstrap@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.0.tgz#97b9f29ac98f98dfa43bf7468262d84392552fd7"
   integrity sha512-Io55IuQY3kydzHtbGvQya3H+KorS/M9rSNyfCGCg9WZ4pyT/lCxIlpJgG1GXW/PswzC84Tr2fBYi+7+jFVQQBw==
@@ -9793,6 +9793,15 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-multiselect-dropdown-bootstrap@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-multiselect-dropdown-bootstrap/-/react-multiselect-dropdown-bootstrap-1.1.0.tgz#dbd790daeddbece44ae22e97ebd86199a1c1c247"
+  integrity sha512-RXMbpKgPHuLG8dvOkTUVGpq/MSDROtUJ4QMptKHo4N9SYF7Tjvjl5rUZ/6ghw6FzNZLQc/VVqcoj3lj1VToN/A==
+  dependencies:
+    bootstrap "^4.3.0"
+    prop-types "^15.7.2"
+    react "^16.12.0"
+
 react-overlays@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-5.0.0.tgz#b50351de194dda0706b40f9632d261c9f0011c4c"
@@ -9942,6 +9951,15 @@ react-useanimations@^2.0.6:
   integrity sha512-sN7Wt3pcuo2hoptJnrdjL3/9bUvpqUBBwPK4FOgdKM3ht6ogmRY9Yi2lBymyNLWaVxf8vfnqzPTdN76cmNRGCA==
   dependencies:
     lottie-web "^5.5.7"
+
+react@^16.12.0:
+  version "16.14.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
+  integrity sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.2"
 
 react@^17.0.1:
   version "17.0.1"

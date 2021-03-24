@@ -4,11 +4,18 @@
   display: flex;
   align-items: center;
   color: #434343;
+  padding: 10px;
 }
 
 .user-menu-link:hover {
   color: #292b2c;
   background-color: $light-orange;
+}
+
+.is-active {
+  color: $orange-background;
+  font-weight: 500;
+  pointer-events: none !important;
 }
 
 .user-menu-icon {

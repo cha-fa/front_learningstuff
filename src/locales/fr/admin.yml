@@ -26,3 +26,6 @@ add_categories: Ajouter des catégories
 validate_creation: Valider la création
 cancel_creation: Annuler la création
 create_learning_path: Créer un parcours
+title_learning_path: Parcours
+categories: Catégories
+create_category: Créer une catégorie 

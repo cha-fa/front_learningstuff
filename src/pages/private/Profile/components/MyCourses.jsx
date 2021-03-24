@@ -2,7 +2,6 @@ import useFetch from "hooks/useFetch";
 import CourseCard from "components/CourseCard/CourseCard";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import paymentFetch from "hooks/paymentFetch";
 import LearningPathCard from "components/LearningPathCard/LearningPathCard";
 
 const MyCourses = () => {

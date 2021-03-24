@@ -3,6 +3,7 @@ import useFetch from "hooks/useFetch";
 import { AiFillCheckCircle, AiOutlineEdit } from "react-icons/ai";
 import { useTranslation } from "react-i18next";
 import { Button, Form, Row, Col } from "react-bootstrap";
+import AddCategories from "./AddCategories";
 
 const LearninPathLine = ({ learningPath, handleEdit }) => {
   const { t } = useTranslation("admin");
@@ -49,13 +50,30 @@ const LearninPathLine = ({ learningPath, handleEdit }) => {
       <td>{learningPath.id}</td>
       <td>
         {(editing && (
-          <input
-            placeholder={title}
-            defaultValue={title}
-            onChange={() => setTitle(event.target.value)}
-          />
-        )) ||
-          title}{" "}
+          <>
+            <input
+              placeholder={title}
+              defaultValue={title}
+              onChange={() => setTitle(event.target.value)}
+            />
+            <Form.Group key={learningPath.id}>
+              <AddCategories 
+                learningPath={learningPath}
+              />
+            </Form.Group>
+          </>
+        )) || (
+          <>
+            {title}
+            <ul>
+              {(learningPath.categories && (
+                learningPath.categories.map((categoriy) =>(
+                  <li key={categoriy.id}><small>{categoriy.title}</small></li>
+              ))))}
+            </ul>
+          </>
+        )}
+        
       </td>
       <td>
         {(editing && (

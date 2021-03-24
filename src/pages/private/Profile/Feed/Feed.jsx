@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useFetch from "hooks/useFetch";
 import MyCourses from "../components/MyCourses";

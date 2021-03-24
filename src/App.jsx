@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCurrentUser } from "stores/authentication/authMiddleware";
 import * as authActions from "stores/authentication/authActions";
@@ -58,7 +58,7 @@ const App = () => {
           />
           <PublicRoute component={Courses} path="/courses" exact />
           <PublicRoute component={ShowCourse} path="/courses/:id" exact />
-          <PrivateRoute component={Profile} path="/profile" />
+          <PrivateRoute component={Profile} path="/profile" {...<Redirect to="/profile/mycourses" />} />
           <PrivateRoute component={Subscription} path="/subscription" exact />
           <AdminRoute component={Admin} path="/admin" />
           <PrivateRoute

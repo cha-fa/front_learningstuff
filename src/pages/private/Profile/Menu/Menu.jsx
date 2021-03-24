@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useTranslation} from "react-i18next";
 import { fetchToLogout } from "stores/authentication/authMiddleware";
@@ -23,27 +23,27 @@ const ProfileMenu = () => {
       <div className="card-body text-center">
         <Avatar />
         <ProfileDisplay />
-        <Link activeClassName="user-menu-link-active" className="user-menu-link" to="/profile/mycourses">
+        <NavLink to="/profile/mycourses" activeClassName="is-active" className="user-menu-link">
           <span>{t("profile:menucourses")}</span>
           <span className="user-menu-icon"><FaChevronRight /></span>
-        </Link>
-        <Link activeClassName="user-menu-link-active" className="user-menu-link" to="/profile/edit">
+        </NavLink>
+        <NavLink to="/profile/edit" activeClassName="is-active" className="user-menu-link">
           <span>{t("profile:menuedit")}</span>
           <span className="user-menu-icon"><FaChevronRight /></span>
-        </Link>
-        <Link activeClassName="user-menu-link-active" className="user-menu-link" to="/profile/avatar">
+        </NavLink>
+        <NavLink to="/profile/avatar" activeClassName="is-active" className="user-menu-link">
           <span>{t("profile:menuavatar")}</span>
           <span className="user-menu-icon"><FaChevronRight /></span>
-        </Link>
-        <Link activeClassName="user-menu-link-active" className="user-menu-link" to="/profile/editregistration">
+        </NavLink>
+        <NavLink to="/profile/editregistration" activeClassName="is-active" className="user-menu-link">
           <span>{t("profile:menueditregistration")}</span>
           <span className="user-menu-icon"><FaChevronRight /></span>
-        </Link>
-        <Link activeClassName="user-menu-link-active" className="user-menu-link" to="/profile/myinvoices">
+        </NavLink>
+        <NavLink to="/profile/myinvoices" activeClassName="is-active" className="user-menu-link">
           <span>{t("profile:menuinvoices")}</span>
           <span className="user-menu-icon"><FaChevronRight /></span>
-        </Link>
-        <Link activeClassName="user-menu-link-active" className="user-menu-link" onClick={logout}>
+        </NavLink>
+        <Link className="user-menu-link" onClick={logout}>
           <span>{t("navigation:linkLogout")}</span>
           <span className="user-menu-icon"><FaChevronRight /></span>
         </Link>

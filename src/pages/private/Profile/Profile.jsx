@@ -13,10 +13,6 @@ const Profile = () => {
   const history = useHistory();
 
   useEffect(() => {
-    history.push("/profile/mycourses");
-  }, []);
-
-  useEffect(() => {
     const token = Cookies.get("token");
     if(userUpdated){
       dispatch(fetchCurrentUser(token));

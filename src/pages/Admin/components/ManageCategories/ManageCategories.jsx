@@ -18,8 +18,6 @@ const ManageCategories = () => {
     return;
   }, []);
 
-  console.log(data);
-
 return (
   <div className="ManageCategories">
     {error && <h4>{error}</h4>}

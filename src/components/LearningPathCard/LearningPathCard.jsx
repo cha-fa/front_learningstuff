@@ -1,22 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory} from "react-router-dom";
 import "./LearningPathCard.scss";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
+import paymentFetch from "hooks/paymentFetch";
 
 const LearningPathCard = ({ learningPath, subscribed }) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { title, price_in_cents, id } = learningPath;
+  const { newPayment } = paymentFetch();
   const [displayCourses, setDisplayCourses] = useState(false);
   const toggleDisplay = () =>
     displayCourses ? setDisplayCourses(false) : setDisplayCourses(true);
-
-  const dataSubscription = {
-    learning_path_id: id,
-  };
+  const history = useHistory();
 
   const handleSubscription = (e) => {
     e.preventDefault();
+    if (currentUser){
+      newPayment(price_in_cents, id);
+    } else {
+      history.push("/login");
+    }
   };
 
   return (

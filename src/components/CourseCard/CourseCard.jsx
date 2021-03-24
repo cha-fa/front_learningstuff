@@ -1,20 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./CourseCard.scss";
 import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
 import useFetch from "hooks/useFetch";
 import paymentFetch from "hooks/paymentFetch";
-import { useDispatch } from "react-redux";
 
 const CourseCard = ({ course, subscribed }) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { title, price_in_cents, id } = course;
   const { post, error } = useFetch();
   const { newPayment } = paymentFetch();
+  const history = useHistory();
 
   const handleSubscription = (e) => {
     e.preventDefault();
-    newPayment(price_in_cents, id);
+    if (currentUser){
+      newPayment(price_in_cents, id);
+    } else {
+      history.push("/login");
+    }
   };
 
   return (

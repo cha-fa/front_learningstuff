@@ -12,7 +12,7 @@ const CategorieLearningPath = ({handleCategoryFilter}) => {
   const handleCheckbox = (e) =>{
     if (e.target.checked){
       setCategoryList([...categoryList, e.target.value]);
-       handleCategoryFilter([...categoryList, e.target.value]);
+      handleCategoryFilter([...categoryList, e.target.value]);
     } else {
       setCategoryList(categoryList.filter((category) => category !== e.target.value));
       handleCategoryFilter(categoryList.filter((category) => category !== e.target.value));

@@ -33,7 +33,7 @@
   justify-content: flex-end;
 }
 
-.user-profil {
+.user-avatar-navbar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -41,4 +41,8 @@
 
 span {
   z-index: +1;
+}
+
+.mr-5 {
+  margin-right: 80px !important;
 }

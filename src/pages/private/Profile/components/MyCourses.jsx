@@ -47,10 +47,3 @@ const MyCourses = () => {
 };
 
 export default MyCourses;
-// .coursesList{
-//   margin-left: 10%;
-//   margin-right: 10%;
-//   display: flex;
-//   flex-direction: row;
-//   flex-wrap: wrap;
-// }

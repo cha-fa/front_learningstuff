@@ -1,11 +1,11 @@
 import "./ShowCourse.scss";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useFetch from "hooks/useFetch";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Chapters from "../Chapters/Chapter";
 import { Accordion, Container } from "react-bootstrap";
 
-const ShowCourse = ({ match }) => {
+const ShowCourse = () => {
   const { data, get } = useFetch();
 
   const { id } = useParams();

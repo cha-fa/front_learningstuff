@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Accordion, Card, useAccordionToggle } from "react-bootstrap";
+import { Accordion, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./Chapter.scss";
 

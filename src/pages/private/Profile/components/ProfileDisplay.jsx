@@ -22,11 +22,14 @@ const ProfileDisplay = () => {
             <p className="text-muted font-italic">{currentUser.description}</p>
           )}
 
+          {currentUser.role === "teacher" && currentUser.categories && currentUser.categories.map(category => (
+            <p key={category.id} className="text-muted font-italic">{category.title}</p>
+          ))}
+
           {currentUser.job && <p>{currentUser.job}</p>}
         </>
-      )}
+      )};
     </div>
-  );
-};
+  );};
 
 export default ProfileDisplay;

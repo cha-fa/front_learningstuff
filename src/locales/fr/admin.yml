@@ -3,6 +3,7 @@ pending_for_review: Utilisateurs en attente d'approbation
 manage_approvals: Gérer les approbations
 manage_users: Gérer les utilisateurs
 manage_learning_paths: Gérer les parcours
+manage_courses: Gérer les cours
 first_name: Prénom
 last_name: Nom
 email: Email
@@ -25,3 +26,17 @@ add_categories: Ajouter des catégories
 validate_creation: Valider la création
 cancel_creation: Annuler la création
 create_learning_path: Créer un parcours
+in_learning_paths: Dans les parcours
+delete: Supprimer
+import_course: Importer un cours
+all_courses: Tous les cours
+structure_course_repository: La structure du repository d'un cours doit être la suivante.
+file_format_txt_except_quizz_json: Tous les fichiers doivent être au format .txt, excepté le fichier lesson_quizz qui doit être au format json.
+url_to_enter: L'URL à renseigner doit être au format"
+url_format: "https://github.com/{username}/{repo_name}"
+url_example: "https://github.com/cha-fa/course_content_example"
+example_to_see: Vous pouvez consulter un exemple d'un cours au format github
+by_clicking_here: en cliquant ici
+how_to_import: Comment importer un cours
+url_github: URL du repository github
+course_imported: Le cours a été importé

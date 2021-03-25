@@ -28,7 +28,7 @@ const ProfileDisplay = () => {
 
           {currentUser.job && <p>{currentUser.job}</p>}
         </>
-      )};
+      )}
     </div>
   );};
 

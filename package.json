@@ -17,6 +17,7 @@
     "i18next-browser-languagedetector": "^6.0.1",
     "i18next-http-backend": "^1.1.1",
     "js-cookie": "^2.2.1",
+    "moment": "^2.29.1",
     "node-sass": "4.14.1",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.2",
@@ -33,13 +34,15 @@
     "react-useanimations": "^2.0.6",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
+    "serve": "^11.3.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts --max_old_space_size=4096 start",
+    "start": "serve -s build",
     "build": "react-scripts --max_old_space_size=4096 build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "react-scripts start"
   },
   "eslintConfig": {
     "extends": [

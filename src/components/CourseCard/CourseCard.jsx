@@ -72,7 +72,14 @@ const CourseCard = ({ course, subscribed, noSubscription }) => {
         {subscribed && (
           <>
             <h5>
-              <Badge pill className="m-2" variant="info" key={course.id}>
+              <Badge
+                pill
+                className="m-2"
+                variant={
+                  getProgress(course).progression === 100 ? "success" : "info"
+                }
+                key={course.id}
+              >
                 {t("your_progress")} : {getProgress(course).progression || 0} %
               </Badge>
             </h5>

@@ -17,7 +17,7 @@ const CourseCard = ({ course, subscribed, currentLesson }) => {
   };
 
   return (
-    <Link to={`/courses/${course.id}`}>
+    <Link to={`/courses/${course.courses[0].id}`}>
       <div className="CourseCard">
         <div className="header">
           {(!subscribed && (

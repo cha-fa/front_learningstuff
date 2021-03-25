@@ -16,6 +16,7 @@ const MyCourses = () => {
   useEffect(() => {
     if (currentUser) get(`/users/${currentUser.id}/subscriptions`);
   }, [currentUser]);
+
   return (
     <div className="MyCourses d-flex flex-wrap">
       {(data &&
@@ -26,8 +27,9 @@ const MyCourses = () => {
               subscription.learning_path.is_single_course && (
                 <CourseCard
                   key={subscription.id}
-                  course={subscription.learning_path.courses[0]}
+                  course={subscription.learning_path}
                   subscribed={true}
+                  currentLesson={subscription.current_lesson}
                 />
               )) || (
               <LearningPathCard

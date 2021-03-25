@@ -5,6 +5,7 @@ import "./Courses.scss";
 import Searchbar from "components/Searchbar/Searchbar";
 import CategorieLearningPath from "pages/public/LearningPaths/CategoryLearningPath/CategoryLearningPath";
 import { useTranslation } from "react-i18next";
+
 const Courses = () => {
   const { data, error, get } = useFetch();
   const [input, setInput] = useState("");
@@ -27,7 +28,7 @@ const Courses = () => {
     });
 
   useEffect(() => {
-    get("/learning_paths");
+    get("/learning_paths?single=true");
   }, []);
 
   const handleCategoryFilter = (list) => {

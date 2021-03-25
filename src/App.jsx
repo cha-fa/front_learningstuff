@@ -20,7 +20,7 @@ import Admin from "pages/Admin/Admin";
 import PageNotFound from "components/PageNotFound";
 import LearningPaths from "pages/public/LearningPaths/LearningPaths";
 import Courses from "pages/public/Courses/Courses";
-import ShowLearningPath from "pages/public/LearningPaths/ShowLearningPath/ShowLearningPath";
+import LearningPathShow from "pages/public/LearningPaths/LearningPathShow";
 import ShowCourse from "pages/public/Courses/ShowCourse/ShowCourse";
 import Subscription from "pages/private/Subscription/Subscription";
 
@@ -52,13 +52,16 @@ const App = () => {
           <PublicRoute restricted component={Register} path="/register" exact />
           <PublicRoute component={LearningPaths} path="/learning_paths" exact />
           <PublicRoute
-            component={ShowLearningPath}
-            path="/learning_paths/:id"
-            exact
+            component={LearningPathShow}
+            path="/learning_paths/:pathSlug"
           />
           <PublicRoute component={Courses} path="/courses" exact />
           <PublicRoute component={ShowCourse} path="/courses/:id" exact />
-          <PrivateRoute component={Profile} path="/profile" {...<Redirect to="/profile/mycourses" />} />
+          <PrivateRoute
+            component={Profile}
+            path="/profile"
+            {...(<Redirect to="/profile/mycourses" />)}
+          />
           <PrivateRoute component={Subscription} path="/subscription" exact />
           <AdminRoute component={Admin} path="/admin" />
           <PrivateRoute

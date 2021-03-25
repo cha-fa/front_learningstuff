@@ -1,8 +1,12 @@
-.LearningPaths{
-  .learningPaths{
-    margin-left: 20%;
-    margin-right: 20%;
+@import "style/variables.scss";
+
+.LearningPaths {
+  &__header {
     display: flex;
     flex-direction: column;
+    text-align: center;
+    background-color: $primary-old;
+    padding: 20px 0 20px;
+    color: white;
   }
 }

@@ -32,7 +32,7 @@ const AddCategories = ({ learningPath }) => {
     <>
       {(data) && (
         data.map((category) =>
-          { isChecked(category.id) && (
+          (
             <FormCheck
               key={category.id}
               type="checkbox"
@@ -40,8 +40,8 @@ const AddCategories = ({ learningPath }) => {
               checked={checked}
               onChange={() => handleChecked}
             />
-          )}))}
-      
+          ))
+      )}
     </>
   );
 };

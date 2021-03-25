@@ -10,7 +10,6 @@ const Home = () => {
   const { t } = useTranslation(["common", "translation", "lesson"]);
   const currentUser = useSelector((state) => state.auth.currentUser);
 
-  console.log("currentu ser", currentUser);
   return (
     <div className="Home">
       <JumbotronDisplay />

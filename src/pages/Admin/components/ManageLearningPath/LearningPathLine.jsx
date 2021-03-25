@@ -56,11 +56,9 @@ const LearninPathLine = ({ learningPath, handleEdit }) => {
               defaultValue={title}
               onChange={() => setTitle(event.target.value)}
             />
-            <Form.Group key={learningPath.id}>
               <AddCategories 
                 learningPath={learningPath}
               />
-            </Form.Group>
           </>
         )) || (
           <>

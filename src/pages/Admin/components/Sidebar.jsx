@@ -13,6 +13,7 @@ const Sidebar = () => {
       <NavLink to="/admin/approvals">{t("manage_approvals")}</NavLink>
       <NavLink to="/admin/users">{t("manage_users")}</NavLink>
       <NavLink to="/admin/categories">{t("manage_categories")}</NavLink>
+      <NavLink to="/admin/learning_paths">{t("manage_learning_paths")}</NavLink>
       <Accordion>
         <Accordion.Toggle as={Button} variant="link" eventKey="0">
           {t("manage_courses")} <GoTriangleRight />
@@ -20,16 +21,16 @@ const Sidebar = () => {
         <Accordion.Collapse eventKey="0">
           <>
             <NavLink className="ml-5" to="/admin/courses">
-              - {t("all_courses")}
+              <small>- {t("all_courses")}</small>
             </NavLink>
             <br />
             <NavLink className="ml-5" to="/admin/import">
-              - {t("import_course")}
+              <small>- {t("import_course")}</small>
             </NavLink>
           </>
         </Accordion.Collapse>
       </Accordion>
-      <NavLink to="/admin/learning_paths">{t("manage_learning_paths")}</NavLink>
+      
     </Nav>
   );
 };

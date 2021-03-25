@@ -22,7 +22,9 @@ return (
           <DropdownMultiselect
             handleOnChange={(e) => updateTeacherSkills(e)}
             options={optionSkills}
-            selected={previousSkills}
+            selected={previousSkills || "Rien de selectionné"}
+            placeholder={t("profile:nothingSelected")}
+            selectDeselectLabel={t("profile:Select/DeselectAll")}
             name="skills"
           />
         </FormGroup>

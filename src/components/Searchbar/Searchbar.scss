@@ -1,3 +1,6 @@
-.Searchbar{
-  max-width: 100px;
+.Searchbar {
+  &__input {
+    border-radius: 30px;
+    padding: 30px;
+  }
 }

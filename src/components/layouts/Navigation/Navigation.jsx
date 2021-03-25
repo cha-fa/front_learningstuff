@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchToLogout } from "stores/authentication/authMiddleware";
@@ -7,11 +9,12 @@ import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
 import { AiOutlineShoppingCart, AiFillBell } from "react-icons/ai";
 import noavatar from "assets/noavatar.jpg";
 import { useTranslation } from "react-i18next";
+import useFetch from "hooks/useFetch";
 
 const Navigation = () => {
   const token = useSelector((state) => state.auth.token);
   const currentUser = useSelector((state) => state.auth.currentUser);
-
+  const { data, error, get } = useFetch();
   const { t } = useTranslation();
 
   const dispatch = useDispatch();
@@ -21,6 +24,11 @@ const Navigation = () => {
     dispatch(fetchToLogout(token));
     history.push("/");
   };
+
+  useEffect(() => {
+    get("/learning_paths?single=false");
+  }, []);
+
   return (
     <Navbar className="Navigation" expand="lg">
       <Navbar.Brand>
@@ -36,11 +44,28 @@ const Navigation = () => {
               {t("navigation:linkHome")}
             </NavLink>
           </Nav.Link>
-          <Nav.Link>
-            <NavLink className="nav-link " to="/learning_paths">
-              {t("navigation:linkLearningPath")}
-            </NavLink>
-          </Nav.Link>
+
+          <NavDropdown
+            title={t("navigation:linkLearningPath")}
+            id="path-nav-dropdown"
+            className="nav-link"
+          >
+            {data &&
+              data.map((path) => (
+                <Link
+                  key={path.id}
+                  className="nav-link "
+                  to={`/learning_paths/${path.slug}`}
+                >
+                  {path.title}
+                </Link>
+              ))}
+            <NavDropdown.Divider />
+            <Link className="nav-link " to="/learning_paths">
+              {t("navigation:linkAllLearningPath")}
+            </Link>
+          </NavDropdown>
+
           <Nav.Link>
             <NavLink className="nav-link" to="/courses">
               {t("navigation:linkCourse")}

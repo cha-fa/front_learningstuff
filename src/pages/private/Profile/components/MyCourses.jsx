@@ -6,10 +6,12 @@ import { useSelector } from "react-redux";
 import LearningPathCard from "components/LearningPathCard/LearningPathCard";
 import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
 import { useTranslation } from "react-i18next";
+import { Col } from "react-bootstrap";
+import Loading from "components/Loading";
 
 const MyCourses = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
-  const { data, get } = useFetch();
+  const { data, get, isLoading } = useFetch();
   const { t } = useTranslation();
   const history = useHistory();
 
@@ -20,7 +22,8 @@ const MyCourses = () => {
   }, [currentUser]);
 
   return (
-    <div className="MyCourses d-flex flex-wrap">
+    <Col className="MyCourses d-flex justify-content-center">
+      {isLoading && <Loading />}
       {(data &&
         data.length > 0 &&
         data.map(
@@ -31,27 +34,27 @@ const MyCourses = () => {
                   key={subscription.id}
                   course={subscription.learning_path.courses[0]}
                   subscribed={true}
-                  currentLesson={subscription.current_lesson}
+                  className="w-100"
                 />
               )) || (
               <LearningPathCard
                 key={subscription.learning_path.id}
                 learningPath={subscription.learning_path}
                 subscribed={true}
-                currentLesson={subscription.current_lesson}
               />
             )
-        )) || (
-        <>
-          <h3>{t("no_subscriptions")}</h3>
-          <ButtonPrimary
-            sizeClass="lg large"
-            label={t("choose_a_course")}
-            handleClick={() => history.push("/learning_paths")}
-          />
-        </>
-      )}
-    </div>
+        )) ||
+        (!isLoading && (
+          <>
+            <h3>{t("no_subscriptions")}</h3>
+            <ButtonPrimary
+              sizeClass="lg large"
+              label={t("choose_a_course")}
+              handleClick={() => history.push("/learning_paths")}
+            />
+          </>
+        ))}
+    </Col>
   );
 };
 

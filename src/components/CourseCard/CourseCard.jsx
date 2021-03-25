@@ -17,7 +17,7 @@ const CourseCard = ({ course, subscribed, currentLesson }) => {
   };
 
   return (
-    <Link to={`/courses/${course.courses[0].id}`}>
+    <Link to={`/courses/${course.id}`}>
       <div className="CourseCard">
         <div className="header">
           {(!subscribed && (
@@ -32,11 +32,11 @@ const CourseCard = ({ course, subscribed, currentLesson }) => {
             <>
               {currentLesson && (
                 <Link
-                  to={`/courses/${course.courses[0].id}/chapters/${currentLesson.chapter_id}/lessons/${currentLesson.id}`}
+                  to={`/courses/${course.id}/chapters/${currentLesson.chapter_id}/lessons/${currentLesson.id}`}
                 >
                   {t("course:continue")}{" "}
                   {(currentUser &&
-                    course.courses[0].progress_states.find(
+                    course.progress_states.find(
                       (e) => e.user_id === currentUser.id
                     ).progression) ||
                     0}

@@ -17,6 +17,8 @@ const MyCourses = () => {
     if (currentUser) get(`/users/${currentUser.id}/subscriptions`);
   }, [currentUser]);
 
+  console.log(data);
+
   return (
     <div className="MyCourses d-flex flex-wrap">
       {(data &&
@@ -27,7 +29,7 @@ const MyCourses = () => {
               subscription.learning_path.is_single_course && (
                 <CourseCard
                   key={subscription.id}
-                  course={subscription.learning_path}
+                  course={subscription.learning_path.courses[0]}
                   subscribed={true}
                   currentLesson={subscription.current_lesson}
                 />

@@ -14,7 +14,9 @@ const MyCourses = () => {
   const history = useHistory();
 
   useEffect(() => {
-    if (currentUser) get(`/users/${currentUser.id}/subscriptions`);
+    if (currentUser) {
+      get(`/users/${currentUser.id}/subscriptions`);
+    }
   }, [currentUser]);
 
   return (

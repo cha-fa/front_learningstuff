@@ -1,7 +1,4 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { displayError } from "stores/flashmessages/flashMiddleware";
 import { useTranslation } from "react-i18next";
 import useFetch from "hooks/useFetch";
 import CourseCard from "components/CourseCard/CourseCard";
@@ -10,16 +7,8 @@ import Searchbar from "components/Searchbar/Searchbar";
 import CategorieLearningPath from "pages/public/LearningPaths/CategoryLearningPath/CategoryLearningPath";
 
 const Courses = () => {
-  const { search } = useLocation();
-  const dispatch = useDispatch();
+
   const { t } = useTranslation();
-
-  useEffect(() => {
-    if (search === "?payment_canceled") {
-      dispatch(displayError(t("payment:cancel")));
-    }
-  }, [search]);
-
   const { data, error, get } = useFetch();
   const [input, setInput] = useState("");
   const singleCourse = data

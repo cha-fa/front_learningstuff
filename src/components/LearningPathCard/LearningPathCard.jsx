@@ -1,7 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "./LearningPathCard.scss";
-import { useSelector } from "react-redux";
 import { Card, ListGroup, ListGroupItem, Badge } from "react-bootstrap";
 import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
 import { useTranslation } from "react-i18next";

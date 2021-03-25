@@ -50,7 +50,17 @@ const LearningPathCard = ({ learningPath, subscribed }) => {
         <ul className="courses">
           {learningPath.courses.map((course) => (
             <Link key={course.id} to={`/courses/${course.id}`}>
-              <li className="courseLine">{course.title}</li>
+              <li className="d-flex justify-content-between courseLine">
+                {course.title}
+                {subscribed && (
+                  <span className="text-right ml-">
+                    {course.progress_states.find(
+                      (e) => e.user_id === currentUser.id
+                    ).progression || 0}
+                    %
+                  </span>
+                )}
+              </li>
             </Link>
           ))}
         </ul>

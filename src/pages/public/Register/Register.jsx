@@ -5,12 +5,15 @@ import { Link, useHistory } from "react-router-dom";
 import { fetchToRegister } from "stores/authentication/authMiddleware";
 import { useTranslation } from "react-i18next";
 import loginregisterside from "assets/loginregisterside.jpg";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import FormGroup from "react-bootstrap/FormGroup";
-import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
+import {
+  Row,
+  Col,
+  Form,
+  FormGroup,
+  FormControl,
+  Button,
+  Container,
+} from "react-bootstrap";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -18,7 +21,7 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [role, setRole] = useState("student");
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -39,83 +42,101 @@ const Register = () => {
   };
 
   return (
-    <Row>
-      <Col className="register">
-        <h2>
-          {t("register:title")}
-        </h2>
-        <Form onSubmit={register}>
-          <FormGroup>
-            <FormControl
-              type="text"
-              placeholder={t("register:placeholderfirstname")}
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              required
-            />
-          </FormGroup>
-          <FormGroup>
-            <FormControl
-              type="text"
-              placeholder={t("register:placeholderlastname")}
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              required
-            />
-          </FormGroup>
-          <FormGroup>
-            <FormControl
-              type="email"
-              placeholder={t("register:placeholderemail")}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </FormGroup>
-          <FormGroup>
-            <FormControl
-              type="password"
-              placeholder={t("register:placeholderpassword")}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </FormGroup>
-          <FormGroup controlId="selectrole">
-            <FormControl as="select" custom
-              value={role}
-              name={t("register:role")}
-              onChange={(e) => setRole(e.target.value)}
+    <>
+      <Container fluid className="Register mt-5 mb-5">
+        <Row className="d-flex justify-content-center">
+          <Col
+            xs={12}
+            md={5}
+            className="Login__col d-flex flex-column justify-content-center align-items-center"
+          >
+            <h2>{t("register:title")}</h2>
+            <Form
+              className="m-5 d-flex flex-column justify-content-around"
+              onSubmit={register}
             >
-              <option value="student">
-                {t("register:optionstudent")}
-              </option>
-              <option value="teacher">
-                {t("register:optionteacher")}
-              </option>
-              <option value="admin">
-                {t("register:optionadmin")}
-              </option>
-            </FormControl>
-          </FormGroup>
-          <p>{t("register:accountquestion")}
-            <Link to="/login">
-              <span> {t("register:loginnow")}</span>
-            </Link>
-          </p>
-          <Button type="submit" className="ButtonPrimary" size="lg" block>{t("register:labelbutton")}</Button>
-        </Form>
-      </Col>
-      <Col>
-        <img className="sideimage" 
-          src={loginregisterside} 
-          alt="login or register, working on a computer"
-          width={700} 
-          height={600} 
-          mode='fit'
-        />
-      </Col>
-    </Row>
+              <FormGroup>
+                <FormControl
+                  className="p-4 mb-3"
+                  type="text"
+                  placeholder={t("register:placeholderfirstname")}
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  required
+                />
+              </FormGroup>
+              <FormGroup>
+                <FormControl
+                  className="p-4 mb-3"
+                  type="text"
+                  placeholder={t("register:placeholderlastname")}
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  required
+                />
+              </FormGroup>
+              <FormGroup>
+                <FormControl
+                  className="p-4 mb-3"
+                  type="email"
+                  placeholder={t("register:placeholderemail")}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </FormGroup>
+              <FormGroup>
+                <FormControl
+                  className="p-4 mb-3"
+                  type="password"
+                  placeholder={t("register:placeholderpassword")}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </FormGroup>
+              <FormGroup controlId="selectrole">
+                <FormControl
+                  as="select"
+                  custom
+                  value={role}
+                  name={t("register:role")}
+                  onChange={(e) => setRole(e.target.value)}
+                >
+                  <option value="student">{t("register:optionstudent")}</option>
+                  <option value="teacher">{t("register:optionteacher")}</option>
+                  <option value="admin">{t("register:optionadmin")}</option>
+                </FormControl>
+              </FormGroup>
+              <p className="mb-4">
+                {t("register:accountquestion")}
+                <Link to="/login">
+                  <span> {t("register:loginnow")}</span>
+                </Link>
+              </p>
+              <Button
+                type="submit"
+                className="ButtonPrimary w-75"
+                size="lg"
+                block
+              >
+                {t("register:labelbutton")}
+              </Button>
+            </Form>
+          </Col>
+          <Col className="Login__col" xs={12} md={4}>
+            <img
+              className="sideimage"
+              src={loginregisterside}
+              alt="login or register, working on a computer"
+              width={700}
+              height={600}
+              mode="fit"
+            />
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 

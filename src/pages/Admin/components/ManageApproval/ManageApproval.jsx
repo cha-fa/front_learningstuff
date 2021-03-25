@@ -15,6 +15,7 @@ const ManageApproval = () => {
 
   useEffect(() => {
     get("/admin/users?is_reviewed=false");
+    return;
   }, [reviewedUser]);
 
   return (

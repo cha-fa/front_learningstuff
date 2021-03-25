@@ -2,21 +2,20 @@ import { Link } from "react-router-dom";
 import "./CourseCard.scss";
 import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
-import useFetch from "hooks/useFetch";
 import paymentFetch from "hooks/paymentFetch";
-import { useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const CourseCard = ({ course, subscribed, currentLesson }) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { title, price_in_cents, id } = course;
-  const { post, error } = useFetch();
   const { newPayment } = paymentFetch();
+  const { t } = useTranslation();
 
   const handleSubscription = (e) => {
     e.preventDefault();
     newPayment(price_in_cents, id);
   };
-  console.log(currentLesson);
+
   return (
     <Link to={`/courses/${course.courses[0].id}`}>
       <div className="CourseCard">
@@ -35,6 +34,7 @@ const CourseCard = ({ course, subscribed, currentLesson }) => {
                 <Link
                   to={`/courses/${course.courses[0].id}/chapters/${currentLesson.chapter_id}/lessons/${currentLesson.id}`}
                 >
+                  {t("course:continue")}{" "}
                   {(currentUser &&
                     course.courses[0].progress_states.find(
                       (e) => e.user_id === currentUser.id
@@ -48,7 +48,6 @@ const CourseCard = ({ course, subscribed, currentLesson }) => {
         </div>
         <div className="bottomCard">
           <p>{title}</p>
-          {error && <h2 style={{ color: "black" }}>{error}</h2>}
         </div>
       </div>
     </Link>

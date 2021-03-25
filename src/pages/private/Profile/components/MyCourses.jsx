@@ -19,7 +19,6 @@ const MyCourses = () => {
   useEffect(() => {
     if (currentUser) get(`/users/${currentUser.id}/subscriptions`);
   }, [currentUser]);
-  console.log("sub", data);
   return (
     <div className="MyCourses d-flex flex-wrap">
       {data &&

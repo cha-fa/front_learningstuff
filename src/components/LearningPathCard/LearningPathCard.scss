@@ -1,12 +1,6 @@
 @import "style/variables.scss";
 
 .LearningPathsCard {
-  a {
-    color: white;
-    &:hover {
-      background: black;
-    }
-  }
   cursor: pointer;
   border-radius: 10px;
   min-width: 400px;

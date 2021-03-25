@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import  { useHistory } from "react-router-dom";
+import { displaySuccess } from "stores/flashmessages/flashMiddleware";
+import  { useHistory, useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { fetchCurrentUser } from "stores/authentication/authMiddleware";
 import Cookies from "js-cookie";
 import { Container, Row, Col } from "react-bootstrap";
@@ -20,6 +22,15 @@ const Profile = () => {
     setUserUpdated(false);
     history.push("/profile/mycourses");
   }, [userUpdated]);
+
+  const { search } = useLocation();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    if (search === "?payment_successful") {
+      dispatch(displaySuccess(t("payment:success")));
+    }
+  }, [search]);
 
   return (
     <Container className="Profile">

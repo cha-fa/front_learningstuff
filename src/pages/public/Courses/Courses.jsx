@@ -1,21 +1,21 @@
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import useFetch from "hooks/useFetch";
-import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CourseCard from "components/CourseCard/CourseCard";
 import "./Courses.scss";
-import Searchbar from "components/Searchbar/Searchbar";
-import CategorieLearningPath from "pages/public/LearningPaths/CategoryLearningPath/CategoryLearningPath";
-import { useTranslation } from "react-i18next";
 import Loading from "components/Loading";
 import { IoMdSchool } from "react-icons/io";
 import { Row } from "react-bootstrap";
 import ButtonSecondary from "components/ButtonSecondary/ButtonSecondary";
+import Searchbar from "components/Searchbar/Searchbar";
+import CategorieLearningPath from "pages/public/LearningPaths/CategoryLearningPath/CategoryLearningPath";
 
 const Courses = () => {
   const { data, error, get, isLoading } = useFetch();
+  const { t } = useTranslation();
   const [input, setInput] = useState("");
   const [categoryList, setCategoryList] = useState([]);
-  const { t } = useTranslation();
   const history = useHistory();
 
   const handleClick = () => {

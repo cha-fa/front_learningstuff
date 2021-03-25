@@ -70,7 +70,10 @@ const ChapterProgressBar = ({ currentLesson, handleClose }) => {
         {currentLesson.next_lesson &&
           user &&
           user.read_lessons.some(
-            (read_lesson) => read_lesson.id === currentLesson.next_lesson.id
+            (read_lesson) =>
+              currentLesson.next_lesson &&
+              (read_lesson.id === currentLesson.next_lesson.id ||
+                read_lesson.next_lesson.id === currentLesson.next_lesson.id)
           ) && (
             <>
               <Link

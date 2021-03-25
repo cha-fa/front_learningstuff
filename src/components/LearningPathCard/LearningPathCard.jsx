@@ -5,6 +5,7 @@ import { Card, ListGroup, ListGroupItem, Badge } from "react-bootstrap";
 import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
 import { useTranslation } from "react-i18next";
 import defaultcover from "assets/covers/defaultcover.svg";
+import { useSelector } from "react-redux";
 
 const LearningPathCard = ({ learningPath, subscribed }) => {
   const {
@@ -16,6 +17,7 @@ const LearningPathCard = ({ learningPath, subscribed }) => {
     categories,
     slug,
   } = learningPath;
+  const currentUser = useSelector((state) => state.auth.currentUser);
 
   const history = useHistory();
   const { t } = useTranslation();
@@ -53,7 +55,17 @@ const LearningPathCard = ({ learningPath, subscribed }) => {
         <ListGroup className="list-group-flush">
           <p>{t("includes_courses")} :</p>
           {courses.map((course) => (
-            <ListGroupItem key={course.id}>{course.title}</ListGroupItem>
+            <ListGroupItem key={course.id}>
+              {course.title}
+              {subscribed && (
+                <span className="text-right ml-">
+                  {course.progress_states.find(
+                    (progress) => progress.user_id === currentUser.id
+                  ).progression || 0}
+                  %
+                </span>
+              )}
+            </ListGroupItem>
           ))}
         </ListGroup>
         <div className="d-flex justify-content-center w-100 mt-auto">
@@ -66,11 +78,12 @@ const LearningPathCard = ({ learningPath, subscribed }) => {
         </div>
       </Card.Body>
       <Card.Footer className="LearningPathCard__categories text-muted">
-        {categories.map((category) => (
-          <Badge pill className="mx-2" variant="secondary" key={category.id}>
-            {category.title}
-          </Badge>
-        ))}
+        {categories &&
+          categories.map((category) => (
+            <Badge pill className="mx-2" variant="secondary" key={category.id}>
+              {category.title}
+            </Badge>
+          ))}
       </Card.Footer>
     </Card>
   );

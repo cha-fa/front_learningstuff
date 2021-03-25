@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import "./CourseCard.scss";
 import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
-import useFetch from "hooks/useFetch";
 import paymentFetch from "hooks/paymentFetch";
 import { useDispatch } from "react-redux";
 import { Card, ListGroup, ListGroupItem, Badge } from "react-bootstrap";
@@ -12,11 +11,10 @@ import { useTranslation } from "react-i18next";
 import defaultcover from "assets/covers/defaultcover.svg";
 import { displayWarning } from "stores/flashmessages/flashMiddleware";
 
-const CourseCard = ({ course, subscribed, noSubscription }) => {
+const CourseCard = ({ course, subscribed, noSubscription, currentLesson }) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const isLogged = useSelector((state) => state.auth.isLogged);
   const { title, price_in_cents, id, slug, description, categories } = course;
-  const { post, error } = useFetch();
   const { newPayment } = paymentFetch();
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -45,11 +43,25 @@ const CourseCard = ({ course, subscribed, noSubscription }) => {
 
   return (
     <Card className="CourseCard m-3 ">
-      {!noSubscription && (
+      {(!noSubscription && !currentLesson && (
         <Card.Header className="LearningPathCard__header">
           {price_in_cents && price_in_cents / 100} €
         </Card.Header>
-      )}
+      )) ||
+        (currentLesson && (
+          <>
+            <Link
+              to={`/courses/${course.id}/chapters/${currentLesson.chapter_id}/lessons/${currentLesson.id}`}
+            >
+              {t("course:continue")}{" "}
+              {(currentUser &&
+                course.progress_states.find((e) => e.user_id === currentUser.id)
+                  .progression) ||
+                0}
+              %
+            </Link>
+          </>
+        ))}
       <Card.Img
         variant="top"
         src={getImage(slug) ? getImage(slug) : defaultcover}
@@ -60,7 +72,7 @@ const CourseCard = ({ course, subscribed, noSubscription }) => {
       <Card.Body className="d-flex flex-column">
         <Card.Text>{description}</Card.Text>
 
-        {!noSubscription && (
+        {!noSubscription && !currentLesson && (
           <div className="d-flex justify-content-center w-100 mt-auto">
             <ButtonPrimary
               className="ButtonPrimary"

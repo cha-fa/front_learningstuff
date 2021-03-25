@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 const ApprovalLine = ({ user, getReviewedUser }) => {
   const { patch } = useFetch();
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("student");
   const { t } = useTranslation("admin");
 
   const editUser = (id, approved) => {

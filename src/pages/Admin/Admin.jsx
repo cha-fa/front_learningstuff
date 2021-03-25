@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import ManageApproval from "./components/ManageApproval/ManageApproval";
 import ManageUsers from "./components/ManageUsers/ManageUsers";
 import ManageLearningPath from "./components/ManageLearningPath/ManageLearningPath";
+import ManageCategories from "./components/ManageCategories/ManageCategories";
 import ManageCourses from "./components/ManageCourses/ManageCourses";
 import ImportCourse from "./components/ManageCourses/ImportCourse";
 
@@ -37,6 +38,11 @@ const Admin = () => {
                 currentUser={currentUser}
                 component={ManageUsers}
                 path="/admin/users"
+              />
+              <AdminRoute
+                currentUser={currentUser}
+                component={ManageCategories}
+                path="/admin/categories"
               />
               <AdminRoute
                 currentUser={currentUser}

@@ -12,6 +12,10 @@
   color: $secondary;
   font-family: $font-family;
   font-size: 18px;
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
   .header {
     align-self: flex-end;
     background-image: $primary-alt;
@@ -50,5 +54,12 @@
     background-color: beige;
     color: black;
     list-style: none;
+  }
+
+  .btn-primary:hover {
+    border: none !important;
+    color: #fff;
+    background-color: #fff;
+    border-color: #fff;
   }
 }

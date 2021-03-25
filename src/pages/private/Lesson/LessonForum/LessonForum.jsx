@@ -4,25 +4,26 @@ import NewComment from "./NewComment";
 import useFetch from "hooks/useFetch";
 
 const LessonForum = ({ ids }) => {
-  const [newComment, setNewComment] = useState();
   const { data, get } = useFetch();
 
-  const handleNewComment = (newComment) => {
-    setNewComment(newComment);
+  const handleNewComment = () => {
+    get(
+      `/courses/${ids.course}/chapters/${ids.chapter}/lessons/${ids.lesson}/comments`
+    );
   };
 
   useEffect(() => {
     get(
       `/courses/${ids.course}/chapters/${ids.chapter}/lessons/${ids.lesson}/comments`
     );
-  }, [newComment]);
+  }, []);
 
   return (
     <div className="LessonForum">
       <NewComment ids={ids} handleNewComment={handleNewComment} />
       <ul>
         {data &&
-          data.map((comment) => <Comment key={comment.id} comment={comment} />)}
+          data.map((comment) => <Comment handleNewComment={handleNewComment} ids={ids} key={comment.id} comment={comment} />)}
       </ul>
     </div>
   );

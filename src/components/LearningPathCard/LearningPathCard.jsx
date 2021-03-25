@@ -3,11 +3,15 @@ import "./LearningPathCard.scss";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import Button from "react-bootstrap/Button";
+import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
+import { useTranslation } from "react-i18next";
 
 const LearningPathCard = ({ learningPath, subscribed }) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { title, price_in_cents, id } = learningPath;
   const [displayCourses, setDisplayCourses] = useState(false);
+
+  const { t } = useTranslation();
   const toggleDisplay = () =>
     displayCourses ? setDisplayCourses(false) : setDisplayCourses(true);
 
@@ -26,14 +30,14 @@ const LearningPathCard = ({ learningPath, subscribed }) => {
         className="LearningPathsCard"
         style={{ backgroundImage: "url('https://source.unsplash.com/random')" }}
       >
-        <div className="header">
+        <div className="header p-2">
           {!subscribed && (
             <Button
               onClick={handleSubscription}
-              className="ButtonPrimary"
+              className="ButtonPrimary LearningPathsCard__subscribe"
               size="sm"
             >
-              {price_in_cents && price_in_cents / 100} € Subscribe Now!
+              {price_in_cents && price_in_cents / 100} € {t("subscribe")}
             </Button>
           )}
         </div>

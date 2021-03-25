@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Form, Button } from "react-bootstrap";
+import { Form} from "react-bootstrap";
 import { AiOutlineSend } from "react-icons/ai";
 import useFetch from "hooks/useFetch";
 
@@ -15,9 +15,10 @@ const NewComment = ({ ids, handleNewComment }) => {
       `/courses/${ids.course}/chapters/${ids.chapter}/lessons/${ids.lesson}/comments`,
       {
         content: comment,
-      }
+      },
+      handleNewComment
     );
-    handleNewComment(comment);
+    setComment("");
   };
 
   return (

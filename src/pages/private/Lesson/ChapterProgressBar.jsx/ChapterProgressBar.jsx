@@ -28,7 +28,7 @@ const ChapterProgressBar = ({ currentLesson, handleClose }) => {
       `/courses/${currentLesson.chapter.course_id}/chapters/${currentLesson.chapter.id}/lessons`
     );
   }, [currentLesson]);
-
+  console.log("a", user?.read_lesson);
   return (
     <Row className="ChapterProgressBar d-flex justify-content-around align-items-center mb-5 mt-2">
       <div className="ChapterProgressBar__Previous">
@@ -70,7 +70,10 @@ const ChapterProgressBar = ({ currentLesson, handleClose }) => {
         {currentLesson.next_lesson &&
           user &&
           user.read_lessons.some(
-            (read_lesson) => read_lesson.id === currentLesson.next_lesson.id
+            (read_lesson) =>
+              (currentLesson.next_lesson &&
+                read_lesson.id === currentLesson.next_lesson.id) ||
+              read_lesson.next_lesson.id === currentLesson.next_lesson.id
           ) && (
             <>
               <Link

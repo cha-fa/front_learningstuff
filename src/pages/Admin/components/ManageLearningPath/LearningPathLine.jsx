@@ -58,6 +58,7 @@ const LearninPathLine = ({ learningPath, handleEdit }) => {
             />
               <AddCategories 
                 learningPath={learningPath}
+                setEditing={setEditing}
               />
           </>
         )) || (
@@ -65,8 +66,8 @@ const LearninPathLine = ({ learningPath, handleEdit }) => {
             {title}
             <ul>
               {(learningPath.categories && (
-                learningPath.categories.map((categoriy) =>(
-                  <li key={categoriy.id}><small>{categoriy.title}</small></li>
+                learningPath.categories.map((category) =>(
+                  <li key={category.id}><small>{category.title}</small></li>
               ))))}
             </ul>
           </>

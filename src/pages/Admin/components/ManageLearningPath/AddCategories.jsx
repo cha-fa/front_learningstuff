@@ -1,42 +1,47 @@
+import React from "react";
 import { useEffect, useState } from "react";
-import FormCheck from "react-bootstrap/FormCheck";
 import Form from "react-bootstrap/Form";
 import useFetch from "hooks/useFetch";
+import Button from "react-bootstrap/Button";
+import CategoryCheckbox from "./CategoryCheckbox";
+import { useTranslation } from "react-i18next";
 
-const AddCategories = ({ learningPath }) => {
+const AddCategories = ({ learningPath, setEditing, handleCategoryEdit}) => {
   const { data, error, isLoading, patch, get } = useFetch();
-  const { checked, setChecked } = useState(false);
+  const [CategoryList, setCategoryList] = useState();
+  const { t } = useTranslation("admin");
 
-  const handleChecked =() => {
-    setChecked(true);
+  const handleCategories =() => {
+    patch(`/admin/learning_paths/${learningPath.id}`, {
+      added_category_id: CategoryList.join(),
+      learning_path: learningPath,
+    });
+    get("/admin/learning_paths");
+    setEditing(false);
   };
-
-  const previousCategories = learningPath.categories.map((category) => category.id);
 
   useEffect(()=> {
     get("/admin/categories");
     return;
   },[]);
-  
+
   return (
     <>
-      <Form.Group key={learningPath.id}>
-      {(data) && (
-        data.map((category) => {
-          previousCategories.includes(category.id) ? (() => setChecked(true)):(()=> setChecked(false));
-        return (
-          <FormCheck
-              key={category.id}
-              type="checkbox"
-              label={category.title}
-              value={category.title}
-              checked={checked}
-              onChange={() => handleChecked}
-            />);}
+      <Form>
+      {error && <h4>{error}</h4>}
+      {(isLoading && t("loading")) ||
+        data && (
+          data.map((category) =>
+            <CategoryCheckbox key={category.id} 
+            category={category} 
+            learningPath={learningPath}
+            setCategoryList={setCategoryList}
+            />
+            )
           )
-        )
-      }
-      </Form.Group>
+        }
+        <Button onClick={handleCategories}>valider</Button>
+      </Form>
     </>
   );
 };

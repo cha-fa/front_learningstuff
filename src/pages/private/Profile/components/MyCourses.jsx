@@ -17,8 +17,6 @@ const MyCourses = () => {
     if (currentUser) get(`/users/${currentUser.id}/subscriptions`);
   }, [currentUser]);
 
-  console.log(data);
-
   return (
     <div className="MyCourses d-flex flex-wrap">
       {(data &&

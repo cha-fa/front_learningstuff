@@ -1,10 +1,10 @@
-import "./HomeAchivement.scss";
+import "./HomeAchievement.scss";
 import { Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { FaHandsHelping, FaUserGraduate } from "react-icons/fa";
 import { GiDiploma } from "react-icons/gi";
 import { BsAward } from "react-icons/bs";
-const HomeAchivement = () => {
+const HomeAchievement = () => {
   const { t } = useTranslation(["home"]);
   return (
     <section className="HomeAchivement">
@@ -34,4 +34,4 @@ const HomeAchivement = () => {
   );
 };
 
-export default HomeAchivement;
+export default HomeAchievement;

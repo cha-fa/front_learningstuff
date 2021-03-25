@@ -2,15 +2,21 @@ import { Link, useHistory } from "react-router-dom";
 import "./CourseCard.scss";
 import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
-import useFetch from "hooks/useFetch";
 import paymentFetch from "hooks/paymentFetch";
+<<<<<<< HEAD
+=======
+import { useTranslation } from "react-i18next";
+>>>>>>> master
 
-const CourseCard = ({ course, subscribed }) => {
+const CourseCard = ({ course, subscribed, currentLesson }) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { title, price_in_cents, id } = course;
-  const { post, error } = useFetch();
   const { newPayment } = paymentFetch();
+<<<<<<< HEAD
   const history = useHistory();
+=======
+  const { t } = useTranslation();
+>>>>>>> master
 
   const handleSubscription = (e) => {
     e.preventDefault();
@@ -25,7 +31,7 @@ const CourseCard = ({ course, subscribed }) => {
     <Link to={`/courses/${course.id}`}>
       <div className="CourseCard">
         <div className="header">
-          {!subscribed && (
+          {(!subscribed && (
             <Button
               onClick={handleSubscription}
               className="ButtonPrimary"
@@ -33,11 +39,26 @@ const CourseCard = ({ course, subscribed }) => {
             >
               {price_in_cents && price_in_cents / 100} € Subscribe Now!
             </Button>
+          )) || (
+            <>
+              {currentLesson && (
+                <Link
+                  to={`/courses/${course.id}/chapters/${currentLesson.chapter_id}/lessons/${currentLesson.id}`}
+                >
+                  {t("course:continue")}{" "}
+                  {(currentUser &&
+                    course.progress_states.find(
+                      (e) => e.user_id === currentUser.id
+                    ).progression) ||
+                    0}
+                  %
+                </Link>
+              )}
+            </>
           )}
         </div>
         <div className="bottomCard">
           <p>{title}</p>
-          {error && <h2 style={{ color: "black" }}>{error}</h2>}
         </div>
       </div>
     </Link>

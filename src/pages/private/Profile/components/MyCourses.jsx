@@ -14,7 +14,9 @@ const MyCourses = () => {
   const history = useHistory();
 
   useEffect(() => {
-    if (currentUser) get(`/users/${currentUser.id}/subscriptions`);
+    if (currentUser) {
+      get(`/users/${currentUser.id}/subscriptions`);
+    }
   }, [currentUser]);
 
   return (
@@ -29,12 +31,14 @@ const MyCourses = () => {
                   key={subscription.id}
                   course={subscription.learning_path.courses[0]}
                   subscribed={true}
+                  currentLesson={subscription.current_lesson}
                 />
               )) || (
               <LearningPathCard
                 key={subscription.learning_path.id}
                 learningPath={subscription.learning_path}
                 subscribed={true}
+                currentLesson={subscription.current_lesson}
               />
             )
         )) || (

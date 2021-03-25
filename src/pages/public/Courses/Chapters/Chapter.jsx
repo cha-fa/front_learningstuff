@@ -11,14 +11,18 @@ const Chapter = ({ chapter, courseId }) => {
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={chapter.id}>
           <Card.Body>
-            {chapter.lessons.map((lesson) => (
-              <Link
-                key={lesson.id}
-                to={`/courses/${courseId}/chapters/${chapter.id}/lessons/${lesson.id}`}
-              >
+            {chapter.lessons.map((lesson) =>
+              lesson.allowed ? (
+                <Link
+                  key={lesson.id}
+                  to={`/courses/${courseId}/chapters/${chapter.id}/lessons/${lesson.id}`}
+                >
+                  <p key={lesson.id}>{lesson.title}</p>
+                </Link>
+              ) : (
                 <p key={lesson.id}>{lesson.title}</p>
-              </Link>
-            ))}
+              )
+            )}
           </Card.Body>
         </Accordion.Collapse>
       </Card>

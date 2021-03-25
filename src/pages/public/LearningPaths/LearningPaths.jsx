@@ -7,40 +7,20 @@ import Searchbar from "../../../components/Searchbar/Searchbar";
 import { useTranslation } from "react-i18next";
 import { HiBriefcase } from "react-icons/hi";
 import { Row } from "react-bootstrap";
+import Loading from "components/Loading";
 
 const LearningPaths = () => {
-  const { data, error, get } = useFetch();
-  const learningPath = data
-    ? data.filter((course) => !course.is_single_course)
-    : null;
+  const { data, error, get, isLoading } = useFetch();
   const [input, setInput] = useState("");
   const [categoryList, setCategoryList] = useState([]);
   const { t } = useTranslation();
-
-  const learningPathFiltered =
-    !error &&
-    learningPath &&
-    learningPath.length > 0 &&
-    learningPath.filter((value) => {
-      if (input === "") {
-        return value;
-      } else if (value.title.toLowerCase().includes(input.toLowerCase())) {
-        return value;
-      }
-    });
 
   const handleCategoryFilter = (list) => {
     setCategoryList(list);
   };
 
   useEffect(() => {
-    get("/learning_paths");
-    return;
-  }, []);
-
-  useEffect(() => {
-    get(`/learning_paths?categories=${categoryList.join(",")}`);
-    return;
+    get(`/learning_paths?single=false&categories=${categoryList.join(", ")}`);
   }, [categoryList]);
 
   return (
@@ -56,20 +36,16 @@ const LearningPaths = () => {
         </p>
       </div>
       <Searchbar getInput={setInput} />
-
       <CategoryLearningPath handleCategoryFilter={handleCategoryFilter} />
 
-      {learningPath && (
-        <Row className="d-flex justify-content-center">
-          {learningPathFiltered.length > 0 ? (
-            learningPathFiltered.map((path) => (
-              <LearningPathCard key={path.id} learningPath={path} />
-            ))
-          ) : (
-            <h3>{t("common:noResult")}</h3>
-          )}
-        </Row>
-      )}
+      <Row className="d-flex justify-content-center">
+        {isLoading && <Loading />}
+        {(data &&
+          data.map((path) => (
+            <LearningPathCard key={path.id} learningPath={path} />
+          ))) ||
+          (!isLoading && <h3>{t("common:noResult")}</h3>)}
+      </Row>
     </div>
   );
 };

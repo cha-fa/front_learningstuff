@@ -11,7 +11,7 @@ import { useTranslation } from "react-i18next";
 import defaultcover from "assets/covers/defaultcover.svg";
 import { displayWarning } from "stores/flashmessages/flashMiddleware";
 
-const CourseCard = ({ course, subscribed, noSubscription, currentLesson }) => {
+const CourseCard = ({ course, subscribed, noSubscription }) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const isLogged = useSelector((state) => state.auth.isLogged);
   const { title, price_in_cents, id, slug, description, categories } = course;
@@ -55,7 +55,7 @@ const CourseCard = ({ course, subscribed, noSubscription, currentLesson }) => {
 
   return (
     <Card className="CourseCard m-3 ">
-      {!noSubscription && !currentLesson && !subscribed && (
+      {!noSubscription && !subscribed && (
         <Card.Header className="LearningPathCard__header">
           {price_in_cents && price_in_cents / 100} €
         </Card.Header>
@@ -83,7 +83,7 @@ const CourseCard = ({ course, subscribed, noSubscription, currentLesson }) => {
             />
           </>
         )}
-        {!noSubscription && !currentLesson && (
+        {!noSubscription && !subscribed && (
           <div className="d-flex justify-content-center w-100 mt-auto">
             <ButtonPrimary
               className="ButtonPrimary"

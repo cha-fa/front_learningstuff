@@ -1,23 +1,17 @@
 import useFetch from "hooks/useFetch";
 import { useHistory } from "react-router-dom";
-import Subscription from "pages/private/Subscription/Subscription";
 import CourseCard from "components/CourseCard/CourseCard";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import paymentFetch from "hooks/paymentFetch";
 import LearningPathCard from "components/LearningPathCard/LearningPathCard";
 import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
 import { useTranslation } from "react-i18next";
 
 const MyCourses = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
-  const { data, error, isLoading, patch, get } = useFetch();
+  const { data, get } = useFetch();
   const { t } = useTranslation();
   const history = useHistory();
-
-  const handleClick = () => {
-    console.log("cliqu");
-  };
 
   useEffect(() => {
     if (currentUser) get(`/users/${currentUser.id}/subscriptions`);

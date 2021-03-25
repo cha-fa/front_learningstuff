@@ -30,6 +30,18 @@ const CourseCard = ({ course, subscribed, noSubscription, currentLesson }) => {
     }
   };
 
+  const getProgress = (course) => {
+    return course.progress_states.find(
+      (progress) => progress.user_id === currentUser.id
+    );
+  };
+
+  const handleRead = (current_lesson) => {
+    history.push(
+      `/courses/${course.id}/chapters/${current_lesson.chapter_id}/lessons/${current_lesson.id}`
+    );
+  };
+
   const getImage = (slug) => {
     let url;
     try {
@@ -43,25 +55,11 @@ const CourseCard = ({ course, subscribed, noSubscription, currentLesson }) => {
 
   return (
     <Card className="CourseCard m-3 ">
-      {(!noSubscription && !currentLesson && (
+      {!noSubscription && !currentLesson && !subscribed && (
         <Card.Header className="LearningPathCard__header">
           {price_in_cents && price_in_cents / 100} €
         </Card.Header>
-      )) ||
-        (currentLesson && (
-          <>
-            <Link
-              to={`/courses/${course.id}/chapters/${currentLesson.chapter_id}/lessons/${currentLesson.id}`}
-            >
-              {t("course:continue")}{" "}
-              {(currentUser &&
-                course.progress_states.find((e) => e.user_id === currentUser.id)
-                  .progression) ||
-                0}
-              %
-            </Link>
-          </>
-        ))}
+      )}
       <Card.Img
         variant="top"
         src={getImage(slug) ? getImage(slug) : defaultcover}
@@ -70,8 +68,21 @@ const CourseCard = ({ course, subscribed, noSubscription, currentLesson }) => {
 
       <Card.Title className="LearningPathCard__title">{title}</Card.Title>
       <Card.Body className="d-flex flex-column">
-        <Card.Text>{description}</Card.Text>
-
+        {!subscribed && <Card.Text>{description}</Card.Text>}
+        {subscribed && (
+          <>
+            <h5>
+              <Badge pill className="m-2" variant="info" key={course.id}>
+                {t("your_progress")} : {getProgress(course).progression || 0} %
+              </Badge>
+            </h5>
+            <ButtonPrimary
+              handleClick={() => handleRead(getProgress(course).current_lesson)}
+              sizeClass="medium"
+              label={t("read_course")}
+            />
+          </>
+        )}
         {!noSubscription && !currentLesson && (
           <div className="d-flex justify-content-center w-100 mt-auto">
             <ButtonPrimary

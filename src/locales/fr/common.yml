@@ -2,4 +2,10 @@ title: Bienvenue sur Learning Stuff {{name}}
 # articles: Il y a {{count}} article
 # articles_plural: Il y a {{count}} articles
 placeholderSearch: Rechercher
-noResult : Aucun résultat
+noResult: Aucun résultat
+subscribe: S'inscrire
+choose_a_course: Choisir un cours
+no_subscriptions: Vous n'êtes inscrit à aucun cours
+learn_a_lot_of_stuff: Apprenez énormément de choses !
+in_charge_of_future: Votre avenir est entre vos mains
+get_started: Démarrez !

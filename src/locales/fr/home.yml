@@ -1,17 +1,17 @@
 title: Bienvenue sur Learning Stuff {{name}}
 # articles: Il y a {{count}} article
 # articles_plural: Il y a {{count}} articles
-UnlimitedTitle: Accès au cours a vie
-UnlimitedText: Profiter des cours et de leurs mises à jour à vie
+UnlimitedTitle: Accès au cours à vie
+UnlimitedText: Profitez des cours et de leurs mises à jour à vie
 ExpertTeacherTitle: Avec des experts
-ExpertTeacherText:  Apprennez des experts de l'industrie qui sont passionnés par l'enseignement
-ExpertTeacherText2:  apprennez des experts de l'industrie qui sont passionnés par l'enseignement
+ExpertTeacherText: Apprenez des experts de l'industrie qui sont passionnés par l'enseignement
+ExpertTeacherText2: Apprenez des experts de l'industrie qui sont passionnés par l'enseignement
 AnywhereTitle: Depuis partout
-AnywhereText: Que ce soit sur mobile, tablette, ou ordinateur,  
+AnywhereText: Que ce soit sur mobile, tablette, ou ordinateur
 NumberStudent: Apprenants inscrits
 StudentGratuated: Apprenants ont réalisé leurs rêves.
-NumberVisit: Plus de 10 000 visiteur chaque mois
-Rank: Dans le top 10 des meilleurs plateforme de e-learning
+NumberVisit: Plus de 10 000 visiteurs chaque mois
+Rank: Dans le top 10 des meilleurs plateformes de e-learning
 MentorText: Venez partager vos connaissances et votre expertise en devenant mentor
 
 FreeCourse: Cour gratuit
@@ -21,8 +21,9 @@ Bootcamp: Bootcamp
 
 PricingTitle: Tarifs
 Price: Prix
-Duration: Duree
+Duration: Durée
 Mentor: Mentor
 
-BeATeacherTitle: Vous voulez être un Mentor ?
-BeATeacherButton: Etre Mentor ! 
+BeATeacherTitle: Vous voulez être Mentor ?
+BeATeacherButton: Être Mentor !
+get_started: Démarrez !

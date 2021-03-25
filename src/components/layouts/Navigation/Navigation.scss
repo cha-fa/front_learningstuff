@@ -1,48 +1,59 @@
 @import "style/variables.scss";
 
-.navbar {
+.Navigation {
   background-color: $secondary;
   min-height: 114px;
   font-family: $font-family;
-  h1 {
-    color: $footer-color;
-  }
-  .title-bold {
+  padding: 0 100px 0;
+
+  &__logo {
+    font-size: 30px;
     font-weight: bold;
+    text-decoration: "none";
+    color: $footer-color;
+    &:hover {
+      color: lighten($footer-color, 10%);
+    }
   }
-}
 
-.nav-link {
-  background-image: $primary;
-  background-color: $primary-old;
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -moz-text-fill-color: transparent;
-  background-size: 0, 100%;
-}
+  .nav-link {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 20px 0;
+    background-image: $primary;
+    background-color: $primary-old;
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    background-size: 0, 100%;
+    &:hover {
+      color: $light-orange !important;
+    }
+  }
 
-.nav-icons {
-  color: $primary;
-  size: 40;
-}
+  .nav-icons {
+    color: $primary;
+    size: 40;
+  }
 
-.link-position {
-  display: flex;
-  justify-content: flex-end;
-}
+  .link-position {
+    display: flex;
+    justify-content: flex-end;
+  }
 
-.user-avatar-navbar {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-}
+  .user-avatar-navbar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
 
-span {
-  z-index: +1;
-}
+  span {
+    z-index: +1;
+  }
 
-.mr-5 {
-  margin-right: 80px !important;
+  .mr-5 {
+    margin-right: 80px !important;
+  }
 }

@@ -2,17 +2,19 @@ import ButtonSecondary from "components/ButtonSecondary/ButtonSecondary";
 import { Link } from "react-router-dom";
 import { Jumbotron } from "react-bootstrap";
 import "./JumbotronDisplay.scss";
+import { useTranslation } from "react-i18next";
 
 const JumbotronDisplay = () => {
+  const { t } = useTranslation();
   return (
     <>
       <Jumbotron className="image-jumbotron">
         <div className="text-center">
-          <h2 className="display-4">Learning a lot of stuffs</h2>
-          <h3>you are in charge of your future</h3>
+          <h2 className="display-4">{t("learn_a_lot_of_stuff")}</h2>
+          <h3>{t("in_charge_of_future")}</h3>
           <p className="lead">
-            <Link to="/login">
-              <ButtonSecondary sizeClass="medium" label="Get Started" />
+            <Link to="/learning_paths">
+              <ButtonSecondary sizeClass="medium" label={t("get_started")} />
             </Link>
           </p>
         </div>

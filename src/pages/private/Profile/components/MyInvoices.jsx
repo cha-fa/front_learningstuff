@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Card, Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
@@ -12,7 +13,7 @@ const MyInvoices = () => {
   return (
     <div className="MyInvoices text-center">
       {(invoices && invoices.length > 0 && (
-        <>
+        <div className="InvoicesShowcase">
           {invoices.map((invoice) => (
             <Card key={invoice.id} className="my-4">
               <Card.Body>
@@ -24,15 +25,22 @@ const MyInvoices = () => {
                 </Card.Subtitle>
                 <Button type="submit" className="ButtonPrimary my-2">
                   <a href={invoice.invoice_pdf} className="text-white text-decoration-none">
-                    {t("invoice:cta")}
+                    {t("invoice:download")}
                   </a>
                 </Button>
               </Card.Body>
             </Card>
           ))}
-        </>
+        </div>
       )) || (
-        <p>No invoice</p>
+        <div className="NoInvoiceCTA">
+          <p className="lead">{t("invoice:none")}</p>
+          <Link 
+            to="/courses"
+            className="ButtonPrimary py-2 px-3 my-2 text-white">
+            {t("invoice:cta")}
+          </Link>
+        </div>
       )}
     </div> 
   );

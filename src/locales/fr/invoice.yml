@@ -1,2 +1,4 @@
 when: Réglé le
-cta: Télécharger ma facture
+download: Télécharger ma facture
+none: On dirait que vous n'avez pas encore reçu de facture
+cta: Explorer les formations disponibles

@@ -1,2 +1,4 @@
 when: Paid on
-cta: Download invoice
+download: Download invoice
+none: Looks like you have no invoices yet
+cta: Start exploring courses

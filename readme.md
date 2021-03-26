@@ -12,6 +12,18 @@ This React app is calling a Rails API (https://prod-back-learningstuff.herokuapp
 
 ![Image of site](https://i.imgur.com/gZQ2GN3.png)
 
+# Table of content
+
+1. [Database](#Database)
+2. [Features](#Features)
+    1. [Administrator](#Administrator)
+    2. [Teacher](#Teacher)
+    3. [Student](#Student)
+3. [Next-Features](#Next-Features)
+4. [Stacks](#Stacks)
+5. [Authors](#Authors)
+
+
 ## Database
 
 ![Database](https://i.imgur.com/Wia9xi1.png)
@@ -61,7 +73,7 @@ As a **Former**, you will be able to:
 - on your profile, fill in your skills
 - reply on the forum of a course where you are assigned, an icon will identify you as a teacher.
 
-### Students 
+### Student 
 
 You can sign up with either :
 
@@ -105,7 +117,17 @@ On this Pages you can :
 - take a Lesson
 - search a course with the searchbar or a with categories
 
+
+To make a false payment with **Stripe** you enter these you card number like :
+
+![Stripe](https://i.imgur.com/sIz9v5J.png)
+
+
+
 and when you have pay for course you acces at this page : 
+
+
+
 
 ![Lesson](https://i.imgur.com/XQQKITo.png)
 
@@ -119,7 +141,7 @@ and here you can :
 By default, you'll already be booked to one program composed of four courses, and to one course.
 Emails are sent after an account creation, validation and after a subscription to a course.
 
-## Next Feature
+## Next Features
 
 An administrator may:
 
@@ -150,13 +172,13 @@ A Company may:
 - see the progress of its employees
 
 
-## Stack
+## Stacks
 
 - **Back** : Ruby on Rails 6
 - **Front** : React JS, Redux, HTML, CSS
 - **API** : Stripe Github
 
-## Author
+## Authors
 
 This application was created by:
 

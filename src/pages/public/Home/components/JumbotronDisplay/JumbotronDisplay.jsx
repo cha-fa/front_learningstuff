@@ -3,7 +3,6 @@ import { Jumbotron, Row, Col } from "react-bootstrap";
 import LottieAnimation from "lottie";
 import animjumbotron from "animations/animjumbotron.json";
 import { Link } from "react-router-dom";
-import ButtonSecondary from "components/ButtonSecondary/ButtonSecondary";
 import "./JumbotronDisplay.scss";
 
 const JumbotronDisplay = () => {
@@ -20,7 +19,7 @@ const JumbotronDisplay = () => {
           <h3>{t("in_charge_of_future")}</h3>
           <div className="my-5">
             <Link to="/learning_paths" className="ButtonSecondary cta btn btn-lg">
-              {t("home:cta")}
+              {t("home:ctalearningpaths")}
             </Link>
           </div>
         </Col>

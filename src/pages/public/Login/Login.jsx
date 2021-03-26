@@ -30,8 +30,9 @@ const Login = () => {
       },
     };
     e.preventDefault();
+   
     if (await dispatch(fetchToLogin(data))) {
-      history.push("/");
+      history.push("/admin"); 
     }
   };
 

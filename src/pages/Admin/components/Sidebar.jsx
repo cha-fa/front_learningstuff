@@ -30,7 +30,7 @@ const Sidebar = () => {
           </>
         </Accordion.Collapse>
       </Accordion>
-      
+      <NavLink to="/admin/teachers">{t("manage_teachers")}</NavLink>
     </Nav>
   );
 };

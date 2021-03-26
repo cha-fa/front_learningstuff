@@ -32,6 +32,7 @@ categories: Catégories
 create_category: Créer une catégorie 
 in_learning_paths: Dans les parcours
 delete: Supprimer
+update: Mettre à jour
 import_course: Importer un cours
 all_courses: Tous les cours
 structure_course_repository: La structure du repository d'un cours doit être la suivante.
@@ -44,3 +45,4 @@ by_clicking_here: en cliquant ici
 how_to_import: Comment importer un cours
 url_github: URL du repository github
 course_imported: Le cours a été importé
+manage_teachers: Gérer les professeurs

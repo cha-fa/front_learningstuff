@@ -27,10 +27,11 @@ const LearningPathCard = ({ learningPath, subscribed }) => {
   };
 
   const handleRead = (current_lesson, course_id) => {
-    console.log("veut lire", current_lesson, course_id);
-    history.push(
-      `/courses/${course_id}/chapters/${current_lesson.chapter_id}/lessons/${current_lesson.id}`
-    );
+    if (current_lesson) {
+      history.push(
+        `/courses/${course_id}/chapters/${current_lesson.chapter_id}/lessons/${current_lesson.id}`
+      );
+    }
   };
 
   const getProgress = (course) => {
@@ -49,8 +50,6 @@ const LearningPathCard = ({ learningPath, subscribed }) => {
       return url;
     }
   };
-
-  console.log(courses);
 
   return (
     <Card className="LearningPathCard m-3 ">

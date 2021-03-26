@@ -1,18 +1,19 @@
-import "./Register";
+import "./Register.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { fetchToRegister } from "stores/authentication/authMiddleware";
 import { useTranslation } from "react-i18next";
-import loginregisterside from "assets/loginregisterside.jpg";
+import registercover from "assets/covers/register.svg";
 import {
+  Container,
   Row,
   Col,
+  Image,
   Form,
   FormGroup,
   FormControl,
   Button,
-  Container,
 } from "react-bootstrap";
 
 const Register = () => {
@@ -20,7 +21,6 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [role, setRole] = useState("student");
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -32,7 +32,6 @@ const Register = () => {
         last_name: lastName,
         email: email,
         password: password,
-        role: role,
       },
     };
     e.preventDefault();
@@ -43,12 +42,12 @@ const Register = () => {
 
   return (
     <>
-      <Container fluid className="Register mt-5 mb-5">
-        <Row className="d-flex justify-content-center">
+      <Container fluid className="Register">
+        <Row>
           <Col
             xs={12}
-            md={5}
-            className="Login__col d-flex flex-column justify-content-center align-items-center"
+            md={6}
+            className="Register__col d-flex flex-column justify-content-center align-items-center"
           >
             <h2>{t("register:title")}</h2>
             <Form
@@ -95,19 +94,6 @@ const Register = () => {
                   required
                 />
               </FormGroup>
-              <FormGroup controlId="selectrole">
-                <FormControl
-                  as="select"
-                  custom
-                  value={role}
-                  name={t("register:role")}
-                  onChange={(e) => setRole(e.target.value)}
-                >
-                  <option value="student">{t("register:optionstudent")}</option>
-                  <option value="teacher">{t("register:optionteacher")}</option>
-                  <option value="admin">{t("register:optionadmin")}</option>
-                </FormControl>
-              </FormGroup>
               <p className="mb-4">
                 {t("register:accountquestion")}
                 <Link to="/login">
@@ -116,7 +102,7 @@ const Register = () => {
               </p>
               <Button
                 type="submit"
-                className="ButtonPrimary w-75"
+                className="ButtonPrimary w-75 mx-auto"
                 size="lg"
                 block
               >
@@ -124,15 +110,12 @@ const Register = () => {
               </Button>
             </Form>
           </Col>
-          <Col className="Login__col" xs={12} md={4}>
-            <img
-              className="sideimage"
-              src={loginregisterside}
-              alt="login or register, working on a computer"
-              width={700}
+          <Col className="Register__col d-none d-lg-block text-center" md={6}>
+            <Image
+              src={registercover}
+              alt="Illustration register page"
               height={600}
-              mode="fit"
-            />
+               />
           </Col>
         </Row>
       </Container>

@@ -4,10 +4,11 @@ import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { fetchToLogin } from "stores/authentication/authMiddleware";
 import { useTranslation } from "react-i18next";
-import loginregisterside from "assets/loginregisterside.jpg";
+import logincover from "assets/covers/login.svg";
 import {
   Row,
   Col,
+  Image,
   Form,
   FormGroup,
   FormControl,
@@ -37,11 +38,11 @@ const Login = () => {
 
   return (
     <>
-      <Container fluid className="Login mt-5 mb-5">
-        <Row className="d-flex justify-content-center">
+      <Container fluid className="Login">
+        <Row>
           <Col
             xs={12}
-            md={5}
+            md={6}
             className="Login__col d-flex flex-column justify-content-center align-items-center"
           >
             <h2>{t("login:good_to_see_you")}</h2>
@@ -77,7 +78,7 @@ const Login = () => {
               </p>
               <Button
                 type="submit"
-                className="ButtonPrimary w-75"
+                className="ButtonPrimary w-75 mx-auto"
                 size="lg"
                 block
               >
@@ -85,15 +86,11 @@ const Login = () => {
               </Button>
             </Form>
           </Col>
-          <Col className="Login__col" xs={12} md={4}>
-            <img
-              className="sideimage"
-              src={loginregisterside}
-              alt="login or register, working on a computer"
-              width={700}
-              height={600}
-              mode="fit"
-            />
+          <Col className="Login__col  d-none d-lg-block text-center" md={6}>
+            <Image
+              src={logincover}
+              alt="Illustration login page"
+              height={600} />
           </Col>
         </Row>
       </Container>

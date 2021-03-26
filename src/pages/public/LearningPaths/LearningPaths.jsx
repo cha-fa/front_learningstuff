@@ -35,26 +35,32 @@ const LearningPaths = () => {
           <HiBriefcase size={80} />
         </p>
       </div>
-      <Searchbar getInput={setInput} />
+      <section>
+        <Searchbar getInput={setInput} />
+      </section>
       <CategoryLearningPath handleCategoryFilter={handleCategoryFilter} />
 
-      <Row className="d-flex justify-content-center">
+      <Row className="d-flex justify-content-center m-0 p-0">
         {isLoading && <Loading />}
         {(data &&
-          data.filter((value) => {
-            if(input === ""){
-              return value;
-            } else if (value.title.toLowerCase().includes(input.toLowerCase())){
-              return value;
-            }
-          }).map((path) => (
-            <LearningPathCard
-              key={path.id}
-              learningPath={path}
-              width="40%"
-              imgHeight="300px"
-            />
-          ))) ||
+          data
+            .filter((value) => {
+              if (input === "") {
+                return value;
+              } else if (
+                value.title.toLowerCase().includes(input.toLowerCase())
+              ) {
+                return value;
+              }
+            })
+            .map((path) => (
+              <LearningPathCard
+                key={path.id}
+                learningPath={path}
+                width="40%"
+                imgHeight="300px"
+              />
+            ))) ||
           (!isLoading && <h3>{t("common:noResult")}</h3>)}
       </Row>
     </div>

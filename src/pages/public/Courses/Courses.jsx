@@ -31,7 +31,7 @@ const Courses = () => {
   }, [categoryList]);
 
   return (
-    <div className="Courses">
+    <div className="Courses m-0 p-0">
       <div className="Courses__header">
         <h2>{t("course_introduction")}</h2>
         <p>{t("course_description_first")}</p>
@@ -49,28 +49,33 @@ const Courses = () => {
         </p>
       </div>
 
-      <Searchbar getInput={setInput} />
+      <section>
+        <Searchbar getInput={setInput} />
+      </section>
       <CategorieLearningPath handleCategoryFilter={handleCategoryFilter} />
 
-      <Row className="d-flex justify-content-center">
+      <Row className="d-flex justify-content-center m-0 p-0">
         {isLoading && <Loading />}
         {(data &&
-          data.filter((value) => {
-            if(input === ""){
-              return value;
-            } else if (value.title.toLowerCase().includes(input.toLowerCase())){
-              return value;
-            }
-          }).map((course) => (
-            <CourseCard
-              key={course.id}
-              course={course}
-              width="40%"
-              imgHeight="300px"
-            />
-          ))) ||
-          (!isLoading && <h3>{t("common:noResult")})</h3>
-          )}
+          data
+            .filter((value) => {
+              if (input === "") {
+                return value;
+              } else if (
+                value.title.toLowerCase().includes(input.toLowerCase())
+              ) {
+                return value;
+              }
+            })
+            .map((course) => (
+              <CourseCard
+                key={course.id}
+                course={course}
+                width="40%"
+                imgHeight="300px"
+              />
+            ))) ||
+          (!isLoading && <h3>{t("common:noResult")})</h3>)}
       </Row>
     </div>
   );

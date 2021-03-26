@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import "./CourseCard.scss";
-import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
 import paymentFetch from "hooks/paymentFetch";
 import { useDispatch } from "react-redux";

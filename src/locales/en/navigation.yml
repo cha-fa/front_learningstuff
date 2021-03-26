@@ -4,7 +4,7 @@ linkCourse: Courses
 linkBlog: Blog
 linkAbout: Abouts US
 linkContact: Contact US
-linkLearningPath: Learning Path
+linkLearningPath: Learning Pathes
 linkContributor: Be a contributor
 linkLogin: Login
 linkMenu: Menu
@@ -12,3 +12,6 @@ linkOrders: Orders
 linkSettings: Settings
 linkLogout: Log Out
 linkAdmin: Dashboard Admin
+my_courses: My courses
+my_profile: My profile
+linkAllLearningPath: All learning pathes

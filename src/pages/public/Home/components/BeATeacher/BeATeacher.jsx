@@ -1,7 +1,6 @@
 import "./BeATeacher.scss";
 import { useTranslation } from "react-i18next";
-import {Row, Col, Button} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
     
 const BeATeacher = () => {
   const { t } = useTranslation(["home"]);
@@ -9,7 +8,7 @@ const BeATeacher = () => {
   return (
     <div className="BeATeacher">
       <Row className="pt-5">
-        <Col>
+        <Col md={6} className="d-none d-lg-block">
             <svg
             height="437"
             viewBox="0 0 773 437"
@@ -22,16 +21,14 @@ const BeATeacher = () => {
             />
             </svg>
         </Col>
-        <Col className="pb-5 text-left">
-            <h2>
-              {t("BeATeacherTitle")}
-            </h2>
-            <p className="pt-5 pb-5">
+        <Col xs={12} md={6} className="text-center">
+          <h2>
+            {t("BeATeacherTitle")}
+          </h2>
+          <p className="pb-3">
             {t("MentorText")}
-            </p>
-            <Link to="/register">
-              <Button className="ButtonPrimary" size="lg">{t("BeATeacherButton")}</Button>
-            </Link>
+          </p>
+          <a href="mailto:admin@learning.com" className="ButtonPrimary cta btn btn-lg">{t("BeATeacherButton")}</a>
         </Col>
       </Row>
     </div>

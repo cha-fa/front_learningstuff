@@ -2,9 +2,8 @@ import "./RecoverPassword.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { fetchToLogin } from "stores/authentication/authMiddleware";
 import { useTranslation } from "react-i18next";
-import loginregisterside from "assets/loginregisterside.jpg";
+import logincover from "assets/covers/login.svg";
 import {
   Row,
   Col,
@@ -13,6 +12,7 @@ import {
   FormControl,
   Button,
   Container,
+  Image,
 } from "react-bootstrap";
 import {
   displaySuccess,
@@ -23,7 +23,7 @@ import useFetch from "hooks/useFetch";
 const RecoverPassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const { t } = useTranslation();
+  const { t } = useTranslation("password");
   const { put } = useFetch();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -98,13 +98,10 @@ const RecoverPassword = () => {
             </Form>
           </Col>
           <Col className="Login__col" xs={12} md={4}>
-            <img
+            <Image
               className="sideimage"
-              src={loginregisterside}
-              alt="login or register, working on a computer"
-              width={700}
-              height={600}
-              mode="fit"
+              src={logincover}
+              alt="Illustration recover password page"
             />
           </Col>
         </Row>

@@ -55,7 +55,13 @@ const Courses = () => {
       <Row className="d-flex justify-content-center">
         {isLoading && <Loading />}
         {(data &&
-          data.map((course) => (
+          data.filter((value) => {
+            if(input === ""){
+              return value;
+            } else if (value.title.toLowerCase().includes(input.toLowerCase())){
+              return value;
+            }
+          }).map((course) => (
             <CourseCard
               key={course.id}
               course={course}
@@ -63,7 +69,8 @@ const Courses = () => {
               imgHeight="300px"
             />
           ))) ||
-          (!isLoading && <h3>{t("common:noResult")})</h3>)}
+          (!isLoading && <h3>{t("common:noResult")})</h3>
+          )}
       </Row>
     </div>
   );

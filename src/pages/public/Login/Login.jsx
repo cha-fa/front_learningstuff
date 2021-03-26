@@ -76,6 +76,11 @@ const Login = () => {
                 <span> {t("login:registernow")}</span>
               </Link>
             </p>
+            <p className="mb-4">
+              <Link to="/password">
+                <span> {t("password:forgot_password")}</span>
+              </Link>
+            </p>
             <Button
               type="submit"
               className="ButtonPrimary w-75 mx-auto"

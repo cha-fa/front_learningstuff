@@ -3,16 +3,14 @@ title: Bienvenue sur Learning Stuff {{name}}
 # articles_plural: Il y a {{count}} articles
 UnlimitedTitle: Access to the course for life
 UnlimitedText: Take advantage of courses and their lifetime updates
-
 ExpertTeacherTitle: With experts
 ExpertTeacherText: Learn from industry experts who are passionate about teaching
 ExpertTeacherText2: learn from industry experts who are passionate about teaching
 AnywhereTitle: Learn Anywhere
 AnywhereText: Switch between you computer, tablet, or mobile device
-
 NumberStudent: Registered students
 StudentGratuated: Student has been helped to achive their dreams
-NumberVisit: More than 10 000 peoplevisits our site monthly
+NumberVisit: More than 10 000 visitors our site monthly
 Rank: Ranked among the top 10 growing online learning startups
 MentorText: Come and share your knowledge and expertise by becoming a mentor
 FreeCourse: Free Course
@@ -28,3 +26,4 @@ Mentor: Mentor
 
 BeATeacherTitle: Do you want to teach?
 BeATeacherButton: Be a Teacher!
+get_started: Get Started!

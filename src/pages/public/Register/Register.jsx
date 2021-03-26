@@ -21,7 +21,7 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [role, setRole] = useState("student");
-  const { t } = useTranslation();
+  const { t } = useTranslation("register");
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -111,7 +111,7 @@ const Register = () => {
               <p className="mb-4">
                 {t("register:accountquestion")}
                 <Link to="/login">
-                  <span> {t("register:loginnow")}</span>
+                  <p> {t("register:loginnow")}</p>
                 </Link>
               </p>
               <Button

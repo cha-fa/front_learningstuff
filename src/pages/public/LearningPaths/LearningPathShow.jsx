@@ -14,7 +14,7 @@ import "./LearningPaths.scss";
 const LearningPathShow = () => {
   const { data, error, get } = useFetch();
   const { pathSlug } = useParams();
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   const isLogged = useSelector((state) => state.auth.isLogged);
   const dispatch = useDispatch();
   const history = useHistory();

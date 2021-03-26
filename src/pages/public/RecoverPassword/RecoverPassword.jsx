@@ -23,7 +23,7 @@ import useFetch from "hooks/useFetch";
 const RecoverPassword = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const { t } = useTranslation();
+  const { t } = useTranslation("password");
   const { put } = useFetch();
   const dispatch = useDispatch();
   const history = useHistory();

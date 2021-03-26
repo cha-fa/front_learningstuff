@@ -12,7 +12,7 @@ import BeATeacher from "./components/BeATeacher/BeATeacher";
 const Home = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { search } = useLocation();
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
   const dispatch = useDispatch();
 
   useEffect(() => {

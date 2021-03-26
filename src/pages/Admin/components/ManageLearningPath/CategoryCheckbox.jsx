@@ -1,24 +1,30 @@
 import { useState } from "react";
 import Form from "react-bootstrap/Form";
+import useFetch from "hooks/useFetch";
 
-const CategoryCheckbox = ({category, learningPath, setCategoryList}) => {
-  const [previousCategories, setPreviousCategories] = useState(
+const CategoryCheckbox = ({category, learningPath }) => {
+  const { patch } = useFetch();
+  const [categoriesList, setCategoriesList] = useState(
     learningPath.categories && 
     learningPath.categories.map((category) => category.id) || []
   );
-  const [checked, setChecked] = useState(previousCategories.includes(Number(category.id)) && "checked");
+  const [checked, setChecked] = useState(categoriesList.includes(Number(category.id)) && "checked");
 
   const handleChecked =(event) => {
     if (event.target.checked) {
-      setPreviousCategories([...previousCategories, event.target.value]);
-      setCategoryList([...previousCategories, event.target.value]);
+      patch(`/admin/learning_paths/${learningPath.id}`, {
+        added_category_id: event.target.value,
+        learning_path: learningPath,
+      });
+      setCategoriesList([...categoriesList, event.target.value]);
       setChecked("checked");
     } else {
-      setPreviousCategories(
-        previousCategories.filter((category) => category !== Number(event.target.value))
-      );
-      setCategoryList(
-        previousCategories.filter((category) => category !== Number(event.target.value))
+      patch(`/admin/learning_paths/${learningPath.id}`, {
+        added_category_id: event.target.value,
+        learning_path: learningPath,
+      });
+      setCategoriesList(
+        categoriesList.filter((category) => category != event.target.value)
       );
       setChecked("");
     }

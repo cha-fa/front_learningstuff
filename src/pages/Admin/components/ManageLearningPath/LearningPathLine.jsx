@@ -7,7 +7,7 @@ import AddCategories from "./AddCategories";
 
 const LearninPathLine = ({ learningPath, handleEdit }) => {
   const { t } = useTranslation("admin");
-  const { data, error, isLoading, patch, get } = useFetch();
+  const { data, patch, get } = useFetch();
   const [title, setTitle] = useState(learningPath.title);
   const [price, setPrice] = useState(learningPath.price_in_cents);
   const [newCourse, setNewCourse] = useState();
@@ -58,7 +58,6 @@ const LearninPathLine = ({ learningPath, handleEdit }) => {
             />
               <AddCategories 
                 learningPath={learningPath}
-                setEditing={setEditing}
               />
           </>
         )) || (

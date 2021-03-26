@@ -1,19 +1,13 @@
-import { useEffect, useState } from "react";
-import DropdownMultiselect from "react-multiselect-dropdown-bootstrap";
-import { FormGroup, FormLabel, FormControl, Form } from "react-bootstrap";
-import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import {  Form } from "react-bootstrap";
 import useFetch from "hooks/useFetch";
 
 const CheckboxLearningPaths = ( { learningPath,  title, teacher } ) => {
 
-  const { t } = useTranslation("admin");
   const [isChecked, setIsChecked] = useState(teacher.learning_paths.some(l => l.id === learningPath.id));
-  const { data, post, patch, destroy } = useFetch();
-
- 
+  const {  post, destroy } = useFetch();
 
   const handleChange = () => {
-
     if(!isChecked){
       post(
         "/admin/subscriptions",
@@ -23,17 +17,12 @@ const CheckboxLearningPaths = ( { learningPath,  title, teacher } ) => {
         },
       );
     }
-
     if(isChecked){
       const id = teacher.subscriptions.find(l => l.learning_path.id === learningPath.id);
       destroy(`/admin/subscriptions/${id.id}`);
     }
-      
     setIsChecked(!isChecked);
-
-
   };
-
 
 return (
   <div className='CheckboxLearningPaths'>

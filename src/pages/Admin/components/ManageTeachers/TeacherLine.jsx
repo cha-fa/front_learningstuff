@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AiOutlineEdit } from "react-icons/ai";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
@@ -7,13 +7,8 @@ import { Form } from "react-bootstrap";
 
 const TeacherLine = ({ teacher, handleEdit, learningPaths }) => {
 
-
-  const [teacherLearningPaths, setTeacherLearningPaths] = useState([]);
   const [editing, setEditing] = useState(false);
 
-  const { t } = useTranslation("admin");
-
-  
   const updateTeacherLearningPaths = (learningPaths) => {
     if(editing){
       setEditing(false);
@@ -21,12 +16,8 @@ const TeacherLine = ({ teacher, handleEdit, learningPaths }) => {
       return;
     }
     setEditing(true);
-    setTeacherLearningPaths(learningPaths);
-
     };
 
-  
-  console.log("teacher", teacher);
 
   return (
     <tr key={teacher.id}>
@@ -34,13 +25,9 @@ const TeacherLine = ({ teacher, handleEdit, learningPaths }) => {
       <td>{teacher.first_name}</td>
       <td>{teacher.last_name}</td>
       <td>{teacher.email}</td>
-      
-  
       {!editing ?
         <td>{teacher.learning_paths.map(l => l.title).join(",")}</td>
-
         :
-
         (learningPaths && 
           <td>
             <Form>
@@ -56,11 +43,7 @@ const TeacherLine = ({ teacher, handleEdit, learningPaths }) => {
             </Form>
           </td>
         )
-
       }
- 
-
-
       <td>
       <span className="ml-3">
             <AiOutlineEdit

@@ -23,6 +23,7 @@ import Courses from "pages/public/Courses/Courses";
 import LearningPathShow from "pages/public/LearningPaths/LearningPathShow";
 import ShowCourse from "pages/public/Courses/ShowCourse/ShowCourse";
 import Subscription from "pages/private/Subscription/Subscription";
+import Recover from "pages/public/Recover/Recover";
 
 const App = () => {
   const displayFlash = useSelector((state) => state.flash.display);
@@ -49,6 +50,12 @@ const App = () => {
         <Switch>
           <PublicRoute restricted={false} component={Home} path="/" exact />
           <PublicRoute restricted component={Login} path="/login" exact />
+          <PublicRoute
+            restricted
+            component={Recover}
+            path="/password/edit"
+            exact
+          />
           <PublicRoute restricted component={Register} path="/register" exact />
           <PublicRoute component={LearningPaths} path="/learning_paths" exact />
           <PublicRoute

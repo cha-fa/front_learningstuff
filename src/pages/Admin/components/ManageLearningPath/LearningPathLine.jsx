@@ -3,10 +3,11 @@ import useFetch from "hooks/useFetch";
 import { AiFillCheckCircle, AiOutlineEdit } from "react-icons/ai";
 import { useTranslation } from "react-i18next";
 import { Button, Form, Row, Col } from "react-bootstrap";
+import AddCategories from "./AddCategories";
 
 const LearninPathLine = ({ learningPath, handleEdit }) => {
   const { t } = useTranslation("admin");
-  const { data, error, isLoading, patch, get } = useFetch();
+  const { data, patch, get } = useFetch();
   const [title, setTitle] = useState(learningPath.title);
   const [price, setPrice] = useState(learningPath.price_in_cents);
   const [newCourse, setNewCourse] = useState();
@@ -49,13 +50,28 @@ const LearninPathLine = ({ learningPath, handleEdit }) => {
       <td>{learningPath.id}</td>
       <td>
         {(editing && (
-          <input
-            placeholder={title}
-            defaultValue={title}
-            onChange={() => setTitle(event.target.value)}
-          />
-        )) ||
-          title}{" "}
+          <>
+            <input
+              placeholder={title}
+              defaultValue={title}
+              onChange={() => setTitle(event.target.value)}
+            />
+              <AddCategories 
+                learningPath={learningPath}
+              />
+          </>
+        )) || (
+          <>
+            {title}
+            <ul>
+              {(learningPath.categories && (
+                learningPath.categories.map((category) =>(
+                  <li key={category.id}><small>{category.title}</small></li>
+              ))))}
+            </ul>
+          </>
+        )}
+        
       </td>
       <td>
         {(editing && (

@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Button, Form, Row, Col } from "react-bootstrap";
 import AddCategories from "./AddCategories";
 
-const LearninPathLine = ({ learningPath, handleEdit }) => {
+const LearningPathLine = ({ learningPath, handleEdit }) => {
   const { t } = useTranslation("admin");
   const { data, patch, get } = useFetch();
   const [title, setTitle] = useState(learningPath.title);
@@ -163,4 +163,4 @@ const LearninPathLine = ({ learningPath, handleEdit }) => {
   );
 };
 
-export default LearninPathLine;
+export default LearningPathLine;

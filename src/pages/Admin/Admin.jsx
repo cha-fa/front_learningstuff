@@ -10,6 +10,7 @@ import ManageLearningPath from "./components/ManageLearningPath/ManageLearningPa
 import ManageCategories from "./components/ManageCategories/ManageCategories";
 import ManageCourses from "./components/ManageCourses/ManageCourses";
 import ImportCourse from "./components/ManageCourses/ImportCourse";
+import ManageTeachers from "./components/ManageTeachers/ManageTeachers";
 
 const Admin = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -58,6 +59,11 @@ const Admin = () => {
                 currentUser={currentUser}
                 component={ImportCourse}
                 path="/admin/import"
+              />
+              <AdminRoute
+                currentUser={currentUser}
+                component={ManageTeachers}
+                path="/admin/teachers"
               />
             </Switch>
           </Container>

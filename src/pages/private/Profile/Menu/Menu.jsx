@@ -54,16 +54,6 @@ const ProfileMenu = () => {
           </span>
         </NavLink>
         <NavLink
-          to="/profile/editregistration"
-          activeClassName="is-active"
-          className="user-menu-link"
-        >
-          <span>{t("profile:menueditregistration")}</span>
-          <span className="user-menu-icon">
-            <FaChevronRight />
-          </span>
-        </NavLink>
-        <NavLink
           to="/profile/myinvoices"
           activeClassName="is-active"
           className="user-menu-link"

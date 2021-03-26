@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import  { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { displayError } from "stores/flashmessages/flashMiddleware";
@@ -10,6 +10,7 @@ import HomeAchievement from "./components/HomeAchievement/HomeAchievement";
 import HomePresentation from "./components/HomePresentation/HomePresentation";
 import BeATeacher from "./components/BeATeacher/BeATeacher";
 import ScrollTop from "./components/ScrollTop/ScrollTop";
+import { Container } from "react-bootstrap";
 
 const Home = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
@@ -36,15 +37,27 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="Home">
-      <Fade left= {isDesktop} bottom={isMobile} duration={1000} delay={500} distance="30px">
+    <div fuild className="Home">
+      <Fade
+        left={isDesktop}
+        bottom={isMobile}
+        duration={1000}
+        delay={500}
+        distance="30px"
+      >
         <JumbotronDisplay />
       </Fade>
-      <Fade left= {isDesktop} bottom={isMobile} duration={1000} delay={500} distance="30px">
+      <Fade
+        left={isDesktop}
+        bottom={isMobile}
+        duration={1000}
+        delay={500}
+        distance="30px"
+      >
         <HomePresentation />
       </Fade>
       <HomeAchievement />
-      {currentUser && <BeATeacher />}
+
       <ScrollTop />
     </div>
   );

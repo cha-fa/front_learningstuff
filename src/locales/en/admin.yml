@@ -1,0 +1,48 @@
+manage_approval_requests: Manage approval request
+pending_for_review: Users pending for review
+manage_approvals: Manage approvals
+manage_users: Manage users
+manage_categories: Manage catagories
+manage_learning_paths: Manage learning paths
+manage_courses: Manage courses
+first_name: First name
+last_name: Last name
+email: Email
+approval?: Approve?
+role: Role
+student: Student
+teacher: Teacher
+loading: Loading ...
+price_in_cents: Price (in cents)
+courses_list: Courses list
+title: Titre
+remove_this_course: Remove this course
+add_a_course: Add a course
+validate_add: Validate add
+are_you_sure: Are you sure?
+edit: Modify
+dashboard_admin: Dashboard Admin
+add_courses: Add courses
+add_categories: Add categories
+validate_creation: Validate creation
+cancel_creation: Cancel creation
+create_learning_path: Create a learning path
+title_learning_path: Learning path
+categories: Categories
+create_category: Create a category
+in_learning_paths: In leaning paths
+delete: Delete
+update: Update
+import_course: Import course
+all_courses: All courses
+structure_course_repository: The repository's course structure needs to be has below.
+file_format_txt_except_quizz_json: Fils needs to be .txt except the file 'lesson_quizz' which need to be .json
+url_to_enter: The URL need to be formated
+url_format: "https://github.com/{username}/{repo_name}"
+url_example: "https://github.com/cha-fa/course_content_example"
+example_to_see: Check out a GitHub course format
+by_clicking_here: by clicking here
+how_to_import: How to import a course
+url_github: URL du repository github
+course_imported: The course has been imported
+manage_teachers: Manage teachers

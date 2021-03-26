@@ -1,9 +1,10 @@
 @import "style/variables";
 
-.Login {
-  &__col {
+.Register {
+  &_col {
     background-color: $light-orange !important;
     padding: 40px 0 40px;
   }
   padding: 30px 0 30px !important;
 }
+

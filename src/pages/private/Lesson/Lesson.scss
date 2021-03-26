@@ -1,0 +1,13 @@
+@import "style/variables.scss";
+
+.Lesson {
+  .nav {
+    margin: 20px 0 30px;
+    a {
+      color: black;
+    }
+    .active {
+      color: orange !important;
+    }
+  }
+}

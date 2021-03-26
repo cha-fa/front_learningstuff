@@ -1,7 +1,7 @@
-import "./Login.scss";
+import "./RecoverPassword.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { fetchToLogin } from "stores/authentication/authMiddleware";
 import { useTranslation } from "react-i18next";
 import loginregisterside from "assets/loginregisterside.jpg";
@@ -14,34 +14,36 @@ import {
   Button,
   Container,
 } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import {
+  displaySuccess,
+  displayWarning,
+} from "stores/flashmessages/flashMiddleware";
+import useFetch from "hooks/useFetch";
 
-const Login = () => {
-  const [email, setEmail] = useState("");
+const RecoverPassword = () => {
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const { t } = useTranslation();
+  const { put } = useFetch();
   const dispatch = useDispatch();
   const history = useHistory();
-  const currentUser = useSelector((state) => state.auth.currentUser);
+  const reset_password_token = useLocation().search.split("=")[1];
 
-  const login = async (e) => {
+  const recover = async (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      dispatch(displayWarning(t("password:password_difference")));
+      return;
+    }
     const data = {
       user: {
-        email: email,
         password: password,
+        reset_password_token,
       },
     };
-    e.preventDefault();
-    if (await dispatch(fetchToLogin(data))) {
-      console.log(currentUser);
-      if(currentUser.role === "admin"){
-        history.push("/admin");
-      } else if (currentUser.role === "teacher"){
-        history.push("/profile/mycourses");
-      } else {
-        history.push("/profile/mycourses");
-      }
-    }
+    await put("/password", data);
+    dispatch(displaySuccess(t("password:changed")));
+    history.push("/login");
   };
 
   return (
@@ -53,18 +55,18 @@ const Login = () => {
             md={5}
             className="Login__col d-flex flex-column justify-content-center align-items-center"
           >
-            <h2>{t("login:good_to_see_you")}</h2>
+            <h2>{t("password:new_password")}</h2>
             <Form
               className="m-5 d-flex flex-column justify-content-around"
-              onSubmit={login}
+              onSubmit={recover}
             >
               <FormGroup>
                 <FormControl
                   className="p-4 mb-3"
-                  type="email"
-                  placeholder={t("login:placeholderemail")}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  type="password"
+                  placeholder={t("password:placeholder_new_password")}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   required
                 />
               </FormGroup>
@@ -72,31 +74,27 @@ const Login = () => {
                 <FormControl
                   className="p-4 mb-3"
                   type="password"
-                  placeholder={t("login:placeholderpassword")}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder={t("password:placeholder_repeat_new_password")}
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                   required
                 />
               </FormGroup>
-              <p>
-                {t("login:dont_have_account_yet")}
-                <Link to="/register">
-                  <span> {t("login:registernow")}</span>
-                </Link>
-              </p>
-              <p className="mb-4">
-                <Link to="/password">
-                  <span> {t("password:forgot_password")}</span>
-                </Link>
-              </p>
+
               <Button
                 type="submit"
                 className="ButtonPrimary w-75"
                 size="lg"
                 block
               >
-                {t("login:labelbutton")}
+                {t("password:submit")}
               </Button>
+              <p className="mt-4">
+                {t("register:accountquestion")}
+                <Link to="/login">
+                  <span> {t("register:loginnow")}</span>
+                </Link>
+              </p>
             </Form>
           </Col>
           <Col className="Login__col" xs={12} md={4}>
@@ -115,4 +113,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default RecoverPassword;

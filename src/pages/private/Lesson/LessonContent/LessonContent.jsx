@@ -3,7 +3,7 @@ import React from "react";
 
 const LessonContent = ({ content }) => {
   return (
-    <div className="LessonContent">
+    <div className="LessonContent ml-2">
       <MarkdownConverter text={content} />
     </div>
   );

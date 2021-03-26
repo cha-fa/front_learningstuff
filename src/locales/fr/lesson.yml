@@ -12,9 +12,14 @@ correct_answer_was: La bonne réponse était
 quizz_over: Le quizz est terminé
 do_quizz: Faire le quizz
 result: Résultat
-course_is_over: Féliciations, tu as terminé ce cours !
+course_is_over: Félicitations, tu as terminé ce cours !
 back_to_profile: Retour à mon profil
 go_to_next_lesson: Passer à la leçon suivante
 previous_lesson: Leçon précédente
 next_lesson: Leçon suivante
 reply: Répondre
+need_to_answer_quizz: Tu dois répondre au quizz avant de passer à la leçon suivante, bonne chance !
+already_answered: Tu as déjà répondu au quizz
+result_obtained: Résultat obtenu
+redo_quizz: Refaire le quizz
+validate_back_to_profile: Valider la leçon et retourner à mon profil

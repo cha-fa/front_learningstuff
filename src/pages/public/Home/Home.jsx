@@ -16,7 +16,7 @@ const Home = () => {
   const [isDesktop, setIsDesktop] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { search } = useLocation();
-  const { t } = useTranslation();
+  const { t } = useTranslation("home");
   const dispatch = useDispatch();
 
   useEffect(() => {

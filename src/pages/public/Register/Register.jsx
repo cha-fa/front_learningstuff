@@ -21,7 +21,8 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const { t } = useTranslation();
+  const [role, setRole] = useState("student");
+  const { t } = useTranslation("register");
   const dispatch = useDispatch();
   const history = useHistory();
 

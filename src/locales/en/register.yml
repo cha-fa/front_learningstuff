@@ -7,6 +7,6 @@ role: role
 optionstudent: Student
 optionteacher: Teacher
 optionadmin: Administrator
-accountquestion: Already have an account yet?
+accountquestion: Already have an account?
 loginnow: Log in now!
 labelbutton: Register

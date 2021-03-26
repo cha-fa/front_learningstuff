@@ -19,7 +19,7 @@ import {
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { t } = useTranslation();
+  const { t } = useTranslation("login");
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -73,7 +73,7 @@ const Login = () => {
             <p className="mb-4">
               {t("login:dont_have_account_yet")}
               <Link to="/register">
-                <span> {t("login:registernow")}</span>
+                <p> {t("login:registernow")}</p>
               </Link>
             </p>
             <p className="mb-4">

@@ -114,7 +114,7 @@ const Navigation = () => {
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link className="dropdown-item" to="/">
+                  <Link className="dropdown-item" to="/profile/myinvoices">
                     {t("navigation:linkOrders")}
                   </Link>
                 </NavDropdown.Item>

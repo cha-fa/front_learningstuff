@@ -7,8 +7,8 @@ import { BsAward } from "react-icons/bs";
 const HomeAchievement = () => {
   const { t } = useTranslation(["home"]);
   return (
-    <section className="HomeAchievement">
-      <Row className="p-5 text-center">
+    <section className="HomeAchievement pt-5">
+      <Row className="p-0 m-0 text-center">
         <Col>
           <FaUserGraduate size={100} className="HomeAchivement__icon" />
           <h3>5 679</h3>

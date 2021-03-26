@@ -7,7 +7,7 @@ import EditAvatar from "../components/EditAvatar";
 import EditRegistration from "../components/EditRegistration";
 import MyInvoices from "../components/MyInvoices";
 
-const Feed  = ( {reload} ) => {
+const Feed = ({ reload }) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { put, postAvatar } = useFetch();
 
@@ -24,7 +24,7 @@ const Feed  = ( {reload} ) => {
   const updateRegistration = (newCredentials) => {
     console.log("TODO --> Modifier Devise Registration", newCredentials);
   };
-  
+
   return (
     <div className="Feed card border-light p-2">
       <div className="card-body p-2">
@@ -38,9 +38,6 @@ const Feed  = ( {reload} ) => {
           <Route path="/profile/avatar">
             <EditAvatar onSubmit={updateAvatar} />
           </Route>
-          <Route path="/profile/editregistration">
-            <EditRegistration onSubmit={updateRegistration} />
-          </Route>
           <Route path="/profile/myinvoices">
             <MyInvoices />
           </Route>
@@ -49,5 +46,5 @@ const Feed  = ( {reload} ) => {
     </div>
   );
 };
-  
+
 export default Feed;

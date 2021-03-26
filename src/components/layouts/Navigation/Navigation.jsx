@@ -38,12 +38,6 @@ const Navigation = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav inline className="ml-auto d-flex align-items-center">
-          <Nav.Link>
-            <NavLink className="nav-link" to="/">
-              {t("navigation:linkHome")}
-            </NavLink>
-          </Nav.Link>
-
           <NavDropdown
             title={
               <span className="mr-1">{t("navigation:linkLearningPath")}</span>

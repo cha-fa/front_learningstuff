@@ -77,7 +77,7 @@ const Question = ({
   }, [question]);
 
   return (
-    <div className="Question h-100 d-flex justify-content-center flex-column ">
+    <div className="Question h-100 d-flex justify-content-center flex-column">
       <h3>{question.content} ?</h3>
 
       <Form>

@@ -8,6 +8,7 @@ import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
 import noavatar from "assets/noavatar.jpg";
 import { useTranslation } from "react-i18next";
 import useFetch from "hooks/useFetch";
+import logo from "assets/logo.png";
 
 const Navigation = () => {
   const token = useSelector((state) => state.auth.token);
@@ -31,15 +32,22 @@ const Navigation = () => {
     <Navbar className="Navigation" expand="lg">
       <Navbar.Brand>
         <Link className="Navigation__logo" to="/">
-          {t("navigation:navBrand")}
+          <img src={logo} style={{ width: "200px" }} />
         </Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav inline className="ml-auto">
+        <Nav inline className="ml-auto d-flex align-items-center">
+          <Nav.Link>
+            <NavLink className="nav-link" to="/">
+              {t("navigation:linkHome")}
+            </NavLink>
+          </Nav.Link>
 
           <NavDropdown
-            title={t("navigation:linkLearningPath")}
+            title={
+              <span className="mr-1">{t("navigation:linkLearningPath")}</span>
+            }
             id="path-nav-dropdown"
             className="nav-link"
           >
@@ -78,10 +86,8 @@ const Navigation = () => {
           )}
           {currentUser && currentUser.role === "admin" && (
             <>
-              <Nav.Link>
-                <Link className="nav-link" to="/admin">
-                  {t("navigation:linkAdmin")}
-                </Link>
+              <Nav.Link className="btn btn-warning">
+                <Link to="/admin">{t("navigation:linkAdmin")}</Link>
               </Nav.Link>
             </>
           )}
@@ -89,28 +95,27 @@ const Navigation = () => {
             <>
               <NavDropdown
                 title={
-                  <div>
-                    {(currentUser.avatar && (
-                      <Image
-                        src={currentUser.avatar}
-                        alt="Real avatar."
-                        className="user-avatar-navbar"
-                        roundedCircle
-                      />
-                    )) || (
-                      <Image
-                        src={noavatar}
-                        alt="Unknown avatar in case the user hasn't upload his/her."
-                        className="user-avatar-navbar"
-                        roundedCircle
-                      />
-                    )}
-                  </div>
+                  <span className="mr-3">
+                    {
+                      <>
+                        <Image
+                          src={
+                            (currentUser.avatar && currentUser.avatar) ||
+                            noavatar
+                          }
+                          alt="Real avatar."
+                          className="user-avatar-navbar mr-4"
+                          roundedCircle
+                        />
+                        {currentUser.first_name + " " + currentUser.last_name}
+                      </>
+                    }
+                  </span>
                 }
                 id="collasible-nav-dropdown"
               >
                 <NavDropdown.Item>
-                  <Link className="dropdown-item" to="profile/mycourses">
+                  <Link className="dropdown-item" to="/profile/mycourses">
                     {t("navigation:my_courses")}
                   </Link>
                 </NavDropdown.Item>
@@ -124,17 +129,13 @@ const Navigation = () => {
                     {t("navigation:my_profile")}
                   </Link>
                 </NavDropdown.Item>
+                <NavDropdown.Divider />
                 <NavDropdown.Item className="dropdown-item">
                   <Link className="dropdown-item" onClick={logout} to="/">
                     {t("navigation:linkLogout")}
                   </Link>
                 </NavDropdown.Item>
               </NavDropdown>
-              <Nav.Link className="ml-0 pl-0">
-                <Link className="nav-link ml-0 pl-0" to="/profile">
-                  {currentUser.first_name} {currentUser.last_name}
-                </Link>
-              </Nav.Link>
             </>
           )}
         </Nav>

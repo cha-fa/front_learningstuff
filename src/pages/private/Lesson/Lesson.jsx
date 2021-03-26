@@ -55,7 +55,7 @@ const Lesson = () => {
   };
 
   return (
-    <Container fluid className="Lesson">
+    <Container fluid className="Lesson pb-5">
       {error && (
         <h1>
           {error}
@@ -67,7 +67,10 @@ const Lesson = () => {
           <ChapterProgressBar currentLesson={data} onClick={handleClose} />
           <Row>
             <Col md={6}>
-              <Nav variant="tabs" defaultActiveKey="/home">
+              <Nav
+                variant="tabs"
+                defaultActiveKey={`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}/content`}
+              >
                 <Nav.Item>
                   <NavLink
                     className="nav-link"

@@ -64,6 +64,7 @@ As a **Student**, you will be able to:
 ### Language
 
 **Back** : Ruby on Rails 6 
+
 **Front** : React JS, HTML, CSS
 
 ### API

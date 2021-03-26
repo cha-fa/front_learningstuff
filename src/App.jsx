@@ -25,6 +25,8 @@ import ShowCourse from "pages/public/Courses/ShowCourse/ShowCourse";
 import Subscription from "pages/private/Subscription/Subscription";
 import RecoverPassword from "pages/public/RecoverPassword/RecoverPassword";
 import ForgotPassword from "pages/public/ForgotPassword/ForgotPassword";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const App = () => {
   const displayFlash = useSelector((state) => state.flash.display);
@@ -41,6 +43,9 @@ const App = () => {
 
   useEffect(() => {
     autoLogin();
+    AOS.init({ once: true, duration: 400 });
+
+    AOS.refresh();
   }, []);
 
   return (

@@ -26,6 +26,7 @@ const EditAvatar = ( { onSubmit } ) => {
       <Form onSubmit={handleSubmit}>
         <input
           type="file"
+          className="ButtonPrimary btn-sm"
           onChange={onAvatarChange}
           accept="image/*"
         />

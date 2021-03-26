@@ -9,36 +9,7 @@ const Recover = (props) => {
 
   const params = useParams();
   const reset_password_token = useLocation().search.split("=")[1];
-  return (
-    <div className="Recover">
-      <Form
-        className="m-5 d-flex flex-column justify-content-around"
-        // onSubmit={login}
-      >
-        <FormGroup>
-          <FormControl
-            className="p-4 mb-3"
-            type="email"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </FormGroup>
-        <FormGroup>
-          <FormControl
-            className="p-4 mb-3"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-          />
-        </FormGroup>
-        <Button type="submit" className="ButtonPrimary w-75" size="lg" block>
-          Ok
-        </Button>
-      </Form>
-    </div>
-  );
+  return <div className="Recover"></div>;
 };
 
 export default Recover;

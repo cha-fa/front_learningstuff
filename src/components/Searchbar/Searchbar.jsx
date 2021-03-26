@@ -9,9 +9,9 @@ const Searchbar = ({ getInput }) => {
     getInput(e.target.value);
   };
   return (
-    <div className="Searchbar">
+    <div className="Searchbar d-flex justify-content-center">
       <Form
-        className="w-100 m-5"
+        className="w-75 mt-5 mb-5"
         onSubmit={(e) => {
           e.preventDefault();
         }}

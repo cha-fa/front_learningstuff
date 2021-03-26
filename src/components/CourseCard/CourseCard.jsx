@@ -3,20 +3,13 @@ import "./CourseCard.scss";
 import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
 import paymentFetch from "hooks/paymentFetch";
-<<<<<<< HEAD
-=======
 import { useTranslation } from "react-i18next";
->>>>>>> master
 
 const CourseCard = ({ course, subscribed, currentLesson }) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const { title, price_in_cents, id } = course;
   const { newPayment } = paymentFetch();
-<<<<<<< HEAD
-  const history = useHistory();
-=======
   const { t } = useTranslation();
->>>>>>> master
 
   const handleSubscription = (e) => {
     e.preventDefault();

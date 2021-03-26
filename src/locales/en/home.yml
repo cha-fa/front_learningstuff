@@ -1,6 +1,5 @@
-title: Bienvenue sur Learning Stuff {{name}}
-# articles: Il y a {{count}} article
-# articles_plural: Il y a {{count}} articles
+title: Welcome to Learning Stuff {{name}}
+cta: Discover our learning paths
 UnlimitedTitle: Access to the course for life
 UnlimitedText: Take advantage of courses and their lifetime updates
 

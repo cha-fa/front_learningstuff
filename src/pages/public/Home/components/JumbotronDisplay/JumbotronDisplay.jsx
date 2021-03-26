@@ -1,25 +1,36 @@
-import ButtonSecondary from "components/ButtonSecondary/ButtonSecondary";
-import { Link } from "react-router-dom";
-import { Jumbotron } from "react-bootstrap";
-import "./JumbotronDisplay.scss";
 import { useTranslation } from "react-i18next";
+import { Jumbotron, Row, Col } from "react-bootstrap";
+import LottieAnimation from "lottie";
+import animjumbotron from "animations/animjumbotron.json";
+import { Link } from "react-router-dom";
+import ButtonSecondary from "components/ButtonSecondary/ButtonSecondary";
+import "./JumbotronDisplay.scss";
 
 const JumbotronDisplay = () => {
   const { t } = useTranslation();
   return (
-    <>
-      <Jumbotron className="image-jumbotron">
-        <div className="text-center">
+    <Jumbotron className="JumbotronDisplay">
+      <Row>
+        <Col
+          xs={12}
+          md={6}
+          className="Jumbotron_col d-flex flex-column justify-content-center align-items-center text-center"
+        >
           <h2 className="display-4">{t("learn_a_lot_of_stuff")}</h2>
           <h3>{t("in_charge_of_future")}</h3>
-          <p className="lead">
-            <Link to="/learning_paths">
-              <ButtonSecondary sizeClass="medium" label={t("get_started")} />
+          <div className="my-5">
+            <Link to="/learning_paths" className="ButtonSecondary cta btn btn-lg">
+              {t("home:cta")}
             </Link>
-          </p>
-        </div>
-      </Jumbotron>
-    </>
+          </div>
+        </Col>
+        <Col
+          md={6}
+          className="Jumbotron_col d-none d-lg-block">
+          <LottieAnimation lotti={animjumbotron} />
+        </Col>
+      </Row>
+    </Jumbotron>
   );
 };
 

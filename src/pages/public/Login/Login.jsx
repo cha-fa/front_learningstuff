@@ -37,64 +37,64 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Container fluid className="Login">
-        <Row>
-          <Col
-            xs={12}
-            md={6}
-            className="Login__col d-flex flex-column justify-content-center align-items-center"
+    <Container fluid className="Login">
+      <Row>
+        <Col
+          xs={12}
+          md={6}
+          className="Login_col d-flex flex-column justify-content-center align-items-center"
+        >
+          <h2>{t("login:good_to_see_you")}</h2>
+          <Form
+            className="m-5 d-flex flex-column justify-content-around"
+            onSubmit={login}
           >
-            <h2>{t("login:good_to_see_you")}</h2>
-            <Form
-              className="m-5 d-flex flex-column justify-content-around"
-              onSubmit={login}
+            <FormGroup>
+              <FormControl
+                className="p-4 mb-3"
+                type="email"
+                placeholder={t("login:placeholderemail")}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <FormControl
+                className="p-4 mb-3"
+                type="password"
+                placeholder={t("login:placeholderpassword")}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <p className="mb-4">
+              {t("login:dont_have_account_yet")}
+              <Link to="/register">
+                <span> {t("login:registernow")}</span>
+              </Link>
+            </p>
+            <Button
+              type="submit"
+              className="ButtonPrimary w-75 mx-auto"
+              size="lg"
+              block
             >
-              <FormGroup>
-                <FormControl
-                  className="p-4 mb-3"
-                  type="email"
-                  placeholder={t("login:placeholderemail")}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </FormGroup>
-              <FormGroup>
-                <FormControl
-                  className="p-4 mb-3"
-                  type="password"
-                  placeholder={t("login:placeholderpassword")}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </FormGroup>
-              <p className="mb-4">
-                {t("login:dont_have_account_yet")}
-                <Link to="/register">
-                  <span> {t("login:registernow")}</span>
-                </Link>
-              </p>
-              <Button
-                type="submit"
-                className="ButtonPrimary w-75 mx-auto"
-                size="lg"
-                block
-              >
-                {t("login:labelbutton")}
-              </Button>
-            </Form>
-          </Col>
-          <Col className="Login__col  d-none d-lg-block text-center" md={6}>
-            <Image
-              src={logincover}
-              alt="Illustration login page"
-              height={600} />
-          </Col>
-        </Row>
-      </Container>
-    </>
+              {t("login:labelbutton")}
+            </Button>
+          </Form>
+        </Col>
+        <Col
+          md={6}
+          className="Login_col d-none d-lg-block text-center">
+          <Image
+            src={logincover}
+            alt="Illustration login page"
+            height={600} />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

@@ -1,21 +1,17 @@
 @import "style/variables.scss";
 
-.image-jumbotron {
+.JumbotronDisplay {
   background-image: $primary-alt;
-  background-image: $primary;
   background-size: cover;
   min-height: 400px;
   min-width: 100%;
-}
+  margin: 0;
 
-.jumbotron {
   h2,
   h3 {
     color: white;
   }
-  margin: 0;
-}
-
-.lead {
-  margin-top: 3rem;
+  .cta:hover {
+    color: #e57c00;
+  }
 }

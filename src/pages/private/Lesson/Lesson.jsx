@@ -1,23 +1,27 @@
 import { useEffect, useState } from "react";
-import PrivateRoute from "components/PrivateRoute";
-import { Switch, useParams, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { Col, Row, Nav, Container, Modal, Button } from "react-bootstrap";
-import LessonContent from "./LessonContent/LessonContent";
-import LessonForum from "./LessonForum/LessonForum";
+import { useParams, Link, NavLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { Col, Row, Nav, Container, Modal } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import { fetchCurrentUser } from "stores/authentication/authMiddleware";
+import { useHistory } from "react-router-dom";
 import useFetch from "hooks/useFetch";
 import LessonVideo from "./LessonVideo/LessonVideo";
 import LessonQuizz from "./LessonQuizz/LessonQuizz";
 import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
-import { useHistory } from "react-router-dom";
 import ChapterProgressBar from "./ChapterProgressBar.jsx/ChapterProgressBar";
+import LessonVideoSteps from "./LessonVideo/LessonVideoSteps";
+import LessonRouter from "./LessonRouter";
+
+import "./Lesson.scss";
 
 const Lesson = () => {
   const currentUser = useSelector((state) => state.auth.currentUser);
+  const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
   const { courseId, chapterId, lessonId } = useParams();
   const { t } = useTranslation("lesson");
-  const { data, get, error } = useFetch();
+  const { data, get, error, post } = useFetch();
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -31,9 +35,24 @@ const Lesson = () => {
     );
   };
 
+  const validateLesson = () => {
+    post(
+      `/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}/results`,
+      { quizz_result: null }
+    );
+    history.push("/profile/mycourses");
+  };
+
   useEffect(() => {
     get(`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}`);
+    dispatch(fetchCurrentUser(token));
   }, [lessonId]);
+
+  const getProgressLesson = () => {
+    return currentUser.progress_lessons.find(
+      (progress) => progress.lesson_id === Number(lessonId)
+    );
+  };
 
   return (
     <Container fluid className="Lesson">
@@ -43,57 +62,39 @@ const Lesson = () => {
           <Link to={"/profile"}>{t("back_to_profile")}</Link>
         </h1>
       )}
-      {data && (
+      {data && currentUser && (
         <>
           <ChapterProgressBar currentLesson={data} onClick={handleClose} />
           <Row>
             <Col md={6}>
-              <Nav variant="tabs">
+              <Nav variant="tabs" defaultActiveKey="/home">
                 <Nav.Item>
-                  <Link
+                  <NavLink
                     className="nav-link"
                     to={`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}/content`}
                   >
                     {t("content")}
-                  </Link>
+                  </NavLink>
                 </Nav.Item>
                 <Nav.Item>
-                  <Link
+                  <NavLink
                     className="nav-link"
                     to={`/courses/${courseId}/chapters/${chapterId}/lessons/${lessonId}/forum`}
                   >
                     {t("forum")}
-                  </Link>
+                  </NavLink>
                 </Nav.Item>
               </Nav>
-              <Switch>
-                <PrivateRoute
-                  currentUser={currentUser}
-                  path="/courses/:courseId/chapters/:chapterId/lessons/:lessonId/content"
-                >
-                  <LessonContent content={data.content} />
-                </PrivateRoute>
-                <PrivateRoute
-                  currentUser={currentUser}
-                  path="/courses/:courseId/chapters/:chapterId/lessons/:lessonId"
-                  exact
-                >
-                  <LessonContent content={data.content} />
-                </PrivateRoute>
-                <PrivateRoute
-                  currentUser={currentUser}
-                  component={LessonForum}
-                  path="/courses/:courseId/chapters/:chapterId/lessons/:lessonId/forum"
-                >
-                  <LessonForum
-                    ids={{
-                      course: courseId,
-                      chapter: chapterId,
-                      lesson: lessonId,
-                    }}
-                  />
-                </PrivateRoute>
-              </Switch>
+
+              <LessonRouter
+                ids={{
+                  course: courseId,
+                  chapter: chapterId,
+                  lesson: lessonId,
+                }}
+                data={data}
+                currentUser={currentUser}
+              />
             </Col>
             <Col md={6}>
               {" "}
@@ -101,7 +102,9 @@ const Lesson = () => {
                 <LessonVideo url={data.video_url} />
               </Row>
               <Row>
-                <Col>ETAPES VIDEO</Col>
+                <Col>
+                  <LessonVideoSteps />
+                </Col>
                 <Col>
                   {(!data.questions.length && data.next_lesson && (
                     <ButtonPrimary
@@ -111,16 +114,25 @@ const Lesson = () => {
                     />
                   )) ||
                     (!data.questions.length && !data.next_lesson && (
-                      <p>Cours terminé</p>
+                      <>
+                        <p className="text-center">{t("course_is_over")}</p>
+                        <ButtonPrimary
+                          handleClick={validateLesson}
+                          className="ButtonPrimary large text-center"
+                          label={t("validate_back_to_profile")}
+                        />
+                      </>
                     ))}
 
-                  {data.questions.length > 0 && (
+                  {(data.questions.length > 0 && !getProgressLesson() && (
                     <>
+                      <p className="text-center">{t("need_to_answer_quizz")}</p>
                       <ButtonPrimary
                         handleClick={handleShow}
                         className="ButtonPrimary large"
                         label={t("do_quizz")}
                       />
+
                       <Modal show={show} onHide={handleClose}>
                         <Modal.Header closeButton>{data.title}</Modal.Header>
                         <LessonQuizz
@@ -133,7 +145,33 @@ const Lesson = () => {
                         />
                       </Modal>
                     </>
-                  )}
+                  )) ||
+                    (data.questions.length > 0 && getProgressLesson() && (
+                      <>
+                        <p className="text-center">{t("already_answered")}</p>
+                        <p className="text-center">
+                          {t("result_obtained")} :{" "}
+                          {getProgressLesson().quizz_result}
+                        </p>
+                        <ButtonPrimary
+                          handleClick={handleShow}
+                          className="ButtonPrimary large"
+                          label={t("redo_quizz")}
+                        />
+
+                        <Modal show={show} onHide={handleClose}>
+                          <Modal.Header closeButton>{data.title}</Modal.Header>
+                          <LessonQuizz
+                            ids={{
+                              course: courseId,
+                              chapter: chapterId,
+                              lesson: lessonId,
+                            }}
+                            handleClose={handleClose}
+                          />
+                        </Modal>
+                      </>
+                    ))}
                 </Col>
               </Row>
             </Col>

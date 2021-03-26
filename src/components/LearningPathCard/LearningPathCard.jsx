@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import defaultcover from "assets/covers/defaultcover.svg";
 import { useSelector } from "react-redux";
 
-const LearningPathCard = ({ learningPath, subscribed }) => {
+const LearningPathCard = ({ learningPath, subscribed, width, imgHeight }) => {
   const {
     title,
     price_in_cents,
@@ -52,7 +52,7 @@ const LearningPathCard = ({ learningPath, subscribed }) => {
   };
 
   return (
-    <Card className="LearningPathCard m-3 ">
+    <Card className="LearningPathCard m-3" style={{ width: `${width}` }}>
       {!subscribed && (
         <Card.Header className="LearningPathCard__header">
           {price_in_cents && price_in_cents / 100} €
@@ -62,6 +62,7 @@ const LearningPathCard = ({ learningPath, subscribed }) => {
         variant="top"
         src={getImage(slug) ? getImage(slug) : defaultcover}
         alt="IMAGE"
+        style={{ height: `${imgHeight}` }}
       />
 
       <Card.Title className="LearningPathCard__title">{title}</Card.Title>

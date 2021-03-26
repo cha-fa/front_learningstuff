@@ -60,7 +60,13 @@ const LearningPathShow = () => {
       <Row className="d-flex justify-content-center">
         {data &&
           data.courses.map((course) => (
-            <CourseCard key={course.id} course={course} noSubscription="true" />
+            <CourseCard
+              key={course.id}
+              course={course}
+              noSubscription="true"
+              width="40%"
+              imgHeight="300px"
+            />
           ))}
       </Row>
     </div>

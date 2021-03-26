@@ -116,7 +116,7 @@ const Navigation = () => {
                 id="collasible-nav-dropdown"
               >
                 <NavDropdown.Item>
-                  <Link className="dropdown-item" to="profile/mycourses">
+                  <Link className="dropdown-item" to="/profile/mycourses">
                     {t("navigation:my_courses")}
                   </Link>
                 </NavDropdown.Item>

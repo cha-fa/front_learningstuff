@@ -60,7 +60,11 @@ const CourseCard = ({
   };
 
   return (
-    <Card className="CourseCard m-3" style={{ width: `${width}` }}>
+    <Card
+      className="CourseCard m-3"
+      data-aos="fade-up"
+      style={{ width: `${width}` }}
+    >
       {!noSubscription && !subscribed && (
         <Card.Header className="CourseCard__header">
           {price_in_cents && price_in_cents / 100} €

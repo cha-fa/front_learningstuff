@@ -52,7 +52,11 @@ const LearningPathCard = ({ learningPath, subscribed, width, imgHeight }) => {
   };
 
   return (
-    <Card className="LearningPathCard m-3" style={{ width: `${width}` }}>
+    <Card
+      className="LearningPathCard m-3"
+      data-aos="fade-up"
+      style={{ width: `${width}` }}
+    >
       {!subscribed && (
         <Card.Header className="LearningPathCard__header">
           {price_in_cents && price_in_cents / 100} €

@@ -1,6 +1,8 @@
-title: Bienvenue sur Learning Stuff {{name}}
-# articles: Il y a {{count}} article
-# articles_plural: Il y a {{count}} articles
+title: Welcome to Learning Stuff {{name}}
+learn_a_lot_of_stuff: Learn a lot of stuff!
+in_charge_of_future: The future is in your hands
+ctalearningpaths: Discover our learning paths
+ctacourses: Discover our courses
 UnlimitedTitle: Access to the course for life
 UnlimitedText: Take advantage of courses and their lifetime updates
 ExpertTeacherTitle: With experts

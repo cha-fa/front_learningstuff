@@ -14,7 +14,6 @@ import {
   Button,
   Container,
 } from "react-bootstrap";
-import { useSelector } from "react-redux";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -22,7 +21,6 @@ const Login = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const history = useHistory();
-  const currentUser = useSelector((state) => state.auth.currentUser);
 
   const login = async (e) => {
     const data = {
@@ -32,15 +30,9 @@ const Login = () => {
       },
     };
     e.preventDefault();
+   
     if (await dispatch(fetchToLogin(data))) {
-      console.log(currentUser);
-      if(currentUser.role === "admin"){
-        history.push("/admin");
-      } else if (currentUser.role === "teacher"){
-        history.push("/profile/mycourses");
-      } else {
-        history.push("/profile/mycourses");
-      }
+      history.push("/admin"); 
     }
   };
 

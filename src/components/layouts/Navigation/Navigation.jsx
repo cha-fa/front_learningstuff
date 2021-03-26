@@ -12,7 +12,7 @@ import useFetch from "hooks/useFetch";
 const Navigation = () => {
   const token = useSelector((state) => state.auth.token);
   const currentUser = useSelector((state) => state.auth.currentUser);
-  const { data, error, get } = useFetch();
+  const { data, get } = useFetch();
   const { t } = useTranslation();
 
   const dispatch = useDispatch();

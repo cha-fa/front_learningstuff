@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import  { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
-import { displaySuccess, displayError } from "stores/flashmessages/flashMiddleware";
+import { displayError } from "stores/flashmessages/flashMiddleware";
 import Fade from "react-reveal/Fade";
 import JumbotronDisplay from "./components/JumbotronDisplay/JumbotronDisplay";
 import HomeAchievement from "./components/HomeAchievement/HomeAchievement";
@@ -20,9 +20,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (search === "?payment_successful") {
-      dispatch(displaySuccess(t("payment:success")));
-    } else if (search === "?payment_canceled") {
+    if (search === "?payment_canceled") {
       dispatch(displayError(t("payment:cancel")));
     }
   }, [search]);

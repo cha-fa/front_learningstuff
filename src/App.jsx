@@ -11,7 +11,7 @@ import Register from "pages/public/Register/Register";
 import Profile from "pages/private/Profile/Profile";
 import Lesson from "pages/private/Lesson/Lesson";
 import Navigation from "components/layouts/Navigation/Navigation";
-import Footer from "components/layouts/Footer";
+import Footer from "components/layouts/Footer/Footer";
 import FlashMessage from "components/layouts/FlashMessage";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";

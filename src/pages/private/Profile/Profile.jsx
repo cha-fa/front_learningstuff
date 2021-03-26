@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import  { useHistory } from "react-router-dom";
-import  { useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { fetchCurrentUser } from "stores/authentication/authMiddleware";
 import { displaySuccess } from "stores/flashmessages/flashMiddleware";
@@ -19,11 +19,10 @@ const Profile = () => {
 
   useEffect(() => {
     const token = Cookies.get("token");
-    if(userUpdated){
+    if (userUpdated) {
       dispatch(fetchCurrentUser(token));
     }
     setUserUpdated(false);
-    history.push("/profile/mycourses");
   }, [userUpdated]);
 
   useEffect(() => {
@@ -39,7 +38,7 @@ const Profile = () => {
           <Menu />
         </Col>
         <Col md="8">
-          <Feed reload={setUserUpdated}/>
+          <Feed reload={setUserUpdated} />
         </Col>
       </Row>
     </Container>

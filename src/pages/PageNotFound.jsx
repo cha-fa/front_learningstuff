@@ -1,5 +1,5 @@
 import LottieAnimation from "lottie";
-import anim404 from "animations/anim404.json";
+import anim404 from "assets/animations/anim404.json";
 import UseAnimations from "react-useanimations";
 import alertTriangle from "react-useanimations/lib/alertTriangle";
 import { useTranslation } from "react-i18next";

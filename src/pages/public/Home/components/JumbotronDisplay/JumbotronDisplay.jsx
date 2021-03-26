@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { Jumbotron, Row, Col } from "react-bootstrap";
 import LottieAnimation from "lottie";
-import animjumbotron from "animations/animjumbotron.json";
+import animjumbotron from "assets/animations/animjumbotron.json";
 import { Link } from "react-router-dom";
 import "./JumbotronDisplay.scss";
 

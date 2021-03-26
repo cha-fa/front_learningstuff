@@ -56,7 +56,12 @@ const Courses = () => {
         {isLoading && <Loading />}
         {(data &&
           data.map((course) => (
-            <CourseCard key={course.id} course={course} />
+            <CourseCard
+              key={course.id}
+              course={course}
+              width="40%"
+              imgHeight="300px"
+            />
           ))) ||
           (!isLoading && <h3>{t("common:noResult")})</h3>)}
       </Row>

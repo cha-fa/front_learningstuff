@@ -23,7 +23,7 @@ const LessonQuizz = ({ ids, handleClose }) => {
   }, []);
 
   return (
-    <div className="LessonQuizz p-5 " style={{ height: "50vh" }}>
+    <div className="LessonQuizz p-3 w-100" style={{ minHeight: "80%" }}>
       {data && (
         <>
           <Question

@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import LearningPathCard from "components/LearningPathCard/LearningPathCard";
 import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
 import { useTranslation } from "react-i18next";
-import { Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import Loading from "components/Loading";
 
 const MyCourses = () => {
@@ -15,6 +15,18 @@ const MyCourses = () => {
   const { t } = useTranslation();
   const history = useHistory();
 
+  const getCourseSubscriptions = () => {
+    return data.filter(
+      (subscription) => subscription.learning_path.is_single_course
+    ).length;
+  };
+
+  const getLearningPathSubscriptions = () => {
+    return data.filter(
+      (subscription) => !subscription.learning_path.is_single_course
+    ).length;
+  };
+
   useEffect(() => {
     if (currentUser) {
       get(`/users/${currentUser.id}/subscriptions`);
@@ -22,8 +34,14 @@ const MyCourses = () => {
   }, [currentUser]);
 
   return (
-    <Col className="MyCourses d-flex justify-content-center">
+    <Row className="MyCourses d-flex justify-content-center">
       {isLoading && <Loading />}
+      {data && data.length > 0 && (
+        <p>
+          {t("you_are_registered")} {getLearningPathSubscriptions()} {t("path")}{" "}
+          {t("and")} {getCourseSubscriptions()} {t("course")}
+        </p>
+      )}
       {(data &&
         data.length > 0 &&
         data.map(
@@ -34,13 +52,16 @@ const MyCourses = () => {
                   key={subscription.id}
                   course={subscription.learning_path.courses[0]}
                   subscribed={true}
-                  className="w-100"
+                  width="100%"
+                  imgHeight="200px"
                 />
               )) || (
               <LearningPathCard
                 key={subscription.learning_path.id}
                 learningPath={subscription.learning_path}
                 subscribed={true}
+                width="100%"
+                imgHeight="200px"
               />
             )
         )) ||
@@ -54,7 +75,7 @@ const MyCourses = () => {
             />
           </>
         ))}
-    </Col>
+    </Row>
   );
 };
 

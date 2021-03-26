@@ -1,7 +1,6 @@
 @import "style/variables.scss";
 
 .LearningPathCard {
-  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -30,9 +29,5 @@
   &__cta {
     display: flex;
     top: 0;
-  }
-
-  img {
-    height: 400px;
   }
 }

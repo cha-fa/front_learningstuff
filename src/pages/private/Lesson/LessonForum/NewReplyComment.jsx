@@ -10,22 +10,22 @@ const NewReplyComment = ({handleNewReply, ids, comment, user}) => {
   const [reply, setReply] = useState();
   const {post}=useFetch();
   const { t } = useTranslation("lesson");
- 
+  const userId = user.id;
+  const commentId= comment.id;
 
   const handleSubmit = (event) =>{
     event.preventDefault();
     post(
-      `/courses/${ids.course}/chapters/${ids.chapter}/lessons/${ids.lesson}/comments/${comment.ids}/reply_comments`, 
+      `/courses/${ids.course}/chapters/${ids.chapter}/lessons/${ids.lesson}/comments/${comment.id}/reply_comments`, 
       {
         content: reply,
-        user_id:  user.id,
-        comment_id: comment.id
+        user_id:  userId,
+        comment_id: commentId,
       },
       handleNewReply
     );
     setReply("");
   };
-
 return (
 <div className='NewReplyComment'>
 <Form inline className="NewComment mb-3 mt-3">

@@ -69,10 +69,6 @@ const Question = ({
       `/courses/${ids.course}/chapters/${ids.chapter}/lessons/${ids.lesson}/results`,
       { quizz_result: score }
     );
-    // post(`/users/${currentUser.id}/progress`, {
-    //   course_id: ids.course,
-    //   achieved_lesson_id: ids.lesson,
-    // });
   };
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import "./Login.scss";
+import "./ForgotPassword.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
@@ -14,25 +14,24 @@ import {
   Button,
   Container,
 } from "react-bootstrap";
+import useFetch from "hooks/useFetch";
+import { displaySuccess } from "stores/flashmessages/flashMiddleware";
 
-const Login = () => {
+const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const { t } = useTranslation();
+  const { post } = useFetch();
   const dispatch = useDispatch();
-  const history = useHistory();
 
-  const login = async (e) => {
+  const forgot = async (e) => {
+    e.preventDefault();
     const data = {
       user: {
         email: email,
-        password: password,
       },
     };
-    e.preventDefault();
-    if (await dispatch(fetchToLogin(data))) {
-      history.push("/");
-    }
+    await post("/password", data);
+    dispatch(displaySuccess(t("password:reset_send")));
   };
 
   return (
@@ -44,10 +43,10 @@ const Login = () => {
             md={5}
             className="Login__col d-flex flex-column justify-content-center align-items-center"
           >
-            <h2>{t("login:good_to_see_you")}</h2>
+            <h2>{t("password:title")}</h2>
             <Form
               className="m-5 d-flex flex-column justify-content-around"
-              onSubmit={login}
+              onSubmit={forgot}
             >
               <FormGroup>
                 <FormControl
@@ -59,35 +58,20 @@ const Login = () => {
                   required
                 />
               </FormGroup>
-              <FormGroup>
-                <FormControl
-                  className="p-4 mb-3"
-                  type="password"
-                  placeholder={t("login:placeholderpassword")}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </FormGroup>
-              <p>
-                {t("login:dont_have_account_yet")}
-                <Link to="/register">
-                  <span> {t("login:registernow")}</span>
-                </Link>
-              </p>
-              <p className="mb-4">
-                <Link to="/password">
-                  <span> {t("password:forgot_password")}</span>
-                </Link>
-              </p>
               <Button
                 type="submit"
                 className="ButtonPrimary w-75"
                 size="lg"
                 block
               >
-                {t("login:labelbutton")}
+                {t("password:submit")}
               </Button>
+              <p className="mt-4">
+                {t("register:accountquestion")}
+                <Link to="/login">
+                  <span> {t("register:loginnow")}</span>
+                </Link>
+              </p>
             </Form>
           </Col>
           <Col className="Login__col" xs={12} md={4}>
@@ -106,4 +90,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ForgotPassword;

@@ -1,12 +1,10 @@
 import { useEffect } from "react";
-
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchToLogout } from "stores/authentication/authMiddleware";
 import { Navbar, NavDropdown, Nav, Image } from "react-bootstrap";
 import "./Navigation.scss";
 import ButtonPrimary from "components/ButtonPrimary/ButtonPrimary";
-import { AiOutlineShoppingCart, AiFillBell } from "react-icons/ai";
 import noavatar from "assets/noavatar.jpg";
 import { useTranslation } from "react-i18next";
 import useFetch from "hooks/useFetch";
@@ -39,11 +37,6 @@ const Navigation = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav inline className="ml-auto">
-          <Nav.Link>
-            <NavLink className="nav-link" to="/">
-              {t("navigation:linkHome")}
-            </NavLink>
-          </Nav.Link>
 
           <NavDropdown
             title={t("navigation:linkLearningPath")}
@@ -71,20 +64,6 @@ const Navigation = () => {
               {t("navigation:linkCourse")}
             </NavLink>
           </Nav.Link>
-
-          {/* <Nav.Link>
-            <NavLink className="nav-link" to="/subscription">
-              <AiOutlineShoppingCart size={35} style={{ color: "orange" }} />
-            </NavLink>
-          </Nav.Link> */}
-
-          {/* {currentUser && (
-            <Nav.Link>
-              <Link className="nav-link" to="/">
-                <AiFillBell size={35} style={{ color: "orange" }} />
-              </Link>
-            </Nav.Link>
-          )} */}
 
           {!currentUser && (
             <>

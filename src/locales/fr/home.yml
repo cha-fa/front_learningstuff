@@ -1,6 +1,8 @@
 title: Bienvenue sur Learning Stuff {{name}}
-# articles: Il y a {{count}} article
-# articles_plural: Il y a {{count}} articles
+learn_a_lot_of_stuff: Apprenez énormément de choses !
+in_charge_of_future: Votre avenir est entre vos mains
+ctalearningpaths: Découvrez nos parcours de formation
+ctacourses: Découvrez nos cours
 UnlimitedTitle: Accès au cours à vie
 UnlimitedText: Profitez des cours et de leurs mises à jour à vie
 ExpertTeacherTitle: Avec des experts
@@ -9,13 +11,13 @@ ExpertTeacherText2: Apprenez des experts de l'industrie qui sont passionnés par
 AnywhereTitle: Depuis partout
 AnywhereText: Que ce soit sur mobile, tablette, ou ordinateur
 NumberStudent: Apprenants inscrits
-StudentGratuated: Apprenants ont réalisé leurs rêves.
+StudentGratuated: Apprenants ont réalisé leurs rêves
 NumberVisit: Plus de 10 000 visiteurs chaque mois
-Rank: Dans le top 10 des meilleurs plateformes de e-learning
+Rank: Dans le top 10 des meilleures plateformes de e-learning
 MentorText: Venez partager vos connaissances et votre expertise en devenant mentor
 
-FreeCourse: Cour gratuit
-PaidCourse: Cour payant
+FreeCourse: Cours gratuit
+PaidCourse: Cours payant
 Premium: Premium
 Bootcamp: Bootcamp
 
@@ -26,4 +28,3 @@ Mentor: Mentor
 
 BeATeacherTitle: Vous voulez être Mentor ?
 BeATeacherButton: Être Mentor !
-get_started: Démarrez !

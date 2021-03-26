@@ -11,18 +11,22 @@ import Register from "pages/public/Register/Register";
 import Profile from "pages/private/Profile/Profile";
 import Lesson from "pages/private/Lesson/Lesson";
 import Navigation from "components/layouts/Navigation/Navigation";
-import Footer from "components/layouts/Footer";
+import Footer from "components/layouts/Footer/Footer";
 import FlashMessage from "components/layouts/FlashMessage";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
 import AdminRoute from "components/AdminRoute";
 import Admin from "pages/Admin/Admin";
-import PageNotFound from "components/PageNotFound";
+import PageNotFound from "pages/PageNotFound";
 import LearningPaths from "pages/public/LearningPaths/LearningPaths";
 import Courses from "pages/public/Courses/Courses";
 import LearningPathShow from "pages/public/LearningPaths/LearningPathShow";
 import ShowCourse from "pages/public/Courses/ShowCourse/ShowCourse";
 import Subscription from "pages/private/Subscription/Subscription";
+import RecoverPassword from "pages/public/RecoverPassword/RecoverPassword";
+import ForgotPassword from "pages/public/ForgotPassword/ForgotPassword";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const App = () => {
   const displayFlash = useSelector((state) => state.flash.display);
@@ -39,6 +43,9 @@ const App = () => {
 
   useEffect(() => {
     autoLogin();
+    AOS.init({ once: true, duration: 400 });
+
+    AOS.refresh();
   }, []);
 
   return (
@@ -49,6 +56,18 @@ const App = () => {
         <Switch>
           <PublicRoute restricted={false} component={Home} path="/" exact />
           <PublicRoute restricted component={Login} path="/login" exact />
+          <PublicRoute
+            restricted
+            component={RecoverPassword}
+            path="/password/edit"
+            exact
+          />
+          <PublicRoute
+            restricted
+            component={ForgotPassword}
+            path="/password"
+            exact
+          />
           <PublicRoute restricted component={Register} path="/register" exact />
           <PublicRoute component={LearningPaths} path="/learning_paths" exact />
           <PublicRoute

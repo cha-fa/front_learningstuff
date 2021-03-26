@@ -1,7 +1,5 @@
-import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import "./CourseCard.scss";
-import Button from "react-bootstrap/Button";
 import { useSelector } from "react-redux";
 import paymentFetch from "hooks/paymentFetch";
 import { useDispatch } from "react-redux";
@@ -11,7 +9,13 @@ import { useTranslation } from "react-i18next";
 import defaultcover from "assets/covers/defaultcover.svg";
 import { displayWarning } from "stores/flashmessages/flashMiddleware";
 
-const CourseCard = ({ course, subscribed, noSubscription }) => {
+const CourseCard = ({
+  course,
+  subscribed,
+  noSubscription,
+  width,
+  imgHeight,
+}) => {
   const currentUser = useSelector((state) => state.auth.currentUser);
   const isLogged = useSelector((state) => state.auth.isLogged);
   const { title, price_in_cents, id, slug, description, categories } = course;
@@ -54,9 +58,13 @@ const CourseCard = ({ course, subscribed, noSubscription }) => {
   };
 
   return (
-    <Card className="CourseCard m-3 ">
+    <Card
+      className="CourseCard m-3"
+      data-aos="fade-up"
+      style={{ width: `${width}` }}
+    >
       {!noSubscription && !subscribed && (
-        <Card.Header className="LearningPathCard__header">
+        <Card.Header className="CourseCard__header">
           {price_in_cents && price_in_cents / 100} €
         </Card.Header>
       )}
@@ -64,9 +72,10 @@ const CourseCard = ({ course, subscribed, noSubscription }) => {
         variant="top"
         src={getImage(slug) ? getImage(slug) : defaultcover}
         alt="IMAGE"
+        style={{ height: `${imgHeight}` }}
       />
 
-      <Card.Title className="LearningPathCard__title">{title}</Card.Title>
+      <Card.Title className="CourseCard__title">{title}</Card.Title>
       <Card.Body className="d-flex flex-column">
         {!subscribed && <Card.Text>{description}</Card.Text>}
         {subscribed && (
@@ -101,7 +110,7 @@ const CourseCard = ({ course, subscribed, noSubscription }) => {
           </div>
         )}
       </Card.Body>
-      <Card.Footer className="LearningPathCard__categories text-muted">
+      <Card.Footer className="CourseCard__categories text-muted">
         {categories &&
           categories.map((category) => (
             <Badge pill className="mx-2" variant="secondary" key={category.id}>

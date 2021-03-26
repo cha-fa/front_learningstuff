@@ -6,18 +6,8 @@
   font-family: $font-family;
   padding: 0 100px 0;
 
-  &__logo {
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: "none";
-    color: $footer-color;
-    &:hover {
-      color: lighten($footer-color, 10%);
-    }
-  }
-
   .nav-link {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: bold;
     margin: 0 20px 0;
     background-image: $primary;

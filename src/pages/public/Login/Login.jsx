@@ -4,10 +4,11 @@ import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { fetchToLogin } from "stores/authentication/authMiddleware";
 import { useTranslation } from "react-i18next";
-import loginregisterside from "assets/loginregisterside.jpg";
+import logincover from "assets/covers/login.svg";
 import {
   Row,
   Col,
+  Image,
   Form,
   FormGroup,
   FormControl,
@@ -18,7 +19,7 @@ import {
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { t } = useTranslation();
+  const { t } = useTranslation("login");
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -30,74 +31,76 @@ const Login = () => {
       },
     };
     e.preventDefault();
+   
     if (await dispatch(fetchToLogin(data))) {
-      history.push("/");
+      history.push("/admin"); 
     }
   };
 
   return (
-    <>
-      <Container fluid className="Login mt-5 mb-5">
-        <Row className="d-flex justify-content-center">
-          <Col
-            xs={12}
-            md={5}
-            className="Login__col d-flex flex-column justify-content-center align-items-center"
+    <Container fluid className="Login">
+      <Row>
+        <Col
+          xs={12}
+          md={6}
+          className="Login_col d-flex flex-column justify-content-center align-items-center"
+        >
+          <h2>{t("login:good_to_see_you")}</h2>
+          <Form
+            className="m-5 d-flex flex-column justify-content-around"
+            onSubmit={login}
           >
-            <h2>{t("login:good_to_see_you")}</h2>
-            <Form
-              className="m-5 d-flex flex-column justify-content-around"
-              onSubmit={login}
+            <FormGroup>
+              <FormControl
+                className="p-4 mb-3"
+                type="email"
+                placeholder={t("login:placeholderemail")}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <FormGroup>
+              <FormControl
+                className="p-4 mb-3"
+                type="password"
+                placeholder={t("login:placeholderpassword")}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </FormGroup>
+            <p className="mb-4">
+              {t("login:dont_have_account_yet")}
+              <Link to="/register">
+                <p> {t("login:registernow")}</p>
+              </Link>
+            </p>
+            <p className="mb-4">
+              <Link to="/password">
+                <span> {t("password:forgot_password")}</span>
+              </Link>
+            </p>
+            <Button
+              type="submit"
+              className="ButtonPrimary w-75 mx-auto"
+              size="lg"
+              block
             >
-              <FormGroup>
-                <FormControl
-                  className="p-4 mb-3"
-                  type="email"
-                  placeholder={t("login:placeholderemail")}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </FormGroup>
-              <FormGroup>
-                <FormControl
-                  className="p-4 mb-3"
-                  type="password"
-                  placeholder={t("login:placeholderpassword")}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </FormGroup>
-              <p className="mb-4">
-                {t("login:dont_have_account_yet")}
-                <Link to="/register">
-                  <span> {t("login:registernow")}</span>
-                </Link>
-              </p>
-              <Button
-                type="submit"
-                className="ButtonPrimary w-75"
-                size="lg"
-                block
-              >
-                {t("login:labelbutton")}
-              </Button>
-            </Form>
-          </Col>
-          <Col className="Login__col" xs={12} md={4}>
-            <img
-              className="sideimage"
-              src={loginregisterside}
-              alt="login or register, working on a computer"
-              width={700}
-              height={600}
-              mode="fit"
-            />
-          </Col>
-        </Row>
-      </Container>
-    </>
+              {t("login:labelbutton")}
+            </Button>
+          </Form>
+        </Col>
+        <Col
+          md={6}
+          className="Login_col d-none d-lg-block text-center">
+          <Image
+            src={logincover}
+            alt="Illustration login page"
+            height={600} />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

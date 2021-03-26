@@ -41,8 +41,19 @@ const LearningPaths = () => {
       <Row className="d-flex justify-content-center">
         {isLoading && <Loading />}
         {(data &&
-          data.map((path) => (
-            <LearningPathCard key={path.id} learningPath={path} />
+          data.filter((value) => {
+            if(input === ""){
+              return value;
+            } else if (value.title.toLowerCase().includes(input.toLowerCase())){
+              return value;
+            }
+          }).map((path) => (
+            <LearningPathCard
+              key={path.id}
+              learningPath={path}
+              width="40%"
+              imgHeight="300px"
+            />
           ))) ||
           (!isLoading && <h3>{t("common:noResult")}</h3>)}
       </Row>

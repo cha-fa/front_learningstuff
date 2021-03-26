@@ -69,10 +69,6 @@ const Question = ({
       `/courses/${ids.course}/chapters/${ids.chapter}/lessons/${ids.lesson}/results`,
       { quizz_result: score }
     );
-    // post(`/users/${currentUser.id}/progress`, {
-    //   course_id: ids.course,
-    //   achieved_lesson_id: ids.lesson,
-    // });
   };
 
   useEffect(() => {
@@ -81,7 +77,7 @@ const Question = ({
   }, [question]);
 
   return (
-    <div className="Question h-100 d-flex justify-content-center flex-column ">
+    <div className="Question h-100 d-flex justify-content-center flex-column">
       <h3>{question.content} ?</h3>
 
       <Form>

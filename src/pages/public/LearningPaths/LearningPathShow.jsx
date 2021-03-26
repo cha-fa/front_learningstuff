@@ -14,7 +14,7 @@ import "./LearningPaths.scss";
 const LearningPathShow = () => {
   const { data, error, get } = useFetch();
   const { pathSlug } = useParams();
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   const isLogged = useSelector((state) => state.auth.isLogged);
   const dispatch = useDispatch();
   const history = useHistory();
@@ -60,7 +60,13 @@ const LearningPathShow = () => {
       <Row className="d-flex justify-content-center">
         {data &&
           data.courses.map((course) => (
-            <CourseCard key={course.id} course={course} noSubscription="true" />
+            <CourseCard
+              key={course.id}
+              course={course}
+              noSubscription="true"
+              width="40%"
+              imgHeight="300px"
+            />
           ))}
       </Row>
     </div>

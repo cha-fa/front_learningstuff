@@ -1,6 +1,4 @@
 title: Bienvenue sur Learning Stuff {{name}}
-# articles: Il y a {{count}} article
-# articles_plural: Il y a {{count}} articles
 placeholderSearch: Rechercher
 noResult: Aucun résultat
 subscribe: S'inscrire
@@ -27,3 +25,10 @@ course_description_first: "Ces cours peuvent être retrouvés dans nos parcours 
 see_learning_path: Voir les parcours
 your_progress: Ta progression
 read_course: Lire le cours
+you_are_registered: Tu es inscrit(e) à
+and: et
+course: cours
+path: parcours
+this_page_doesnt_exists: Oops ! Cette page n'existe pas
+back_to_profile: Retour au profil
+back_to_home: Retour à l'accueil

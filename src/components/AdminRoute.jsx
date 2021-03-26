@@ -12,7 +12,7 @@ const AdminRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        isLogged && isAdmin ? <Component {...props} /> : <Redirect to="/" />
+        isLogged && isAdmin ? <Component {...props} /> : <Redirect to="/profile/mycourses" />
       }
     />
   );

@@ -28,7 +28,7 @@ const HomePresentation = () => {
         </Col>
       </Row>
       <Row className="Courses_CTA p-0 m-0">
-        <Col md={6} className="d-none d-lg-block">
+        <Col md={6} className="d-none d-lg-block abstract-form">
           {
             <svg
               height="437"
@@ -38,7 +38,7 @@ const HomePresentation = () => {
             >
               <path
                 d="M-8.99052 836.918C-240.325 836.785 -427.751 649.533 -427.619 418.678C-427.486 187.823 -239.845 0.78547 -8.51085 0.918203C222.824 1.05094 772.553 119.759 772.421 350.614C772.288 581.469 222.344 837.051 -8.99052 836.918Z"
-                fill="#EFE4CF"
+                fill="#b5dfe2"
               />
             </svg>
           }

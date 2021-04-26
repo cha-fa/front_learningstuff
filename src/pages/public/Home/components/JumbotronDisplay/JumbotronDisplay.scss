@@ -2,9 +2,6 @@
 
 .JumbotronDisplay {
   background-image: $primary-alt;
-  background-size: cover;
-  min-height: 400px;
-  min-width: 100%;
   margin: 0;
 
   h2,
@@ -12,6 +9,6 @@
     color: white;
   }
   .cta:hover {
-    color: #e57c00;
+    color: #1c4447;
   }
 }

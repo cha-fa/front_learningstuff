@@ -6,19 +6,19 @@
 $footer-size: 15vh;
 $font-family: "Nunito Sans", sans-serif;
 
-$primary: -webkit-linear-gradient(to left, #ffc000, #ff8a00)
-  /* Chrome 10-25, Safari 5.1-6 */ linear-gradient(to left, #ffc000, #ff8a00)
-  #ff8a00;
+$primary: -webkit-linear-gradient(to left, #48adb5, #32797e)
+  /* Chrome 10-25, Safari 5.1-6 */ linear-gradient(to left, #48adb5, #32797e)
+  #32797e;
 $primary-alt: linear-gradient(
   to left,
-  #ffc000,
-  #ff8a00
+  #48adb5,
+  #32797e
 ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-$primary-old: #ff8a00; /* fallback for old browsers */
+$primary-old: #32797e; /* fallback for old browsers */
 
 $secondary: #ffffff;
-$orange-background: #ff8a00;
-$light-orange: #fff7df;
+$orange-background: #32797e;
+$light-orange: #f6ffff;
 $footer-color: #5c5c5c;
 
 // Typo : Nunito

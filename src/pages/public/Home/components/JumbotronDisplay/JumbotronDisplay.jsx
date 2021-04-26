@@ -8,7 +8,7 @@ import "./JumbotronDisplay.scss";
 const JumbotronDisplay = () => {
   const { t } = useTranslation();
   return (
-    <Jumbotron className="JumbotronDisplay">
+    <Jumbotron fluid className="JumbotronDisplay">
       <div>
         <Row className="p-0 m-0">
           <Col

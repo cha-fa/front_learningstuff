@@ -36,7 +36,7 @@ For the purpose of THP jury, we have created several accounts.
 
 You can sign up with :
 
-- admi1@learning.com
+- admin@learning.com
 
   and password: **bonjour**
 
